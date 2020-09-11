@@ -12,6 +12,16 @@ const app = express();
 dotenv.config({path:'./.env'});
 
 //------------------------------------------------------//
+/*                      Engine                          */
+//------------------------------------------------------//
+app.use(express.static('./'));
+app.use(bodyParser.text({ type: 'text/html' }));
+app.set('view engine', 'hbs');
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+app.use(cookieParser());
+
+//------------------------------------------------------//
 /*           Mysql Database Create Connection           */
 //------------------------------------------------------//
 const db = mysql.createConnection({
@@ -25,32 +35,14 @@ const db = mysql.createConnection({
 db.connect((err) => {
     if (!err) {
         console.info('MySql Connected...');
-    } else {
-        throw err;
+        } else {
+        console.log(err.message);
     }
 });
 
 //------------------------------------------------------//
-/*                      Engine                          */
-//------------------------------------------------------//
-app.use(express.static('./'));
-app.use(bodyParser.text({ type: 'text/html' }));
-app.set('view engine', 'hbs');
-app.use(express.urlencoded({extended:false}));
-app.use(express.json());
-app.use(cookieParser());
-
-//------------------------------------------------------//
-/*                     Sessione                         */
-//------------------------------------------------------//
-
-
-//------------------------------------------------------//
 /*                      Routers                         */
 //------------------------------------------------------//
-// Routes 
-
-
 // Use page
 app.use('/auth', require('./routes/auth'));
 app.use(require('./routes/Login.js'));
