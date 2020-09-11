@@ -458,6 +458,58 @@ textarea.input100 {
   transform: translateX(-10px);
 }
 
+/*------------------------------------------------------------------*/
+
+.button_del {
+	background-color:#ff0000;
+	border-radius:28px;
+  display:inline-block;
+  min-width: 60px;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+  padding:10px 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 16px;
+  text-decoration:none;
+  justify-content: center;
+}
+.button_del:hover {
+	background-color:#c20000;
+}
+.button_del:active {
+	position:relative;
+	top:1px;
+}
+
+/*------------------------------------------------------------------*/
+
+.button_opt {
+	background-color:#ffa600;
+	border-radius:28px;
+  display:inline-block;
+  min-width: 60px;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+  padding:10px 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 16px;
+  text-decoration:none;
+  justify-content: center;
+}
+.button_opt:hover {
+	background-color:#c24e00;
+}
+.button_opt:active {
+	position:relative;
+	top:1px;
+}
+
 /*------------------------------------------------------------------
 [ Responsive ]*/
 

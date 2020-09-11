@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const { session } = require('passport');
 const app = express();
 
 //------------------------------------------------------//
@@ -40,18 +41,21 @@ app.use(express.json());
 app.use(cookieParser());
 
 //------------------------------------------------------//
+/*                     Sessione                         */
+//------------------------------------------------------//
+
+
+//------------------------------------------------------//
 /*                      Routers                         */
 //------------------------------------------------------//
-// Routes
-const login = require('./routes/Login.js');
-const register = require('./routes/Register.js');
-//const page404 = require('./routes/page404.js');
+// Routes 
+
 
 // Use page
 app.use('/auth', require('./routes/auth'));
-app.use(login);
-app.use(register);
-//app.use(page404);
+app.use(require('./routes/Login.js'));
+app.use(require('./routes/Register.js'));
+app.use(require('./routes/Dasboard.js'));
 
 // Get
 app.get('/', (req, res) => {

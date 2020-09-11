@@ -28,8 +28,7 @@ exports.login = async (req, res) => {
                 } else if (!results || !(await bcrypt.compare(Password, results[0].password))) {
                     res.render('login', {message_warn:'Il Nome Discord o password non sono corretti'});
                 } else {
-                    const id = results[0].id;
-                    const token = jwt.sign({id}, process.env.JWT_SECRET, {
+                    const token = jwt.sign({id:results[0].Id, user:results[0].Id_discord, master:results[0].master}, process.env.JWT_SECRET, {
                         expiresIn: process.env.JWT_EXPIRES_IN
                     });
                     const cookieOptions = {
@@ -37,7 +36,7 @@ exports.login = async (req, res) => {
                         httpOnly: true
                     };
                     res.cookie('jwt', token, cookieOptions);
-                    res.redirect('/');
+                    res.redirect('/dasboard');
                 }
             });
         }
@@ -51,7 +50,6 @@ exports.login = async (req, res) => {
 /*                      Register                        */
 //------------------------------------------------------//
 exports.register = (req, res) => {
-    console.log(req.body);
     const {name_user, Password, Password_rep} = req.body;
     if (name_user.length > 0 || Password.length > 0 || Password_rep.length > 0) {
         db.query("SELECT * FROM `utenti` WHERE `Id_discord`=?", [name_user], async (error, results) => {
@@ -70,7 +68,6 @@ exports.register = (req, res) => {
                 if (error) {
                     console.log(error);
                 } else {
-                    console.log(results);
                     return res.render('Login.hbs', {message_success:'Utente registrato'});
                 }
             });
