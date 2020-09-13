@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
@@ -15,8 +16,9 @@ dotenv.config({path:'./.env'});
 /*                      Engine                          */
 //------------------------------------------------------//
 app.use(express.static('./'));
-app.use(bodyParser.text({ type: 'text/html' }));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.use(bodyParser.text({ type: 'text/html' }));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use(cookieParser());
@@ -45,9 +47,11 @@ db.connect((err) => {
 //------------------------------------------------------//
 // Use page
 app.use('/auth', require('./routes/auth'));
+app.use('/insert', require('./routes/insert'));
 app.use(require('./routes/Login.js'));
 app.use(require('./routes/Register.js'));
 app.use(require('./routes/Dasboard.js'));
+app.use(require('./routes/insert.js'));
 
 // Get
 app.get('/', (req, res) => {

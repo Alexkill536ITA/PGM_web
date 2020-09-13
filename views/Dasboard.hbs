@@ -34,11 +34,13 @@
                         <td>
                             <div style="float: left; margin-left: 80px;width: 130px; max-height: 50px" class="wrap-contact100-form-btn">
                                 <div class="contact100-form-bgbtn"></div>
-                                <button class="contact100-form-btn" id="crea_scheda" name="crea_scheda" type="button" >
-                                    <span>
-                                        Crea Scheda
-                                    </span>
-                                </button>
+                                <form method="POST" action="/insert/insert">
+                                    <button class="contact100-form-btn" id="crea_scheda" name="crea_scheda" type="submit">
+                                        <span>
+                                            Crea Scheda
+                                        </span>
+                                    </button>
+                                </form>
                             </div>
                         </td>
                     </tr>
@@ -69,6 +71,7 @@
     <div id="dropDownSelect1"></div>
 
     <!--===============================================================================================-->
+    <script src="routes/Dasboard.js"></script>
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/animsition/js/animsition.min.js"></script>
     <script src="vendor/bootstrap/js/popper.js"></script>
