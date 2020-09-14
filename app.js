@@ -4,6 +4,7 @@ const mysql = require('mysql');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const metho_doverride = require('method-override');
 const { session } = require('passport');
 const app = express();
 

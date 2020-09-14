@@ -113,35 +113,19 @@
 
                 <div class="wrap-input100 validate-input" data-validate="Message is required">
                     <span class="label-input100">Inventario</span>
-                    <ul>
-                        <li>
-                            <p style="width: 110px;float: left;color: black">Nome oggetto:</p>
-                            <input style="float: left" class="label-input120">
-                            <p style="width: 60px;float: left;color: black">Qnatità:</p>
-                            <input style="float: left; width: 50px" class="label-input120">
-                            <p style="width: 60px;color: black">Note:</p>
-                            <textarea style="min-height: 60px" class="input100" name="message" placeholder="Informazione sull' oggetto."></textarea>
-                            <div class="container-contact120-form-btn">
-                                <div style="width: 50px; max-height: 50px" class="wrap-contact100-form-btn">
-                                    <div class="contact120-form-bgbtn"></div>
-                                    <button class="contact120-form-btn">
-                                        <span>
-                                            <i class="material-icons" aria-hidden="true">delete_sweep</i>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                            <p>----------------------------------------------------------------------------------------------------</p>
-                        </li>
+                    <ul id="Inventori_list">
+                        
                     </ul>
                     <div class="container-contact100-form-btn">
                         <div style="width: 120px" class="wrap-contact100-form-btn">
                             <div class="contact100-form-bgbtn"></div>
-                            <button class="contact100-form-btn" type="button">
-                                <span>
-                                    <b style="font-size: 50px">+</b>
-                                </span>
-                            </button>
+                            {{!-- <form method="POST" action="/insert/add"> --}}
+                                <button class="contact100-form-btn" type="button" id="add_object">
+                                    <span>
+                                        <b style="font-size: 50px">+</b>
+                                    </span>
+                                </button>
+                            {{!-- </form> --}}
                         </div>
                     </div>
                     <span class="focus-input100"></span>
@@ -165,6 +149,7 @@
     <div id="dropDownSelect1"></div>
 
     <!--===============================================================================================-->
+    
     <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="/vendor/animsition/js/animsition.min.js"></script>
     <script src="/vendor/bootstrap/js/popper.js"></script>
@@ -190,5 +175,6 @@
         gtag('js', new Date());
         gtag('config', 'UA-23581568-13');
     </script>
+    <script src="/models/Oggetto_inventario.js"></script>
 </body>
 </html>
