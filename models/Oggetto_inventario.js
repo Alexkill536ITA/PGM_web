@@ -1,6 +1,5 @@
 // Crate Template Object
 const oggettoInventario_temp = `
-    <li>
         <p style="width: 110px;float: left;color: black">Nome oggetto:</p>
         <input style="float: left" class="label-input120">
         <p style="width: 60px;float: left;color: black">Quantità:</p>
@@ -10,7 +9,7 @@ const oggettoInventario_temp = `
         <div class="container-contact120-form-btn">
             <div style="width: 50px; max-height: 50px" class="wrap-contact100-form-btn">
                 <div class="contact120-form-bgbtn"></div>
-                <button class="contact120-form-btn" id="remove_object">
+                <button class="contact120-form-btn" type="button" id="remove_object" name="remove_object" onclick="delete_file(this)">
                         <i class="material-icons">delete_sweep</i>
                 </button>
             </div>
@@ -19,16 +18,20 @@ const oggettoInventario_temp = `
     </li>
 `;
 
+// Create Object
 const add = document.getElementById('add_object');
 const ul = document.getElementById('Inventori_list');
+var init_id = 0; 
 add.addEventListener("click", function(){
-    ul.insertAdjacentHTML('beforeend', oggettoInventario_temp);
+    ul.insertAdjacentHTML('beforeend', '<li id="obj_'+init_id+'">');
+    var li_temp = document.getElementById('obj_'+init_id);
+    li_temp.insertAdjacentHTML('beforeend', oggettoInventario_temp);
+    init_id = init_id+1;
 });
 
-const rem = document.getElementById('remove_object');
-if (!rem) {
-    rem.addEventListener("click", function(){
-        //this.parentElement.remove();
-        console.log(this.parentElement);
-    });
-}
+// Delete Object
+function delete_file(nod){
+    var ele = nod.parentNode.parentNode.parentNode.id;
+    var liElements = document.getElementById(ele);
+    liElements.remove();
+};
