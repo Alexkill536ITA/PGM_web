@@ -1,8 +1,11 @@
 const mysql = require('mysql');
+const { MongoClient } = require("mongodb");
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 const { post } = require('../routes');
 
+//------------------------------------------------------//
+/*         MongoDB e Mysql Database Connection          */
+//------------------------------------------------------//
 const db = mysql.createConnection({
     host : process.env.DATABASE_Host,
     user : process.env.DATABASE_User,
@@ -28,5 +31,27 @@ exports.Crea_sheda = (req, res) => {
         } else {
             res.redirect('/login');
         } 
+    });
+}
+
+exports.Insert_db = (req, res) => {
+    const token = req.cookies['jwt'];
+    const {name, razza, classe, background, money} = req.body;
+    jwt.verify(token,process.env.JWT_SECRET, function(err, decoded)  {
+        if (!err) {
+            if(name.length > 0 || razza != "Scegli Razza" || classe != "Scegli Classe" || background != "Scegli Background") {
+                const PG_temp = {
+                    Nome_Discord: decoded.user,
+                    Nome_PG: name,
+                    Razza: razza,
+                    Classe: classe,
+                    Background: background,
+                    Money: money,
+                }
+                console.log(PG_temp);
+                res.render('Dasboard', {message_suces:'Scheda creata'});
+            }
+            res.render('insert_temp', {message_warn:'Riempire i calpi'});
+        }
     });
 }

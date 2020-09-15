@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mysql = require('mysql');
+const { MongoClient } = require("mongodb");
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -42,6 +43,27 @@ db.connect((err) => {
         console.log(err.message);
     }
 });
+
+//------------------------------------------------------//
+/*         MongoDB Database Create Connection           */
+//------------------------------------------------------//
+const uri = process.env.DATABASE_MONGDB;
+const client = new MongoClient(uri);
+
+async function run() {
+  try {
+    // Connetti il ​​client al server
+    await client.connect({useNewUrlParser: true, useUnifiedTopology: true});
+
+    // Stabilire e verificare la connessione
+    await client.db("Piccolo_Grande_Mondo").command({ ping: 1 });
+    console.log("MongoDB Connected...");
+  } finally {
+    // Assicura che il client si chiuda al termine / errore
+    await client.close();
+  }
+}
+run().catch(console.dir);
 
 //------------------------------------------------------//
 /*                      Routers                         */

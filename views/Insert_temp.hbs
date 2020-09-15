@@ -22,21 +22,21 @@
 
     <div class="container-contact100">
         <div class="wrap-contact150">
-            <form class="contact100-form validate-form" action="" method="POST">
-                <span class="contact100-form-title">
+            <form class="contact100-form validate-form" action="/insert/insert" method="POST">
+                <span class="contact100-form-title" id="Creazione PG">
                     Creazione PG
                 </span>
 
                 <div class="wrap-input100 validate-input" data-validate="Nome PG">
                     <span class="label-input100">Nome PG</span>
-                    <input style="border: none" class="input100" type="text" name="name" placeholder="Inserire Nome PG">
+                    <input id="nome_pg" style="border: none" class="input100" type="text" name="name" placeholder="Inserire Nome PG">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 input100-select">
                     <span class="label-input100">Razza</span>
                     <div>
-                        <select class="selection-2" name="razza">
+                        <select id="razza_pg" class="selection-2" name="razza" onchange="ceck_empy()">
                             <option>Scegli Razza</option>
                             <option>Elfo</option>
                             <option>Halfling</option>
@@ -56,7 +56,7 @@
                 <div class="wrap-input100 input100-select">
                     <span class="label-input100">Classi</span>
                     <div>
-                        <select class="selection-2" name="classe">
+                        <select id="classe_pg" class="selection-2" name="classe" onchange="ceck_empy()">
                             <option>Scegli Classe</option>
                             <option>Barbaro</option>
                             <option>Bardo</option>
@@ -78,7 +78,7 @@
                 <div class="wrap-input100 input100-select">
                     <span class="label-input100">Background</span>
                     <div>
-                        <select class="selection-2" name="background">
+                        <select id="background_pg" class="selection-2" name="background" onchange="ceck_empy()">
                             <option>Scegli Background</option>
                             <option>Accolito</option>
                             <option>Ciarlatano</option>
@@ -94,7 +94,7 @@
                             <option>Saggio</option>
                             <option>Marinaio</option>
                             <option>Soldato</option>
-                            <option>Monello</option>
+                            <option>Modello</option>
                             <option>Artigiano di Gilda</option>
                             <option>Mercante di Gilda</option>
                         </select>
@@ -106,12 +106,12 @@
                     <span class="label-input100">Monete</span>
                     <div>
                         <p style="width: 50px;float: left;color: black"><b>Oro:</b></p>
-                        <input class="label-input150" name="oro" value="0">mo
+                        <input id="money_pg" class="label-input150" name="money" value="0">mo
                     </div>
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Message is required">
+                <div id="Inventori_Container" class="wrap-input100 validate-input" data-validate="Message is required">
                     <span class="label-input100">Inventario</span>
                     <ul id="Inventori_list"></ul>
                     <div class="container-contact100-form-btn">
@@ -125,18 +125,6 @@
                         </div>
                     </div>
                     <span class="focus-input100"></span>
-                </div>
-
-                <div class="container-contact100-form-btn">
-                    <div class="wrap-contact100-form-btn">
-                        <div class="contact100-form-bgbtn"></div>
-                        <button class="contact100-form-btn" submit="submit">
-                            <span>
-                                Crea
-                                <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true" ></i>
-                            </span>
-                        </button>
-                    </div>
                 </div>
             </form>
         </div>
@@ -172,5 +160,6 @@
         gtag('config', 'UA-23581568-13');
     </script>
     <script src="/models/Oggetto_inventario.js"></script>
+    <script src="/js/controll_empty.js"></script>
 </body>
 </html>

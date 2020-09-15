@@ -1,0 +1,20 @@
+{
+    "Nome_Discord": "Manzo#0000",
+    "Nome_PG": "Eldar",
+    "Razza": "Elfo",
+    "Classe": "Ladro",
+    "Background": "Criminale",
+    "Money": "5000",
+    "Inventario":{
+        "Object_1": {
+            "Nome":"lama corta",
+            "Quantita": 1,
+            "Note":"Arma maneggevole e rapida da usare"
+        },
+        "Object_2": {
+            "Nome":"Pozzione di cura",
+            "Quantita": 5,
+            "Note":"Solievo istantanio dal dolore"
+        }
+    }
+}

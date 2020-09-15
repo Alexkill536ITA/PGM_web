@@ -26,6 +26,9 @@
             <span class="contact100-form-title">
                 Dasboard
             </span>
+            {{#if message_suces}}
+					<h4 class="alert alert-success mt-4">{{message_suces}}</h4>
+			{{/if}}
                 <table style="border-spacing: 10px; margin-bottom: 20px;">
                     <tr>
                         <td>
@@ -34,7 +37,7 @@
                         <td>
                             <div style="float: left; margin-left: 80px;width: 130px; max-height: 50px" class="wrap-contact100-form-btn">
                                 <div class="contact100-form-bgbtn"></div>
-                                <form method="POST" action="/insert/insert">
+                                <form method="POST" action="/insert/make">
                                     <button class="contact100-form-btn" id="crea_scheda" name="crea_scheda" type="submit">
                                         <span>
                                             Crea Scheda
