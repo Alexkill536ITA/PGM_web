@@ -60,7 +60,13 @@ exports.Insert_db = (req, res) => {
                     "Inventory": inventory
                 }
 
-                if (index_obj > 1) {
+                if (index_obj == 1) {
+                    inventory[nome_oggetto_obj] = {
+                        "Nome": nome_oggetto_obj,
+                        "Quantita": quantita_obj,
+                        "Note": note_obj
+                    }
+                } else {
                     for (let index = 0; index < index_obj; index++) {
                         inventory[nome_oggetto_obj[index]] = {
                             "Nome": nome_oggetto_obj[index],
@@ -68,30 +74,32 @@ exports.Insert_db = (req, res) => {
                             "Note": note_obj[index]
                         }               
                     }
-                } else {
-                    inventory[nome_oggetto_obj] = {
-                        "Nome": nome_oggetto_obj,
-                        "Quantita": quantita_obj,
-                        "Note": note_obj
-                    }
                 }
 
                 console.log(PG_temp);
                 client.connect(function(err, mogodb) {
                     if (err) {
-                        console.log('[ERROR] Database insert');
+                        res.redirect('/dasboard');
+                    } else {
+                        var mogodb = mogodb.db("Piccolo_Grande_Mondo");
+                        mogodb.collection("Schede_PG").insertOne(PG_temp, function(err, res) {
+                            if (err) {
+                                console.log('[ERROR] Database insert FAIL');
+                                res.render('Dasboard');
+                            }
+                            console.log("1 document inserted MongoDB");
+                            dbMysql.query('UPDATE `utenti` SET `N_schede` =? WHERE `utenti`.`Id_discord`=?', [1,decoded.user], async () => {
+                                console.log('1 document inserted MySQL');
+                                res.render('Dasboard');
+                            });
+                        });
+                        client.close();
                     }
-                    var mogodb = mogodb.db("Piccolo_Grande_Mondo");
-                    mogodb.collection("Schede_PG").insertOne(PG_temp, function(err, res) {
-                        if (err) {
-                            console.log('[ERROR] Database insert');
-                        }
-                        console.log("1 document inserted");    
-                    });
                 });
-                client.close();
-                dbMysql.query('UPDATE `utenti` SET `N_schede` =? WHERE `utenti`.`Id_discord`=?', [1,decoded.user]);
-                res.render('Dasboard', {message_suces:'Scheda creata'});
+                res.redirect('/dasboard');
+
+                
+                //res.render('Dasboard', {message_suces:'Scheda creata'});
             }
             res.render('insert_temp', {message_warn:'Riempire i calpi'});
         }
