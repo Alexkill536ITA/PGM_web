@@ -96,4 +96,3 @@ exports.Insert_db = (req, res) => {
         }
     });
 };
-
