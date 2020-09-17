@@ -1,11 +1,11 @@
 // Crate Template Object
 const oggettoInventario_temp = `
         <p style="width: 110px;float: left;color: black">Nome oggetto:</p>
-        <input style="float: left" class="label-input120">
+        <input style="float: left" class="label-input120" name="nome_oggetto">
         <p style="width: 60px;float: left;color: black">Quantità:</p>
-        <input style="float: left; width: 50px" class="label-input120">
+        <input style="float: left; width: 50px" class="label-input120" name="quantita" value="1">
         <p style="width: 60px;color: black">Note:</p>
-        <textarea style="min-height: 60px" class="input100" name="message" placeholder="Informazione sull' oggetto."></textarea>
+        <textarea style="min-height: 60px" class="input100" name="note" placeholder="Informazione sull' oggetto."></textarea>
         <div class="container-contact120-form-btn">
             <div style="width: 50px; max-height: 50px" class="wrap-contact100-form-btn">
                 <div class="contact120-form-bgbtn"></div>
@@ -21,12 +21,16 @@ const oggettoInventario_temp = `
 // Create Object
 const add = document.getElementById('add_object');
 const ul = document.getElementById('Inventori_list');
+const index_control = document.getElementById('index_obj');
+var index_control_int = 0;
 var init_id = 0; 
 add.addEventListener("click", function(){
     ul.insertAdjacentHTML('beforeend', '<li id="obj_'+init_id+'">');
     var li_temp = document.getElementById('obj_'+init_id);
     li_temp.insertAdjacentHTML('beforeend', oggettoInventario_temp);
     init_id = init_id+1;
+    index_control_int =  parseInt(index_control.getAttribute('value'));
+    index_control.setAttribute('value', index_control_int+1);
 });
 
 // Delete Object
@@ -34,4 +38,6 @@ function delete_file(nod){
     var ele = nod.parentNode.parentNode.parentNode.id;
     var liElements = document.getElementById(ele);
     liElements.remove();
+    index_control_int =  parseInt(index_control.getAttribute('value'));
+    index_control.setAttribute('value', index_control_int-1);
 };
