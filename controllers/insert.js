@@ -6,7 +6,7 @@ const { post } = require('../routes');
 //------------------------------------------------------//
 /*         MongoDB e Mysql Database Connection          */
 //------------------------------------------------------//
-const db = mysql.createConnection({
+const dbMysql = mysql.createConnection({
     host : process.env.DATABASE_Host,
     user : process.env.DATABASE_User,
     password : process.env.DATABASE_Password,
@@ -20,7 +20,7 @@ exports.Crea_sheda = (req, res) => {
     const token = req.cookies['jwt'];
     jwt.verify(token,process.env.JWT_SECRET, function(err, decoded)  {
         if (!err) {
-            db.query('SELECT * FROM `utenti` WHERE `Id`=? AND `Id_discord`=?', [decoded.id, decoded.user], async (error, results) =>{
+            dbMysql.query('SELECT * FROM `utenti` WHERE `Id`=? AND `Id_discord`=?', [decoded.id, decoded.user], async (error, results) =>{
                 if (results.length == 0) {
                     res.render('Dasboard', {message_error:'Errore nel ricerca profilo'});
                 } else if (results[0].master == 1) {
@@ -90,7 +90,8 @@ exports.Insert_db = (req, res) => {
                     });
                 });
                 client.close();
-                // //res.render('Dasboard', {message_suces:'Scheda creata'});
+                dbMysql.query('UPDATE `utenti` SET `N_schede` =? WHERE `utenti`.`Id_discord`=?', [1,decoded.user]);
+                res.render('Dasboard', {message_suces:'Scheda creata'});
             }
             res.render('insert_temp', {message_warn:'Riempire i calpi'});
         }

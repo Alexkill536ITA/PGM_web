@@ -29,6 +29,12 @@
             {{#if message_suces}}
 					<h4 class="alert alert-success mt-4">{{message_suces}}</h4>
 			{{/if}}
+            {{#if message_warn}}
+					<h4 class="alert alert-warning mt-4">{{message_warn}}</h4>
+			{{/if}}
+            {{#if message_error}}
+					<h4 class="alert alert-danger mt-4">{{message_error}}</h4>
+			{{/if}}
                 <table style="border-spacing: 10px; margin-bottom: 20px;">
                     <tr>
                         <td>
