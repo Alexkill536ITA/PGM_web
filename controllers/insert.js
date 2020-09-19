@@ -44,6 +44,7 @@ exports.Insert_db = (req, res) => {
     const quantita_obj = req.body.quantita;
     const note_obj = req.body.note;
     const index_obj = req.body.index_obj;
+    const master_user = req.body.master_user;
     
     jwt.verify(token,process.env.JWT_SECRET, function(err, decoded)  {
         if (!err) {
@@ -88,17 +89,17 @@ exports.Insert_db = (req, res) => {
                                 res.render('Dasboard');
                             }
                             console.log("1 document inserted MongoDB");
-                            dbMysql.query('UPDATE `utenti` SET `N_schede` =? WHERE `utenti`.`Id_discord`=?', [1,decoded.user], async () => {
-                                console.log('1 document inserted MySQL');
-                                res.render('Dasboard');
-                            });
+                            if(master_user == 1) {
+                                dbMysql.query('UPDATE `utenti` SET `N_schede` =? WHERE `utenti`.`Id_discord`=?', [1,decoded.user], async () => {
+                                    console.log('1 document inserted MySQL');
+                                    res.render('Dasboard');
+                                });
+                            }
                         });
                         client.close();
                     }
                 });
                 res.redirect('/dasboard');
-
-                
                 //res.render('Dasboard', {message_suces:'Scheda creata'});
             }
             res.render('insert_temp', {message_warn:'Riempire i calpi'});

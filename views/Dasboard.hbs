@@ -35,7 +35,7 @@
             {{#if message_error}}
 					<h4 class="alert alert-danger mt-4">{{message_error}}</h4>
 			{{/if}}
-                <table style="border-spacing: 10px; margin-bottom: 20px;">
+                <table style="border-spacing: 10px; margin-bottom: 25px;">
                     <tr>
                         <td>
                             <p style="font-size: 20px; width: 280px; margin-right: 200px;">Seleziona scheda:</p>
@@ -54,25 +54,51 @@
                         </td>
                     </tr>
                 </table>
-                <table style="border-spacing: 10px">
-                    <tr>
-                        <td>
-                            <p style="width: 280px; margin-right: 10px;">Id_Scheda</p>
-                        </td>
-                        <td>
-                            <p style="width: 255px; margin-right: 10px;">Nome_PG</p>
-                        </td>
-                        <td>
-                            <button class="button_opt">
-                                    <i class="fa fa-pencil-square-o m-l-7" aria-hidden="true"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button style="margin-right: 0px;" class="button_del">
-                                <i class="fa fa-trash m-l-7" aria-hidden="true"></i>
-                            </button>
-                        </td>
-                    </tr>
+                <div class="wrap-contact100-form-btn" style="margin-bottom: 25px;">
+                    <div class="contact100-form-bgbtn"></div>
+                    <form method="POST" action="/Dasboard">
+                        <button class="contact100-form-btn" id="crea_scheda" name="crea_scheda" type="submit">
+                            <span>
+                                Aggiorna
+                            </span>
+                        </button>
+                    </form>
+                </div>
+                <table id="list_PG" style="border-spacing: 10px">
+                    {{#if list_pg}}
+                        <script>
+                            const root_element = document.getElementById('list_PG');
+                            var max = "{{list_pg}}";
+                            var id_scheda_temp = "{{id}}";
+                            var name_temp = "{{name}}";
+                            var id_scheda = id_scheda_temp.split(",");
+                            var name_pg = name_temp.split(",");
+                            console.log(name_temp);
+                            for (let index = 0; index<max; index++) {
+                                var list_pg = `
+                                        <tr id="Scheda_${index}">
+                                                <td>
+                                                    <p style="width: 280px; margin-right: 10px;"><b>Id Scheda:</b> ${id_scheda[index]}</p>
+                                                </td>
+                                                <td>
+                                                    <p style="width: 255px; margin-right: 10px;"><b>Nome PG:</b> ${name_pg[index]}</p>
+                                                </td>
+                                                <td>                        
+                                                <button  class="button_del">
+                                                    <i class="fa fa-trash m-l-7" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button style="margin-right: 0px;" class="button_opt">
+                                                    <i class="fa fa-pencil-square-o m-l-7" aria-hidden="true"></i>
+                                                </button>
+                                            </td><br>
+                                        </tr>
+                                    `;
+                                root_element.insertAdjacentHTML('beforeend', list_pg);
+                            }
+                        </script>
+                    {{/if}}
                 </table>
         </div>
     </div>
@@ -80,7 +106,7 @@
     <div id="dropDownSelect1"></div>
 
     <!--===============================================================================================-->
-    <script src="routes/Dasboard.js"></script>
+    <!-- <script src="routes/Dasboard.js"></script> -->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/animsition/js/animsition.min.js"></script>
     <script src="vendor/bootstrap/js/popper.js"></script>
@@ -106,6 +132,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-23581568-13');
     </script>
+    <!-- <script src="js/loaad_pg_dasboard.js"></script> -->
 
 </body>
 </html>
