@@ -1,17 +1,11 @@
-const mysql = require('mysql');
 const { MongoClient } = require("mongodb");
 const jwt = require('jsonwebtoken');
 const { post } = require('../routes');
+var mysql = require('../mysql');
 
 //------------------------------------------------------//
-/*         MongoDB e Mysql Database Connection          */
+/*         MongoDB Database Connection          */
 //------------------------------------------------------//
-const dbMysql = mysql.createConnection({
-    host : process.env.DATABASE_Host,
-    user : process.env.DATABASE_User,
-    password : process.env.DATABASE_Password,
-    database : process.env.DATABASE_Data
-});
 
 const url = process.env.DATABASE_MONGDB;
 const client = new MongoClient(url);
@@ -20,7 +14,7 @@ exports.Crea_sheda = (req, res) => {
     const token = req.cookies['jwt'];
     jwt.verify(token,process.env.JWT_SECRET, function(err, decoded)  {
         if (!err) {
-            dbMysql.query('SELECT * FROM `utenti` WHERE `Id`=? AND `Id_discord`=?', [decoded.id, decoded.user], async (error, results) =>{
+            mysql.query('SELECT * FROM `utenti` WHERE `Id`=? AND `Id_discord`=?', [decoded.id, decoded.user], async (error, results) =>{
                 if (results.length == 0) {
                     res.render('Dasboard', {message_error:'Errore nel ricerca profilo'});
                 } else if (results[0].master == 1) {
