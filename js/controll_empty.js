@@ -1,5 +1,6 @@
 const input_name= document.getElementById('nome_pg');
 const root = document.getElementById('Inventori_Container');
+const btn_cancel = document.getElementById('btn_cancel');
 var ceck_name = false;
 
 // Template button

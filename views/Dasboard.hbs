@@ -73,25 +73,30 @@
                             var name_temp = "{{name}}";
                             var id_scheda = id_scheda_temp.split(",");
                             var name_pg = name_temp.split(",");
-                            console.log(name_temp);
                             for (let index = 0; index<max; index++) {
                                 var list_pg = `
                                         <tr id="Scheda_${index}">
-                                                <td>
-                                                    <p style="width: 280px; margin-right: 10px;"><b>Id Scheda:</b> ${id_scheda[index]}</p>
-                                                </td>
-                                                <td>
-                                                    <p style="width: 255px; margin-right: 10px;"><b>Nome PG:</b> ${name_pg[index]}</p>
-                                                </td>
-                                                <td>                        
-                                                <button  class="button_del">
-                                                    <i class="fa fa-trash m-l-7" aria-hidden="true"></i>
-                                                </button>
+                                            <td>
+                                                <p style="width: 280px; margin-right: 10px;"><b>Id Scheda:</b> ${id_scheda[index]}</p>
                                             </td>
                                             <td>
-                                                <button style="margin-right: 0px;" class="button_opt">
-                                                    <i class="fa fa-pencil-square-o m-l-7" aria-hidden="true"></i>
-                                                </button>
+                                                <p style="width: 255px; margin-right: 10px;"><b>Nome PG:</b> ${name_pg[index]}</p>
+                                            </td>
+                                            <td>
+                                                <form method="POST" action="/edit/delete"> 
+                                                    <input style="visibility: hidden;" id="id_scheda" name="id_scheda" value="${id_scheda[index]}">                 
+                                                    <button  class="button_del" type="submit">
+                                                        <i class="fa fa-trash m-l-7" aria-hidden="true"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form method="POST" action="/edit/edit">
+                                                    <input style="visibility: hidden;" id="id_scheda" name="id_scheda" value="${id_scheda[index]}">
+                                                    <button style="margin-right: 0px;" class="button_opt">
+                                                        <i class="fa fa-pencil-square-o m-l-7" aria-hidden="true"></i>
+                                                    </button>
+                                                </form>
                                             </td><br>
                                         </tr>
                                     `;
