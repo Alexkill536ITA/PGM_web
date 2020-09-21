@@ -71,6 +71,7 @@ db.connect((err) => {
 // Use page
 app.use('/auth', require('./routes/auth'));
 app.use('/insert', require('./routes/insert'));
+app.use('/edit', require('./routes/edit'));
 app.use(require('./routes/Login.js'));
 app.use(require('./routes/Register.js'));
 app.use(require('./routes/Dasboard.js'));
