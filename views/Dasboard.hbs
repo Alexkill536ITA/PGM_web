@@ -64,7 +64,7 @@
                         </button>
                     </form>
                 </div>
-                <table id="list_PG" style="border-spacing: 10px">
+                <table id="list_PG" style="border-spacing: 10px;">
                     {{#if list_pg}}
                         <script>
                             const root_element = document.getElementById('list_PG');
@@ -82,21 +82,23 @@
                                             <td>
                                                 <p style="width: 255px; margin-right: 10px;"><b>Nome PG:</b> ${name_pg[index]}</p>
                                             </td>
-                                            <td>
-                                                <form method="POST" action="/edit/delete"> 
-                                                    <input style="visibility: hidden;" id="id_scheda" name="id_scheda" value="${id_scheda[index]}">                 
-                                                    <button  class="button_del" type="submit">
+                                            <td>                     
+                                                <form method="POST" action="/edit/delete" style="dispaly= none; felx-wrap: wrap;">
+                                                    <p style="width: 0px;visibility: hidden;" id="id_scheda_delete" name="id_scheda_delete" value="${id_scheda[index]}">${id_scheda[index]}</p>
+                                                    <button  class="button_del">
                                                         <i class="fa fa-trash m-l-7" aria-hidden="true"></i>
                                                     </button>
                                                 </form>
                                             </td>
                                             <td>
-                                                <form method="POST" action="/edit/edit">
-                                                    <input style="visibility: hidden;" id="id_scheda" name="id_scheda" value="${id_scheda[index]}">
-                                                    <button style="margin-right: 0px;" class="button_opt">
-                                                        <i class="fa fa-pencil-square-o m-l-7" aria-hidden="true"></i>
-                                                    </button>
-                                                </form>
+                                                <div>
+                                                    <form method="POST" action="/edit/edit" style="dispaly= block; felx-wrap: wrap;">
+                                                        <input style="width: 0px;height 0px; visibility: hidden;" id="id_scheda_edit" name="id_scheda_edit" value="${id_scheda[index]}">
+                                                        <button style="margin-right: 0px;" class="button_opt">
+                                                            <i class="fa fa-pencil-square-o m-l-7" aria-hidden="true"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td><br>
                                         </tr>
                                     `;

@@ -60,7 +60,7 @@
                 <div>
                     <h5>Nome PG</h5>
                     <div>
-                        <p>Nome</p>
+                        <p>{{nome_pg}}</p>
                     </div>
                 </div>
 
@@ -68,21 +68,21 @@
                 <div>
                     <h5>Razza</h5>
                     <div>
-                        <p>razza</p>
+                        <p>{{razza_pg}}</p>
                     </div>
                 </div>
 
                 <div>
                     <h5>Classe</h5>
                     <div>
-                        <p>classe</p>
+                        <p>{{classe_pg}}</p>
                     </div>
                 </div>
 
                 <div>
                     <h5>Background</h5>
                     <div>
-                        <p>Background</p>
+                        <p>{{background_pg}}</p>
                     </div>
                 </div><br>
 
@@ -90,7 +90,7 @@
                 <div class="wrap-input100 validate-input" data-validate="monete">
                     <h5 style="margin-bottom: 10px">Monete</h5>
                             <p style="width: 50px;float: left;color: black"><b>Oro:</b></p>
-                            <input class="label-input150" name="oro" value="0">mo
+                            <input class="label-input150" name="oro" value="{{monete_pg}}">mo
                     <span class="focus-input100"></span>
                 </div>
 
@@ -98,25 +98,7 @@
                 <div class="wrap-input100 validate-input" data-validate="Message is required">
                     <h5 style="margin-bottom: 10px">Inventario</h5>
                     <ul>
-                        <li>
-                            <p style="width: 110px;float: left;color: black">Nome oggetto:</p>
-                            <input style="float: left" class="label-input120">
-                            <p style="width: 60px;float: left;color: black">Qnatità:</p>
-                            <input style="float: left; width: 50px" class="label-input120">
-                            <p style="width: 60px;color: black">Note:</p>
-                            <textarea style="min-height: 60px" class="input100" name="message" placeholder="Informazione sull' oggetto."></textarea>
-                            <div class="container-contact120-form-btn">
-                                <div style="width: 50px; max-height: 50px" class="wrap-contact100-form-btn">
-                                    <div class="contact120-form-bgbtn"></div>
-                                    <button class="contact120-form-btn">
-                                        <span>
-                                            <i class="material-icons" aria-hidden="true">delete_sweep</i>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                            <p>----------------------------------------------------------------------------------------------------</p>
-                        </li>
+                        <!--====================================-->
                     </ul>
                     <div class="container-contact100-form-btn">
                         <div style="width: 120px" class="wrap-contact100-form-btn">
@@ -142,6 +124,16 @@
                     </div>
                 </div>
             </form>
+            <div  class="container-contact120-form-btn">
+                <div class="wrap-contact120-form-btn">
+                    <div class="contact120-form-bgbtn"></div>
+                    <button id="btn_cancel" class="contact120-form-btn" onclick="cancel()">
+                        <span>
+                            Annulla
+                        </span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -172,6 +164,14 @@
         }
         gtag('js', new Date());
         gtag('config', 'UA-23581568-13');
+    </script>
+    <script>
+        function cancel(){
+            var domanda = confirm("Sei sicuro di voler Annullare?");
+            if (domanda === true) {
+                location.href = '/dasboard';  
+            }
+        }
     </script>
 
 </body>
