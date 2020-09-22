@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql');
+// const mysql = require('mysql');
 // const { MongoClient } = require("mongodb");
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
@@ -12,7 +12,7 @@ const app = express();
 //------------------------------------------------------//
 /*                      Config                          */
 //------------------------------------------------------//
-dotenv.config({path:'./.env'});
+dotenv.config({ path: './.env' });
 
 //------------------------------------------------------//
 /*                      Engine                          */
@@ -21,28 +21,9 @@ app.use(express.static('./'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(bodyParser.text({ type: 'text/html' }));
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
-
-//------------------------------------------------------//
-/*           Mysql Database Create Connection           */
-//------------------------------------------------------//
-const db = mysql.createConnection({
-    host : process.env.DATABASE_Host,
-    user : process.env.DATABASE_User,
-    password : process.env.DATABASE_Password,
-    database : process.env.DATABASE_Data
-});
-
-// Connect
-db.connect((err) => {
-    if (!err) {
-        console.info('MySql Connected...');
-        } else {
-        console.log(err.message);
-    }
-});
 
 //------------------------------------------------------//
 /*         MongoDB Database Create Connection           */
