@@ -4,16 +4,6 @@ const { post } = require('../routes');
 var db = require('../mysql');
 
 //------------------------------------------------------//
-/*           Mysql Database Create Connection           */
-//------------------------------------------------------//
-// const db = mysql.createConnection({
-//     host : process.env.DATABASE_Host,
-//     user : process.env.DATABASE_User,
-//     password : process.env.DATABASE_Password,
-//     database : process.env.DATABASE_Data
-// });
-
-//------------------------------------------------------//
 /*                       Login                          */
 //------------------------------------------------------//
 exports.login = async (req, res) => {

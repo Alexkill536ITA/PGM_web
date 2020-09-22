@@ -5,7 +5,7 @@ const { post } = require('../routes');
 var mysql = require('../mysql');
 
 //------------------------------------------------------//
-/*         MongoDB Database Connection          */
+/*         MongoDB Database Connection                  */
 //------------------------------------------------------//
 const url = process.env.DATABASE_MONGDB;
 const client = new MongoClient(url);
@@ -23,7 +23,7 @@ exports.modifica_sheda = (req, res) => {
                             js_result = JSON.parse(js_result);
                             client.close();
                             console.log(js_result['Inventory']);
-                            res.render('Sceda_temp.hbs', {
+                            res.render('Scheda_temp.hbs', {
                                 id_scheda:js_result['_id'],
                                 nome_pg:js_result['Nome_PG'],
                                 razza_pg:js_result['Razza'],

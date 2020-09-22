@@ -107,6 +107,8 @@ exports.Insert_db = (req, res) => {
                                         // res.render('Dasboard.hbs', { message_suces: 'Scheda creata' });
                                         res.redirect('/dasboard');
                                     });
+                                } else {
+                                    res.redirect('/dasboard');
                                 }
                             }
                         });
