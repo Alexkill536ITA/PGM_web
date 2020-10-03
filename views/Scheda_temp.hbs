@@ -5,9 +5,7 @@
     <title>Piccolo Grande Mondo</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -18,87 +16,80 @@
     <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" type="text/css" href="/css/util.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-    
 </head>
 
 <body>
 
     <div class="container-contact100">
         <div class="wrap-contact150">
-           <!--
-            <div style="margin-bottom: 10px">
-                <table style="border-spacing: 10px">
-                    <tr>
-                        <td>
-                            <p style="font-size: 20px">Seleziona scheda</p>
-                        </td>
-                        <td>
-                            <select style="margin-left: 10px; align-content: center; height: 25px">
-                                <option>scheda 1</option>
-                                <option>scheda 2</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div style="float: right; margin: auto;width: 100px; max-height: 50px" class="wrap-contact100-form-btn">
-                                <div class="contact100-form-bgbtn"></div>
-                                <button class="contact100-form-btn">
-                                    <span>
-                                        Carica
-                                    </span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            -->
             <form class="contact100-form validate-form">
                 <span class="contact100-form-title">
                     Edit PG
                 </span>
-
                 <div>
                     <h5>Nome PG</h5>
                     <div>
                         <p>{{nome_pg}}</p>
                     </div>
                 </div>
-
-
                 <div>
                     <h5>Razza</h5>
                     <div>
                         <p>{{razza_pg}}</p>
                     </div>
                 </div>
-
                 <div>
                     <h5>Classe</h5>
                     <div>
                         <p>{{classe_pg}}</p>
                     </div>
                 </div>
-
                 <div>
                     <h5>Background</h5>
                     <div>
                         <p>{{background_pg}}</p>
                     </div>
                 </div><br>
-
-
                 <div class="wrap-input100 validate-input" data-validate="monete">
                     <h5 style="margin-bottom: 10px">Monete</h5>
                             <p style="width: 50px;float: left;color: black"><b>Oro:</b></p>
                             <input class="label-input150" name="oro" value="{{monete_pg}}">mo
                     <span class="focus-input100"></span>
                 </div>
-
-
                 <div class="wrap-input100 validate-input" data-validate="Message is required">
                     <h5 style="margin-bottom: 10px">Inventario</h5>
-                    <ul>
-                        <!--====================================-->
+                    <ul id="inventorilist">
+                        {{#if object_nome}}
+                            <script>
+                                const root = document.getElementById('inventorilist');
+                                const obj_nome = new Array({{{object_nome}}});
+                                const obj_quan = new Array({{{object_quan}}});
+                                const obj_note = new Array({{{object_note}}});
+                                for (var i in obj_nome) {
+                                    console.log('passa');
+                                    var list_pg = `
+                                        <li>
+                                            <p style="width: 110px;float: left;color: black">Nome oggetto:</p>
+                                            <input style="float: left" class="label-input120" name="nome_oggetto" value="${obj_nome[i]}">
+                                            <p style="width: 60px;float: left;color: black">Quantità:</p>
+                                            <input style="float: left; width: 50px" class="label-input120" name="quantita" value="${obj_quan[i]}">
+                                            <p style="width: 60px;color: black">Note:</p>
+                                            <textarea style="min-height: 60px" class="input100" name="note" placeholder="Informazione sull' oggetto.">${obj_note[i]}</textarea>
+                                            <div class="container-contact120-form-btn">
+                                                <div style="width: 50px; max-height: 50px" class="wrap-contact100-form-btn">
+                                                    <div class="contact120-form-bgbtn"></div>
+                                                    <button class="contact120-form-btn" type="button" id="remove_object" name="remove_object" onclick="delete_file(this)">
+                                                            <i class="material-icons">delete_sweep</i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <p>----------------------------------------------------------------------------------------------------</p>
+                                        </li>
+                                    `;
+                                    root.insertAdjacentHTML('beforeend', list_pg);
+                                }
+                            </script>
+                        {{/if}}
                     </ul>
                     <div class="container-contact100-form-btn">
                         <div style="width: 120px" class="wrap-contact100-form-btn">
@@ -112,7 +103,6 @@
                     </div>
                     <span class="focus-input100"></span>
                 </div>
-
                 <div class="container-contact100-form-btn">
                     <div class="wrap-contact100-form-btn">
                         <div class="contact100-form-bgbtn"></div>
@@ -140,7 +130,7 @@
     <div id="dropDownSelect1"></div>
 
     <!--===============================================================================================-->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    {{!-- <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/animsition/js/animsition.min.js"></script>
     <script src="vendor/bootstrap/js/popper.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -154,9 +144,9 @@
     <script src="vendor/daterangepicker/moment.min.js"></script>
     <script src="vendor/daterangepicker/daterangepicker.js"></script>
     <script src="vendor/countdowntime/countdowntime.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script> --}}
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>-->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {

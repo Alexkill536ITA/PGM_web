@@ -12,8 +12,7 @@ exports.login = async (req, res) => {
         if (!nome || !Password) {
             res.render('login', { message_warn: 'Per favore, riempire i campi Nome Discord e Password' });
         } else {
-            db.query('SELECT * FROM `utenti` WHERE `Id_discord`=? LIMIT 1', [nome], async (error, results) => {
-                console.log(results);
+            db.query('SELECT * FROM `utenti` WHERE `username`=? LIMIT 1', [nome], async (error, results) => {
                 if (!results || results.length == 0) {
                     res.render('login', { message_error: 'Il profilo non esiste' });
                 } else if (!results[0].password || !(await bcrypt.compare(Password, results[0].password))) {
@@ -40,10 +39,10 @@ exports.login = async (req, res) => {
 //------------------------------------------------------//
 /*                      Register                        */
 //------------------------------------------------------//
-exports.register = (req, res) => {
-    const { name_user, Password, Password_rep } = req.body;
-    if (name_user.length > 0 || Password.length > 0 || Password_rep.length > 0) {
-        db.query("SELECT * FROM `utenti` WHERE `Id_discord`=?", [name_user], async (error, results) => {
+exports.register = async (req, res) => {
+    const { name_user, id_user, Password, Password_rep } = req.body;
+    if (name_user.length > 0 || id_user.length > 0 || Password.length > 0 || Password_rep.length > 0) {
+        db.query("SELECT * FROM `utenti` WHERE `Id_discord`=?", [id_user], async (error, results) => {
             if (error) {
                 console.log(error);
             }
@@ -53,9 +52,8 @@ exports.register = (req, res) => {
                 return res.render('Register.hbs', { message_warn: 'Password non coincidono' });
             }
             let hashedPassword = await bcrypt.hash(Password, 8);
-            console.log(hashedPassword);
 
-            db.query('INSERT INTO `utenti` SET ?', { Id_discord: name_user, password: hashedPassword }, (error, results) => {
+            db.query('INSERT INTO `utenti` SET ?', { username: name_user, Id_discord: id_user, password: hashedPassword }, (error, results) => {
                 if (error) {
                     console.log(error);
                 } else {
