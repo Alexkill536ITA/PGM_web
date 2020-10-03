@@ -27,16 +27,34 @@ exports.modifica_sheda = (req, res) => {
                         obj_quan[i] = '"'+obj_N[obj_k[i]]['Quantita']+'"';
                         obj_note[i] = '"'+obj_N[obj_k[i]]['Note']+'"';
                     }
-                    res.render('Scheda_temp.hbs', {
-                        id_scheda:js_result['_id'],
-                        nome_pg:js_result['Nome_PG'],
-                        razza_pg:js_result['Razza'],
-                        classe_pg:js_result['Classe'],
-                        background_pg:js_result['Background'],
-                        monete_pg:js_result['Money'].toString(),
-                        object_nome:obj_nome,
-                        object_quan:obj_quan,
-                        object_note:obj_note
+                    mysql.query('SELECT * FROM `utenti` WHERE `Id`=? AND `Id_discord`=?', [decoded.id, decoded.user], async (error, results) => {
+                        if (results.length == 0) {
+                            res.render('Dasboard', { message_error: 'Errore nel ricerca profilo' });
+                        } else if (results[0].master == 1) {
+                            res.render('Scheda_temp.hbs', {
+                                id_scheda:js_result['_id'],
+                                nome_pg:js_result['Nome_PG'],
+                                razza_pg:js_result['Razza'],
+                                classe_pg:js_result['Classe'],
+                                background_pg:js_result['Background'],
+                                monete_pg:js_result['Money'].toString(),
+                                object_nome:obj_nome,
+                                object_quan:obj_quan,
+                                object_note:obj_note
+                            });
+                        } else {
+                            res.render('Scheda_temp_py.hbs', {
+                                id_scheda:js_result['_id'],
+                                nome_pg:js_result['Nome_PG'],
+                                razza_pg:js_result['Razza'],
+                                classe_pg:js_result['Classe'],
+                                background_pg:js_result['Background'],
+                                monete_pg:js_result['Money'].toString(),
+                                object_nome:obj_nome,
+                                object_quan:obj_quan,
+                                object_note:obj_note
+                            });
+                        }
                     });
                 } else {
                     res.redirect('/dasboard');

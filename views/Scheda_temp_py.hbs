@@ -51,9 +51,8 @@
                     </div>
                 </div><br>
                 <div class="wrap-input100 validate-input" data-validate="monete">
-                    <h5 style="margin-bottom: 10px">Monete</h5>
-                            <p style="width: 50px;float: left;color: black"><b>Oro:</b></p>
-                            <input class="label-input150" name="oro" value="{{monete_pg}}">mo
+                    <h5>Monete</h5>
+                    <p>Oro: {{monete_pg}}mo</p>
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Message is required">
@@ -66,22 +65,19 @@
                                 const obj_quan = new Array({{{object_quan}}});
                                 const obj_note = new Array({{{object_note}}});
                                 for (var i in obj_nome) {
-                                    console.log('passa');
                                     var list_pg = `
                                         <li>
-                                            <p style="width: 110px;float: left;color: black">Nome oggetto:</p>
-                                            <input style="float: left" class="label-input120" name="nome_oggetto" value="${obj_nome[i]}">
-                                            <p style="width: 60px;float: left;color: black">Quantità:</p>
-                                            <input style="float: left; width: 50px" class="label-input120" name="quantita" value="${obj_quan[i]}">
-                                            <p style="width: 60px;color: black">Note:</p>
-                                            <textarea style="min-height: 60px" class="input100" name="note" placeholder="Informazione sull' oggetto.">${obj_note[i]}</textarea>
-                                            <div class="container-contact120-form-btn">
-                                                <div style="width: 50px; max-height: 50px" class="wrap-contact100-form-btn">
-                                                    <div class="contact120-form-bgbtn"></div>
-                                                    <button class="contact120-form-btn" type="button" id="remove_object" name="remove_object" onclick="delete_file(this)">
-                                                            <i class="material-icons">delete_sweep</i>
-                                                    </button>
-                                                </div>
+                                            <h6>Nome oggetto:</h6>
+                                            <div>
+                                                <p>${obj_nome[i]}</p>
+                                            </div>
+                                            <h6>Quantità:</h6>
+                                            <div>
+                                                <p>${obj_quan[i]}</p>
+                                            </div>
+                                            <h6>Note:</h6>
+                                            <div>
+                                                <p>${obj_note[i]}</p>
                                             </div>
                                             <p>----------------------------------------------------------------------------------------------------</p>
                                         </li>
@@ -91,27 +87,6 @@
                             </script>
                         {{/if}}
                     </ul>
-                    <div class="container-contact100-form-btn">
-                        <div style="width: 120px" class="wrap-contact100-form-btn">
-                            <div class="contact100-form-bgbtn"></div>
-                            <button class="contact100-form-btn">
-                                <span>
-                                    <b style="font-size: 50px">+</b>
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                    <span class="focus-input100"></span>
-                </div>
-                <div class="container-contact100-form-btn">
-                    <div class="wrap-contact100-form-btn">
-                        <div class="contact100-form-bgbtn"></div>
-                        <button class="contact100-form-btn">
-                            <span>
-                                Salva Modifiche
-                            </span>
-                        </button>
-                    </div>
                 </div>
             </form>
             <div  class="container-contact120-form-btn">
