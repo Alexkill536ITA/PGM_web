@@ -18,7 +18,7 @@ var connect_up = false;
 // });
 
 // Gestione Connessione
-exports.open_db = function() {
+exports.open_db = async function() {
     client.on('serverOpening', () => {connect_up = true;});
     if (connect_up == false) {
         client.connect();
@@ -30,9 +30,11 @@ exports.open_db = function() {
     return 1;
 }
 
-exports.close_db = function() {
-    client.close();
-}
+// function close_db() {
+//     client.save();
+//     client.close();
+//     client = new MongoClient(process.env.DATABASE_MONGDB, { useUnifiedTopology: true });
+// }
 
 // Operazioni
 // MongoDB Find/Search
