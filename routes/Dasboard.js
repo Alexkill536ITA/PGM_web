@@ -6,12 +6,12 @@ const router = express.Router();
 /* GET Dasboard Page */
 router.all('/Dasboard', (req, res) => {
     const token = req.cookies['jwt'];
-    jwt.verify(token,process.env.JWT_SECRET, function(err, decoded)  {
+    jwt.verify(token,process.env.JWT_SECRET, async function(err, decoded)  {
         if (!err) {
             var MongoClient = require('mongodb').MongoClient;
             var url = process.env.DATABASE_MONGDB;
 
-            MongoClient.connect(url, function(err, db) {
+            await MongoClient.connect(url, function(err, db) {
                 if (!err) { 
                     var dbo = db.db("Piccolo_Grande_Mondo");
                     var query = { Nome_Discord: decoded.user};
@@ -37,6 +37,8 @@ router.all('/Dasboard', (req, res) => {
                             }
                         }
                     });
+                } else {
+                    res.render('page500.hbs');
                 }
             });
             

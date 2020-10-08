@@ -1,6 +1,6 @@
 const mongo = require("mongodb");
 const MongoClient = require("mongodb").MongoClient;
-const client = new MongoClient(process.env.DATABASE_MONGDB, { useUnifiedTopology: true });
+var client = new MongoClient(process.env.DATABASE_MONGDB, { useUnifiedTopology: true });
 var database;
 var collection;
 var connect_up = false;
@@ -18,16 +18,24 @@ var connect_up = false;
 // });
 
 // Gestione Connessione
+async function set_db_collection() {
+    database = client.db("Piccolo_Grande_Mondo");
+    collection = database.collection("Schede_PG");
+    console.log("[ INFO ] Connect MongoDB success");
+}
+
 exports.open_db = async function() {
-    client.on('serverOpening', () => {connect_up = true;});
-    if (connect_up == false) {
-        client.connect();
-        database = client.db("Piccolo_Grande_Mondo");
-        collection = database.collection("Schede_PG");
-        console.log("[ INFO ] Connect MongoDB success");
-        return 0;
+    try {
+        client.on('serverOpening', () => {connect_up = true;});
+        if (connect_up == false) {
+            await client.connect();
+            await set_db_collection();
+        }
+    } catch (e) {
+        console.log("[ ERROR ] Connect MongoDB success: \n");
+        connect_up = false;
+        return 1;
     }
-    return 1;
 }
 
 // function close_db() {
