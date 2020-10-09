@@ -11,7 +11,6 @@ exports.modifica_sheda = (req, res) => {
         if (!err) {
             const id_serch = mongodb.ObjectId(req.body.id_scheda_edit);
             var on_sevice_db = await methodDB.open_db();
-            console.log(on_sevice_db);
             if (on_sevice_db != 1) {
                 const cursor = methodDB.serachbyid(id_serch);
                 cursor.then(function(result){
@@ -71,14 +70,18 @@ exports.modifica_sheda = (req, res) => {
     });            
 }
 
-exports.cancella_sheda = (req, res) => {
+exports.cancella_sheda = async (req, res) => {
     var id_scheda = req.body.id_scheda_delete;
     var name_pg = req.body.nome_delete;
     var check_pg = req.body.check_delete;
     if (name_pg == check_pg) {
-        methodDB.open_db();
-        methodDB.delete_db(id_scheda);
-        res.redirect('/dasboard');
+        var on_sevice_db = await methodDB.open_db();
+        if (on_sevice_db != 1) {
+            methodDB.delete_db(id_scheda);
+            res.redirect('/dasboard');
+        } else {
+            res.redirect('/dasboard');
+        }
     } else {
         res.redirect('/dasboard');
     }

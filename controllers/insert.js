@@ -30,7 +30,7 @@ exports.Insert_db = (req, res) => {
     const { name, razza, classe, background } = req.body;
     const master_user = req.body.master_user;
 
-    jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
+    jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
             if (name.length > 0 || razza != "Scegli Razza" || classe != "Scegli Classe" || background != "Scegli Background") {
                 var inventory = {};
@@ -85,17 +85,21 @@ exports.Insert_db = (req, res) => {
                     }
                 }
 
-                methodDB.open_db();
-                var erros = methodDB.insert_db(PG_temp);
-                if (erros == 0) {
-                    console.log("1 document inserted MongoDB");
-                    if (master_user == 1) {
-                        mysql.query('UPDATE `utenti` SET `N_schede` =? WHERE `utenti`.`Id_discord`=?', [1, decoded.user], async () => {
-                            console.log('1 document inserted MySQL');
-                            // res.render('Dasboard');
-                            // res.render('Dasboard.hbs', { message_suces: 'Scheda creata' });
+                var on_sevice_db = await methodDB.open_db();
+                if (on_sevice_db != 1) {
+                    var erros = await methodDB.insert_db(PG_temp);
+                    if (erros == 0) {
+                        console.log("1 document inserted MongoDB");
+                        if (master_user == 1) {
+                            mysql.query('UPDATE `utenti` SET `N_schede` =? WHERE `utenti`.`Id_discord`=?', [1, decoded.user], async () => {
+                                console.log('1 document inserted MySQL');
+                                // res.render('Dasboard');
+                                // res.render('Dasboard.hbs', { message_suces: 'Scheda creata' });
+                                res.redirect('/dasboard');
+                            });
+                        } else {
                             res.redirect('/dasboard');
-                         });
+                        }
                     } else {
                         res.redirect('/dasboard');
                     }
