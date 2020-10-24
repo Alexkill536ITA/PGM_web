@@ -1,3 +1,4 @@
+const color = require('ansi-colors');
 const mongo = require("mongodb");
 const MongoClient = require("mongodb").MongoClient;
 var client = new MongoClient(process.env.DATABASE_MONGDB, { useUnifiedTopology: true });
@@ -21,7 +22,7 @@ var connect_up = false;
 async function set_db_collection() {
     database = client.db("Piccolo_Grande_Mondo");
     collection = database.collection("Schede_PG");
-    console.log("[ INFO ] Connect MongoDB success");
+    console.log("[ "+color.blue(INFO)+"  ] Connect MongoDB success");
 }
 
 exports.open_db = async function() {
@@ -32,7 +33,7 @@ exports.open_db = async function() {
             await set_db_collection();
         }
     } catch (e) {
-        console.log("[ ERROR ] Connect MongoDB success: \n");
+        console.log("[ "+color.red(ERROR)+" ] Connect MongoDB success: \n");
         connect_up = false;
         return 1;
     }

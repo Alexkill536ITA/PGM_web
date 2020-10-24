@@ -1,3 +1,4 @@
+const color = require('ansi-colors');
 const express = require('express');
 const path = require('path');
 // const mysql = require('mysql');
@@ -17,6 +18,7 @@ dotenv.config({ path: './.env' });
 //------------------------------------------------------//
 /*                      Engine                          */
 //------------------------------------------------------//
+console.log("[ "+color.blue('INFO')+"  ] Start Process");
 app.use(express.static('./'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -79,4 +81,4 @@ app.use((err, req, res, next) => {
 /*                     Set Demon                        */
 //------------------------------------------------------//
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, console.info(`Server Start on port ${PORT}`));
+app.listen(PORT, console.info('[ '+color.blue('INFO')+'  ]'+' Server Start on port ['+color.cyan(PORT)+']'));
