@@ -1,1 +1,1 @@
-nodejs app-bot.js
+nodejs app.js

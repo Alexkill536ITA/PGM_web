@@ -1,2 +1,2 @@
-start node.exe app-bot.js
+start node.exe app.js
 exit
