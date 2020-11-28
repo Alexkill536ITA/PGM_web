@@ -1,7 +1,6 @@
 const color = require('ansi-colors');
 const express = require('express');
 const path = require('path');
-// const mysql = require('mysql');
 // const { MongoClient } = require("mongodb");
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');

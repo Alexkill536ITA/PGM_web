@@ -20,9 +20,9 @@ var connect_up = false;
 
 // Gestione Connessione
 async function set_db_collection() {
-    database = client.db("Piccolo_Grande_Mondo");
-    collection = database.collection("Schede_PG");
-    console.log("[ "+color.blue(INFO)+"  ] Connect MongoDB success");
+    database = client.db(process.env.DATABASE_MONGDB_DB);
+    // collection = database.collection("Schede_PG");
+    console.log("[ "+color.blue("INFO")+"  ] Connect MongoDB success");
 }
 
 exports.open_db = async function() {
@@ -33,10 +33,14 @@ exports.open_db = async function() {
             await set_db_collection();
         }
     } catch (e) {
-        console.log("[ "+color.red(ERROR)+" ] Connect MongoDB success: \n");
+        console.log("[ "+color.red("ERROR")+" ] Connect MongoDB success: \n");
         connect_up = false;
         return 1;
     }
+}
+
+exports.settab_db = function(slect) {
+    collection = database.collection(slect);
 }
 
 // function close_db() {
@@ -59,6 +63,10 @@ exports.load_pg =function(id_discord, id_scheda) {
     return cursor;
 }
 
+exports.find_Json = function(query) {
+    return collection.findOne(query);
+}
+
 // MongoDB Insert
 exports.insert_db =function(Data_value) {
     collection.insertOne(Data_value);
@@ -75,6 +83,17 @@ exports.money_update =function(id_scheda, value_new) {
 exports.exp_update =function (id_scheda, value_new) {
     id_scheda = mongo.ObjectID(id_scheda);
     collection.updateOne({ '_id': id_scheda }, {$set: {exp:value_new}});
+    return 0;
+}
+
+exports.N_schede_update = function (id_discord) {
+    collection.updateOne({ 'Id_discord': id_discord }, {$inc: {N_schede:1}});
+    return 0;
+}
+
+exports.N_schede_dec_update = function (id_discord) {
+    id = mongo.ObjectID(id_discord);
+    collection.updateOne({ '_id': id }, {$inc: {N_schede:-1}});
     return 0;
 }
 

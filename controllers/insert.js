@@ -1,24 +1,33 @@
 const { MongoClient } = require("mongodb");
+const mongo = require("mongodb");
 const methodDB = require("../mongodb_controll.js");
 const jwt = require('jsonwebtoken');
 const { post } = require('../routes');
-var mysql = require('../mysql');
 
 exports.Crea_sheda = (req, res) => {
     const token = req.cookies['jwt'];
-    jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
+    jwt.verify(token, process.env.JWT_SECRET,async function (err, decoded) {
         if (!err) {
-            mysql.query('SELECT * FROM `utenti` WHERE `Id`=? AND `Id_discord`=?', [decoded.id, decoded.user], async (error, results) => {
-                if (results.length == 0) {
-                    res.render('Dasboard', { message_error: 'Errore nel ricerca profilo' });
-                } else if (results[0].master == 1) {
-                    res.render('insert_temp', { eanbele_count: 0 });
-                } else if (results[0].N_schede == 0) {
-                    res.render('insert_temp_py', { eanbele_count: 1 });
-                } else {
-                    res.render('Dasboard', { message_warn: 'Non puoi avere più di una scheda' });
-                }
-            });
+            var on_sevice_db = await methodDB.open_db();
+            if (on_sevice_db != 1) {
+                id_scheda = mongo.ObjectID(decoded.id);
+                var query = { _id: id_scheda, Id_discord : decoded.user};
+                methodDB.settab_db("Utenti_web");
+                var cursor = methodDB.find_Json(query);
+                cursor.then(async function(result) {
+                    if (result == null) {
+                        res.render('Dasboard', { message_error: 'Errore nel ricerca profilo' });
+                    } else if (result.master == 1) {
+                        res.render('insert_temp', { eanbele_count: 0 });
+                    } else if (result.N_schede == 0) {
+                        res.render('insert_temp_py', { eanbele_count: 1 });
+                    } else {
+                        res.render('Dasboard', { message_warn: 'Non puoi avere più di una scheda' });
+                    }
+                }); 
+            } else {
+                res.render('page500.hbs');
+            }
         } else {
             res.redirect('/login');
         }
@@ -86,17 +95,14 @@ exports.Insert_db = (req, res) => {
                 }
 
                 var on_sevice_db = await methodDB.open_db();
+                methodDB.settab_db("Schede_PG");
                 if (on_sevice_db != 1) {
                     var erros = await methodDB.insert_db(PG_temp);
                     if (erros == 0) {
-                        console.log("1 document inserted MongoDB");
                         if (master_user == 1) {
-                            mysql.query('UPDATE `utenti` SET `N_schede` =? WHERE `utenti`.`Id_discord`=?', [1, decoded.user], async () => {
-                                console.log('1 document inserted MySQL');
-                                // res.render('Dasboard');
-                                // res.render('Dasboard.hbs', { message_suces: 'Scheda creata' });
-                                res.redirect('/dasboard');
-                            });
+                            methodDB.settab_db("Utenti_web");
+                            methodDB.N_schede_update(decoded.user);
+                            res.redirect('/dasboard');
                         } else {
                             res.redirect('/dasboard');
                         }
@@ -104,7 +110,7 @@ exports.Insert_db = (req, res) => {
                         res.redirect('/dasboard');
                     }
                 } else {
-                    res.redirect('/dasboard');
+                    res.render('page500.hbs');
                 }
             } else {
                 res.render('insert_temp', { message_warn: 'Riempire i calpi' });
