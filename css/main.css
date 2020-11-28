@@ -323,6 +323,8 @@ textarea.input100 {
   position: relative;
   z-index: 1;
   border-radius: 25px;
+  border: solid 2px;
+  border-color: black;
   overflow: hidden;
   margin: 0 auto;
 }
@@ -358,7 +360,6 @@ textarea.input100 {
   padding: 0 20px;
   width: 100%;
   height: 50px;
-
   font-family: Poppins-Medium;
   font-size: 16px;
   color: #fff;
@@ -381,6 +382,12 @@ textarea.input100 {
   -ms-transform: translateX(10px);
   -o-transform: translateX(10px);
   transform: translateX(10px);
+}
+
+.contact100-form-btn:hover {
+  background-color: white;
+  color: black;
+  border-color: black;
 }
 
 /*------------------------------------------------------------------*/
@@ -749,8 +756,3 @@ textarea.input100 {
   color: #333333;
   line-height: 1.2;
 }
-
-
-
-
-

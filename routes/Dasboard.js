@@ -48,4 +48,9 @@ router.all('/Dasboard', (req, res) => {
     });
 });
 
+router.post('/logout', (req, res) => {
+    res.clearCookie('jwt');
+    res.redirect('/');
+});
+
 module.exports = router;
