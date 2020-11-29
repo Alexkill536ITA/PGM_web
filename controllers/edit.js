@@ -36,7 +36,7 @@ exports.modifica_sheda = (req, res) => {
                             if (results == null) {
                                 res.render('Dasboard', { message_error: 'Errore nel ricerca profilo' });
                             } else if (results.master == 1) {
-                                res.render('Scheda_temp.hbs', {
+                                res.render('scheda_temp.hbs', {
                                     id_scheda:js_result['_id'],
                                     nome_pg:js_result['Nome_PG'],
                                     razza_pg:js_result['Razza'],
@@ -48,7 +48,7 @@ exports.modifica_sheda = (req, res) => {
                                     object_note:obj_note
                                 });
                             } else {
-                                res.render('Scheda_temp_py.hbs', {
+                                res.render('scheda_temp_py.hbs', {
                                     id_scheda:js_result['_id'],
                                     nome_pg:js_result['Nome_PG'],
                                     razza_pg:js_result['Razza'],

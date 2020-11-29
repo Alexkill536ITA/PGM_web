@@ -33,7 +33,7 @@ router.all('/Dasboard', (req, res) => {
                                     }
                                 }
                                 db.close();
-                                res.render('Dasboard.hbs', {list_pg:list_max, id:id_scheda, name:name_pg});
+                                res.render('dasboard.hbs', {list_pg:list_max, id:id_scheda, name:name_pg});
                             }
                         }
                     });

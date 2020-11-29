@@ -9,7 +9,7 @@ router.get('/login', (reg, res) => {
         if (!err) {
             res.redirect('/dasboard');
         } else {
-            res.render('./Login.hbs');
+            res.render('./login.hbs');
         } 
     });
 });

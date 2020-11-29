@@ -3,7 +3,7 @@ const router = express.Router();
 
 /* GET Register Page */
 router.get('/register', (reg, res) => {
-    res.render('Register.hbs');
+    res.render('register.hbs');
 });
 
 module.exports = router;
