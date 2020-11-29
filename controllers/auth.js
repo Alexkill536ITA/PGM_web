@@ -58,20 +58,20 @@ exports.register = async (req, res) => {
             var cursor = methodDB.find_Json(query);
             cursor.then(async function(result) {
                 if (result != null) {
-                    return res.render('Register.hbs', { message: 'Esiste già un\'Utente' });
+                    return res.render('register.hbs', { message: 'Esiste già un\'Utente' });
                 } else if (Password !== Password_rep) {
-                    return res.render('Register.hbs', { message_warn: 'Password non coincidono' });
+                    return res.render('register.hbs', { message_warn: 'Password non coincidono' });
                 }
                 let hashedPassword = await bcrypt.hash(Password, 8);
                 var valid = methodDB.insert_db({ username: name_user, Id_discord: id_user, password: hashedPassword , N_schede: 0, N_sessioni_totali: "0", master: "0"})
                 if (valid != 0) {
                     res.render('page500.hbs');
                 } else {
-                    return res.render('Login.hbs', { message_success: 'Utente registrato' });
+                    return res.render('login.hbs', { message_success: 'Utente registrato' });
                 }
             });
         }
     } else {
-        return res.render('Register.hbs', { message_warn: 'Riempire i campi' });
+        return res.render('register.hbs', { message_warn: 'Riempire i campi' });
     }
 }
