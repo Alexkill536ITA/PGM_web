@@ -67,7 +67,7 @@ app.get('/', (req, res) => {
 
 // Error 404
 app.use((req, res, next) => {
-    res.render('page404.hbs');
+    res.status(404).render('page404.hbs');
 });
 
 // Error 500
