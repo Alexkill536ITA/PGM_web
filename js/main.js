@@ -19,7 +19,7 @@
   
     /*==================================================================
     [ Validate ]*/
-    var name = $('.validate-input input[name="name"]');
+    var name = $('.validate-input input[name="nome"]');
     var email = $('.validate-input input[name="email"]');
     var message = $('.validate-input textarea[name="message"]');
 
