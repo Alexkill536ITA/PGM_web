@@ -18,22 +18,20 @@ exports.login = async (req, res) => {
                 methodDB.settab_db("Utenti_web");
                 var cursor = methodDB.find_Json(query);
                 cursor.then(async function(result) {
-                    if(result) {
-                        if (result == null) {
-                            res.render('login', { message_error: 'Il profilo non esiste' });
-                        } else if (!result.password || !(await bcrypt.compare(Password, result.password))){
-                            res.render('login', { message_warn: 'Il Nome Discord o password non sono corretti' });
-                        } else {
-                            const token = jwt.sign({ id: result._id, user: result.Id_discord, master: result.master }, process.env.JWT_SECRET, {
-                                expiresIn: process.env.JWT_EXPIRES_IN
-                            });
-                            const cookieOptions = {
-                                expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-                                httpOnly: true
-                            };
-                            res.cookie('jwt', token, cookieOptions);
-                            res.redirect('/dasboard');
-                        }
+                    if (result === null) {
+                        res.render('login', { message_error: 'Il profilo non esiste' });
+                    } else if (!result.password || !(await bcrypt.compare(Password, result.password))){
+                        res.render('login', { message_warn: 'Il Nome Discord o password non sono corretti' });
+                    } else {
+                        const token = jwt.sign({ id: result._id, user: result.Id_discord, master: result.master }, process.env.JWT_SECRET, {
+                            expiresIn: process.env.JWT_EXPIRES_IN
+                        });
+                        const cookieOptions = {
+                            expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+                            httpOnly: true
+                        };
+                        res.cookie('jwt', token, cookieOptions);
+                        res.redirect('/dasboard');
                     }
                 });
             } else {
