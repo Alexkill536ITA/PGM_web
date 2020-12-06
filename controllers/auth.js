@@ -57,7 +57,7 @@ exports.register = async (req, res) => {
             cursor.then(async function(result) {
                 if (result != null) {
                     return res.render('register.hbs', { message: 'Esiste già un\'Utente' });
-                } else if (id_user.length <= 0 || id_user.length > 18 || isNaN(parseInt(id_user)) == True) {
+                } else if (id_user.length <= 0 || id_user.length > 18 || isNaN(parseInt(id_user)) == true) {
                     return res.render('register.hbs', { message: 'ID Discord inserito non valido'});
                 } else if (Password !== Password_rep) {
                     return res.render('register.hbs', { message_warn: 'Password non coincidono' });
