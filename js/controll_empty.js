@@ -62,7 +62,7 @@ function ceck_empy() {
     if(nome_pg != "") {
         if (razza_pg != "Scegli Razza") {
             if (classe_pg != "Scegli Classe") {
-                if(classe_pg == "Altro") {
+                if(razza_pg == "Altro") {
                     label_create();
                 } else {
                     label_destroy();
