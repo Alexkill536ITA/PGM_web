@@ -92,6 +92,11 @@ input_name.addEventListener('change', (event) => {
     if(nome_pg != "") {
         if (razza_pg != "Scegli Razza") {
             if (classe_pg != "Scegli Classe") {
+                if(razza_pg == "Altro") {
+                    label_create();
+                } else {
+                    label_destroy();
+                }
                 if (background_pg != "Scegli Background") {
                     btn_submit_create();   
                 } else {
