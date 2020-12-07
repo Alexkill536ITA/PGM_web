@@ -36,7 +36,7 @@ exports.Crea_sheda = (req, res) => {
 
 exports.Insert_db = (req, res) => {
     const token = req.cookies['jwt'];
-    const { name, razza, classe, background } = req.body;
+    const { name, razza, classe, background, razza_altro} = req.body;
     const master_user = req.body.master_user;
 
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
@@ -44,6 +44,12 @@ exports.Insert_db = (req, res) => {
             if (name.length > 0 || razza != "Scegli Razza" || classe != "Scegli Classe" || background != "Scegli Background") {
                 var inventory = {};
                 var PG_temp;
+
+                if (razza == 'Altro') {
+                    razza_net = razza_altro;
+                } else {
+                    razza_net = razza;
+                }
 
                 if (master_user == 0) {
                     const id_user = decoded.user.toString();
@@ -58,7 +64,7 @@ exports.Insert_db = (req, res) => {
                         "Livello": 3,
                         "Exp": 0,
                         "Nome_PG": name,
-                        "Razza": razza,
+                        "Razza": razza_net,
                         "Classe": classe,
                         "Background": background,
                         "Money": parseFloat(money),
@@ -86,7 +92,7 @@ exports.Insert_db = (req, res) => {
                         "Livello": 3,
                         "Exp": 0,
                         "Nome_PG": name,
-                        "Razza": razza,
+                        "Razza": razza_net,
                         "Classe": classe,
                         "Background": background,
                         "Money": 0,

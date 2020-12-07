@@ -1,5 +1,6 @@
 const input_name= document.getElementById('nome_pg');
 const root = document.getElementById('Inventori_Container');
+const root_2 = document.getElementById('end_select_raz');
 const btn_cancel = document.getElementById('btn_cancel');
 var ceck_name = false;
 
@@ -31,6 +32,27 @@ function btn_submit_destroy() {
     } 
 }
 
+// Teamplate label input
+const label_temp = `<div id="label_up" class="wrap-input100 validate-input" data-validate="razza_altro">
+<input id="razza_altro" style="border: none" class="input100" type="text" name="razza_altro" placeholder="Altra Razza">
+<span class="focus-input100"></span>
+</div>`
+
+//  Create and Drestroy label input
+function label_create() {
+    var label_up = document.getElementById('label_up');
+    if (!label_up) {
+        root_2.insertAdjacentHTML('afterend', label_temp);
+    }
+}
+
+function label_destroy() {
+    var label_up = document.getElementById('label_up');
+    if (label_up) {
+        label_up.remove();
+    } 
+}
+
 // Control
 function ceck_empy() {
     var nome_pg = document.getElementById('nome_pg').value;
@@ -40,6 +62,11 @@ function ceck_empy() {
     if(nome_pg != "") {
         if (razza_pg != "Scegli Razza") {
             if (classe_pg != "Scegli Classe") {
+                if(classe_pg == "Altro") {
+                    label_create();
+                } else {
+                    label_destroy();
+                }
                 if (background_pg != "Scegli Background") {
                     btn_submit_create();   
                 } else {
