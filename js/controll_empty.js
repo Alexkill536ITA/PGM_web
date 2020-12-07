@@ -34,6 +34,7 @@ function btn_submit_destroy() {
 
 // Teamplate label input
 const label_temp = `<div id="label_up" class="wrap-input100 validate-input" data-validate="razza_altro">
+<span class="label-input100">Inserire Nome Razza</span>
 <input id="razza_altro" style="border: none" class="input100" type="text" name="razza_altro" placeholder="Altra Razza">
 <span class="focus-input100"></span>
 </div>`
