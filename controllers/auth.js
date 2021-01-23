@@ -21,7 +21,7 @@ exports.login = async (req, res) => {
                     if (result === null) {
                         res.render('login', { message_error: 'Il profilo non esiste' });
                     } else if (!result.password || !(await bcrypt.compare(Password, result.password))){
-                        res.render('login', { message_warn: 'Il Nome Discord o password non sono corretti' });
+                        res.render('login', { message_warn: 'Username o password non sono corretti' });
                     } else {
                         const token = jwt.sign({ id: result._id, user: result.Id_discord, master: result.master }, process.env.JWT_SECRET, {
                             expiresIn: process.env.JWT_EXPIRES_IN
