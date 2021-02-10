@@ -59,9 +59,9 @@ exports.register = async (req, res) => {
                     return res.render('register.hbs', { message: 'Esiste già un\'Utente' });
                 } else if (id_user.length <= 0 || id_user.length > 18 || isNaN(parseInt(id_user)) == true) {
                     return res.render('register.hbs', { message: 'ID Discord inserito non valido'});
-                } else if (Password !== Password_rep && id_user.length == 18) {
+                } else if (Password !== Password_rep) {
                     return res.render('register.hbs', { message_warn: 'Password non coincidono' });
-                } else {
+                } else if (id_user.length == 18) {
                     return res.render('register.hbs', { message: 'ID Discord inserito non valido'});
                 }
                 let hashedPassword = await bcrypt.hash(Password, 8);
