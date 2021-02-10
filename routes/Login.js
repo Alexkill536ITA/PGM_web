@@ -7,7 +7,7 @@ router.get('/login', (reg, res) => {
     const token = reg.cookies['jwt'];
     jwt.verify(token,process.env.JWT_SECRET, function(err, decoded)  {
         if (!err) {
-            res.redirect('/dasboard');
+            res.redirect('/dashboard');
         } else {
             res.render('./login.hbs');
         } 
