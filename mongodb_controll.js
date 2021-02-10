@@ -33,8 +33,8 @@ exports.open_db = async function() {
             await set_db_collection();
         }
     } catch (e) {
-        console.log("[ "+color.red("ERROR")+" ] Connect MongoDB success: \n");
-        if (process.env.DEBUG_MODE == true) {
+        console.log("[ "+color.red("ERROR")+" ] Connect MongoDB Fail: \n");
+        if (process.env.DEBUG_MODE == 'true') {
             console.log("[ "+color.magenta('DEBUG')+" ] "+e);
         }
         connect_up = false;
