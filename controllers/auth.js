@@ -62,14 +62,15 @@ exports.register = async (req, res) => {
                 } else if (Password !== Password_rep) {
                     return res.render('register.hbs', { message_warn: 'Password non coincidono' });
                 } else if (id_user.length == 18) {
-                    return res.render('register.hbs', { message: 'ID Discord inserito non valido'});
-                }
-                let hashedPassword = await bcrypt.hash(Password, 8);
-                var valid = methodDB.insert_db({ username: name_user, Id_discord: id_user, password: hashedPassword , N_schede: 0, N_sessioni_totali: "0", master: "0"})
-                if (valid != 0) {
-                    res.render('page500.hbs');
+                    let hashedPassword = await bcrypt.hash(Password, 8);
+                    var valid = methodDB.insert_db({ username: name_user, Id_discord: id_user, password: hashedPassword , N_schede: 0, N_sessioni_totali: "0", master: "0"})
+                    if (valid != 0) {
+                        res.render('page500.hbs');
+                    } else {
+                        return res.render('login.hbs', { message_success: 'Utente registrato' });
+                    }
                 } else {
-                    return res.render('login.hbs', { message_success: 'Utente registrato' });
+                    return res.render('register.hbs', { message: 'ID Discord inserito non valido'});
                 }
             });
         }
