@@ -31,7 +31,7 @@ exports.login = async (req, res) => {
                             httpOnly: true
                         };
                         res.cookie('jwt', token, cookieOptions);
-                        res.redirect('/dasboard');
+                        res.redirect('/dashboard');
                     }
                 });
             } else {
