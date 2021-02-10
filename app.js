@@ -56,7 +56,7 @@ app.use('/insert', require('./routes/insert'));
 app.use('/edit', require('./routes/edit'));
 app.use(require('./routes/Login.js'));
 app.use(require('./routes/Register.js'));
-app.use(require('./routes/Dasboard.js'));
+app.use(require('./routes/dashboard.js'));
 app.use(require('./routes/insert.js'));
 app.use(require('./routes/edit.js'));
 

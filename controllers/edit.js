@@ -34,7 +34,7 @@ exports.modifica_sheda = (req, res) => {
                         var cursor = methodDB.find_Json(query);
                         cursor.then(function (results) {
                             if (results == null) {
-                                res.render('Dasboard', { message_error: 'Errore nel ricerca profilo' });
+                                res.render('dashboard', { message_error: 'Errore nel ricerca profilo' });
                             } else if (results.master == 1) {
                                 res.render('scheda_temp.hbs', {
                                     id_scheda:js_result['_id'],

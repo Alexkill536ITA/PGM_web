@@ -16,13 +16,13 @@ exports.Crea_sheda = (req, res) => {
                 var cursor = methodDB.find_Json(query);
                 cursor.then(async function(result) {
                     if (result == null) {
-                        res.render('Dasboard', { message_error: 'Errore nel ricerca profilo' });
+                        res.render('dashboard', { message_error: 'Errore nel ricerca profilo' });
                     } else if (result.master == 1) {
                         res.render('insert_temp', { eanbele_count: 0 });
                     } else if (result.N_schede == 0) {
                         res.render('insert_temp_py', { eanbele_count: 1 });
                     } else {
-                        res.render('Dasboard', { message_warn: 'Non puoi avere più di una scheda' });
+                        res.render('dashboard', { message_warn: 'Non puoi avere più di una scheda' });
                     }
                 }); 
             } else {

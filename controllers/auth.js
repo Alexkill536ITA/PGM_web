@@ -48,19 +48,21 @@ exports.login = async (req, res) => {
 //------------------------------------------------------//
 exports.register = async (req, res) => {
     const { name_user, id_user, Password, Password_rep } = req.body;
-    if (name_user.length > 0 || id_user.length > 0 || Password.length > 0 || Password_rep.length > 0) {
+    if (name_user.length > 0 && name_user != "" && id_user.length > 0 && Password.length > 0 && Password_rep.length > 0) {
         var on_sevice_db = await methodDB.open_db();
         if (on_sevice_db != 1) {
-            var query = { "Id_discord" : id_user };
+            var query = { "Id_discord" : id_user , "username" : name_user};
             methodDB.settab_db("Utenti_web")
             var cursor = methodDB.find_Json(query);
             cursor.then(async function(result) {
-                if (result != null) {
+                if (result == null) {
                     return res.render('register.hbs', { message: 'Esiste già un\'Utente' });
                 } else if (id_user.length <= 0 || id_user.length > 18 || isNaN(parseInt(id_user)) == true) {
                     return res.render('register.hbs', { message: 'ID Discord inserito non valido'});
-                } else if (Password !== Password_rep) {
+                } else if (Password !== Password_rep && id_user.length == 18) {
                     return res.render('register.hbs', { message_warn: 'Password non coincidono' });
+                } else {
+                    return res.render('register.hbs', { message: 'ID Discord inserito non valido'});
                 }
                 let hashedPassword = await bcrypt.hash(Password, 8);
                 var valid = methodDB.insert_db({ username: name_user, Id_discord: id_user, password: hashedPassword , N_schede: 0, N_sessioni_totali: "0", master: "0"})

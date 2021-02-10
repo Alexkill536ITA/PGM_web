@@ -4,7 +4,7 @@ const { post } = require('../routes');
 const router = express.Router();
 
 /* GET Dasboard Page */
-router.all('/Dasboard', (req, res) => {
+router.all('/dashboard', (req, res) => {
     const token = req.cookies['jwt'];
     jwt.verify(token,process.env.JWT_SECRET, async function(err, decoded)  {
         if (!err) {
