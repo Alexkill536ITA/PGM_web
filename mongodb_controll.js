@@ -101,7 +101,7 @@ exports.N_schede_dec_update = function (id_discord) {
 }
 
 // MongoDB Delete
-exports.delete_db = function(id_scheda) {
+exports.delete_db = function (id_scheda) {
     id_scheda = mongo.ObjectID(id_scheda);
     collection.deleteOne({ '_id': id_scheda });
     return 0;

@@ -55,7 +55,7 @@ exports.register = async (req, res) => {
             methodDB.settab_db("Utenti_web")
             var cursor = methodDB.find_Json(query);
             cursor.then(async function(result) {
-                if (result == null) {
+                if (result != null) {
                     return res.render('register.hbs', { message: 'Esiste già un\'Utente' });
                 } else if (id_user.length <= 0 || id_user.length > 18 || isNaN(parseInt(id_user)) == true) {
                     return res.render('register.hbs', { message: 'ID Discord inserito non valido'});
