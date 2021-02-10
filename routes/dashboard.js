@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const { post } = require('../routes');
 const router = express.Router();
 
-/* GET Dasboard Page */
+/* GET Dashboard Page */
 router.all('/dashboard', (req, res) => {
     const token = req.cookies['jwt'];
     jwt.verify(token,process.env.JWT_SECRET, async function(err, decoded)  {
@@ -33,7 +33,7 @@ router.all('/dashboard', (req, res) => {
                                     }
                                 }
                                 db.close();
-                                res.render('dasboard.hbs', {list_pg:list_max, id:id_scheda, name:name_pg});
+                                res.render('dashboard.hbs', {list_pg:list_max, id:id_scheda, name:name_pg});
                             }
                         }
                     });

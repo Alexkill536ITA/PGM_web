@@ -108,12 +108,12 @@ exports.Insert_db = (req, res) => {
                         if (master_user == 1) {
                             methodDB.settab_db("Utenti_web");
                             methodDB.N_schede_update(decoded.user);
-                            res.redirect('/dasboard');
+                            res.redirect('/dashboard');
                         } else {
-                            res.redirect('/dasboard');
+                            res.redirect('/dashboard');
                         }
                     } else {
-                        res.redirect('/dasboard');
+                        res.redirect('/dashboard');
                     }
                 } else {
                     res.render('page500.hbs');

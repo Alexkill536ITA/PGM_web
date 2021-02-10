@@ -62,14 +62,14 @@ exports.modifica_sheda = (req, res) => {
                             }
                         });
                     } else {
-                        res.redirect('/dasboard');
+                        res.redirect('/dashboard');
                     }
                 });
             } else {
                 res.render('page500.hbs');
             }
         } else {
-            res.redirect('/dasboard');
+            res.redirect('/dashboard');
         }        
     });            
 }
@@ -88,12 +88,12 @@ exports.cancella_sheda = async (req, res) => {
                     methodDB.delete_db(id_scheda);
                     methodDB.settab_db("Utenti_web");
                     methodDB.N_schede_dec_update(decoded.id);
-                    res.redirect('/dasboard');
+                    res.redirect('/dashboard');
                 } else {
                     res.render('page500.hbs');
                 }
             } else {
-                res.redirect('/dasboard');
+                res.redirect('/dashboard');
             }
         }
     });
