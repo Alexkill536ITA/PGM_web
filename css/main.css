@@ -166,6 +166,25 @@ iframe {
   background: linear-gradient(45deg, #00dbde, #fc00ff); */
 }
 
+.container-contact150 {
+  flex-wrap: wrap; 
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex; 
+  display: flex; 
+  align-items: center;
+  background-color: rgba(0,0,0,0.75);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2147483640;
+}
+
 .wrap-contact150 {
   width: 800px;
   background: #fff;

@@ -100,6 +100,12 @@ exports.N_schede_dec_update = function (id_discord) {
     return 0;
 }
 
+exports.password_update =function (id_user, value_new) {
+    id_user = mongo.ObjectID(id_user);
+    collection.updateOne({ '_id' : id_user }, {$set: {password : value_new, temp_paw : "0"}});
+    return 0;
+}
+
 // MongoDB Delete
 exports.delete_db = function (id_scheda) {
     id_scheda = mongo.ObjectID(id_scheda);
