@@ -45,7 +45,8 @@ exports.Insert_db = (req, res) => {
                 var inventory = {};
                 var PG_temp;
                 var money = 0;
-                var sotto_razza_net = "";
+                var sotto_razza_net = "Non Assegnata";
+                var sotto_classe_net = "Non Assegnata";
 
                 if (razza == 'Altro') {
                     razza_net = razza_altro;
@@ -59,7 +60,13 @@ exports.Insert_db = (req, res) => {
                     sotto_razza_net = sot_razza;
                 }
                 if (sotto_razza_net == 'Scegli Sotto Razza') {
-                    sotto_razza_net = "";
+                    sotto_razza_net = "Non Assegnata";
+                }
+
+                if (sot_classe == 'Scegli Sotto Razza') {
+                    sotto_classe_net = "Non Assegnata";
+                } else {
+                    sotto_classe_net = sot_classe;
                 }
 
                 if (classe == "Artefice" || classe == "Bardo" || classe == "Chierico" || classe == "Guerriero" || classe == "Paladino" || classe == "Renger") {
@@ -93,7 +100,7 @@ exports.Insert_db = (req, res) => {
                         "Razza": razza_net,
                         //"Sotto Razza": sotto_razza_net,
                         "Classe": classe,
-                        "Sotto Classe": sot_classe,
+                        "Sotto Classe": sotto_classe_net,
                         "Background": background,
                         "Money": money,
                         "Inventory": inventory
@@ -123,7 +130,7 @@ exports.Insert_db = (req, res) => {
                         "Razza": razza_net,
                         //"Sotto Razza": sotto_razza_net,
                         "Classe": classe,
-                        "Sotto Classe": sot_classe,
+                        "Sotto Classe": sotto_classe_net,
                         "Background": background,
                         "Money": money,
                         "Inventory": inventory
