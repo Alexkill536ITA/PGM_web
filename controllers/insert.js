@@ -36,7 +36,7 @@ exports.Crea_sheda = (req, res) => {
 
 exports.Insert_db = (req, res) => {
     const token = req.cookies['jwt'];
-    const { name, razza, classe, background, razza_altro} = req.body;
+    const { name, razza, classe, background, razza_altro, sot_razza_altro, sot_razza} = req.body;
     const master_user = req.body.master_user;
 
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
@@ -44,6 +44,8 @@ exports.Insert_db = (req, res) => {
             if (name.length > 0 || razza != "Scegli Razza" || classe != "Scegli Classe" || background != "Scegli Background") {
                 var inventory = {};
                 var PG_temp;
+                var money = 0;
+                var sotto_razza_net = "";
 
                 if (razza == 'Altro') {
                     razza_net = razza_altro;
@@ -51,13 +53,38 @@ exports.Insert_db = (req, res) => {
                     razza_net = razza;
                 }
 
+                if (sotto_razza_net == 'Altro') {
+                    sotto_razza_net = sot_razza_altro;
+                } else {
+                    sotto_razza_net = sot_razza;
+                }
+                if (sotto_razza_net == 'Scegli Sotto Razza') {
+                    sotto_razza_net = "";
+                }
+
+                if (classe == "Artefice" || classe == "Bardo" || classe == "Chierico" || classe == "Guerriero" || classe == "Paladino" || classe == "Renger") {
+                    money = 200;
+                } else if (classe == "Barbaro") {
+                    money = 90;
+                } else if (classe == "Druido") {
+                    money = 100;
+                } else if (classe == "Ladro" || classe == "Mago" || classe == "Warlock") {
+                    money = 160;
+                } else if (classe == "Monaco") {
+                    money = 50;
+                } else if (classe == "Stregone") {
+                    money = 120;
+                } else {
+                    money = 0;
+                }
+
                 if (master_user == 0) {
                     const id_user = decoded.user.toString();
-                    const money = req.body.money;
                     const nome_oggetto_obj = req.body.nome_oggetto;
                     const quantita_obj = req.body.quantita;
                     const note_obj = req.body.note;
                     const index_obj = req.body.index_obj;
+                    const 
 
                     PG_temp = {
                         "Nome_Discord": id_user,
@@ -65,6 +92,7 @@ exports.Insert_db = (req, res) => {
                         "Exp": 0,
                         "Nome_PG": name,
                         "Razza": razza_net,
+                        "Sotto Razza": sotto_razza_net,
                         "Classe": classe,
                         "Background": background,
                         "Money": parseFloat(money),
@@ -93,9 +121,10 @@ exports.Insert_db = (req, res) => {
                         "Exp": 0,
                         "Nome_PG": name,
                         "Razza": razza_net,
+                        "Sotto Razza": sotto_razza_net,
                         "Classe": classe,
                         "Background": background,
-                        "Money": 0,
+                        "Money": parseFloat(money),
                         "Inventory": inventory
                     }
                 }
