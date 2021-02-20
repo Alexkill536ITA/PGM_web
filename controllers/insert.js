@@ -36,7 +36,7 @@ exports.Crea_sheda = (req, res) => {
 
 exports.Insert_db = (req, res) => {
     const token = req.cookies['jwt'];
-    const { name, razza, classe, background, razza_altro, sot_razza_altro, sot_razza} = req.body;
+    const { name, razza, classe, background, razza_altro, sot_razza_altro, sot_razza, sot_classe} = req.body;
     const master_user = req.body.master_user;
 
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
@@ -91,8 +91,9 @@ exports.Insert_db = (req, res) => {
                         "Exp": 0,
                         "Nome_PG": name,
                         "Razza": razza_net,
-                        "Sotto Razza": sotto_razza_net,
+                        //"Sotto Razza": sotto_razza_net,
                         "Classe": classe,
+                        "Sotto Classe": sot_classe,
                         "Background": background,
                         "Money": money,
                         "Inventory": inventory
@@ -120,8 +121,9 @@ exports.Insert_db = (req, res) => {
                         "Exp": 0,
                         "Nome_PG": name,
                         "Razza": razza_net,
-                        "Sotto Razza": sotto_razza_net,
+                        //"Sotto Razza": sotto_razza_net,
                         "Classe": classe,
+                        "Sotto Classe": sot_classe,
                         "Background": background,
                         "Money": money,
                         "Inventory": inventory
