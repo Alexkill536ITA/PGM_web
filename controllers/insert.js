@@ -84,7 +84,7 @@ exports.Insert_db = (req, res) => {
                     const quantita_obj = req.body.quantita;
                     const note_obj = req.body.note;
                     const index_obj = req.body.index_obj;
-                    const 
+                    const money = req.body.Money;
 
                     PG_temp = {
                         "Nome_Discord": id_user,
