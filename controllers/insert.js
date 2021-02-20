@@ -84,7 +84,6 @@ exports.Insert_db = (req, res) => {
                     const quantita_obj = req.body.quantita;
                     const note_obj = req.body.note;
                     const index_obj = req.body.index_obj;
-                    const money = req.body.Money;
 
                     PG_temp = {
                         "Nome_Discord": id_user,
@@ -95,7 +94,7 @@ exports.Insert_db = (req, res) => {
                         "Sotto Razza": sotto_razza_net,
                         "Classe": classe,
                         "Background": background,
-                        "Money": parseFloat(money),
+                        "Money": money,
                         "Inventory": inventory
                     }
 
@@ -124,7 +123,7 @@ exports.Insert_db = (req, res) => {
                         "Sotto Razza": sotto_razza_net,
                         "Classe": classe,
                         "Background": background,
-                        "Money": parseFloat(money),
+                        "Money": money,
                         "Inventory": inventory
                     }
                 }
