@@ -36,13 +36,19 @@ exports.modifica_sheda = (req, res) => {
                             if (results == null) {
                                 res.render('dashboard', { message_error: 'Errore nel ricerca profilo' });
                             } else if (results.master == 1) {
+                                if (isNaN(js_result['Money'])) {
+                                    money_ck = -9999;
+                                } else {
+                                    money_ck = js_result['Money']
+                                }
+
                                 res.render('scheda_temp.hbs', {
                                     id_scheda:js_result['_id'],
                                     nome_pg:js_result['Nome_PG'],
                                     razza_pg:js_result['Razza'],
                                     classe_pg:js_result['Classe'],
                                     background_pg:js_result['Background'],
-                                    monete_pg:js_result['Money'].toString(),
+                                    monete_pg:money_ck.toString(),
                                     object_nome:obj_nome,
                                     object_quan:obj_quan,
                                     object_note:obj_note
