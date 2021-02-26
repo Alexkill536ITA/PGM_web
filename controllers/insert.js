@@ -63,7 +63,7 @@ exports.Insert_db = (req, res) => {
                     sotto_razza_net = "Non Assegnata";
                 }
 
-                if (sot_classe == 'Scegli Sotto Razza') {
+                if (sot_classe == 'Scegli Sotto Classe') {
                     sotto_classe_net = "Non Assegnata";
                 } else {
                     sotto_classe_net = sot_classe;
