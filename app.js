@@ -20,7 +20,7 @@ dotenv.config({ path: './.env' });
 console.log("[ " + color.blue('INFO') + "  ] Start Process");
 console.log("[ " + color.blue('INFO') + "  ] Name Applications: " + color.yellow('GdrBot Web Server'));
 console.log("[ " + color.blue('INFO') + "  ] Authors: " + color.yellow('Alexkill536ITA'));
-console.log("[ " + color.blue('INFO') + "  ] Version Running: " + color.yellow("v" + vers.Create.Version));
+console.log("[ " + color.blue('INFO') + "  ] Version Running: " + color.yellow("v1.0.20"));
 console.log("[ " + color.blue('INFO') + "  ] Start Web Service...");
 app.use(express.static('./'));
 app.set('views', path.join(__dirname, 'views'));
