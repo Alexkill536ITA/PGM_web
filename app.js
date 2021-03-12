@@ -17,7 +17,11 @@ dotenv.config({ path: './.env' });
 //------------------------------------------------------//
 /*                      Engine                          */
 //------------------------------------------------------//
-console.log("[ "+color.blue('INFO')+"  ] Start Process");
+console.log("[ " + color.blue('INFO') + "  ] Start Process");
+console.log("[ " + color.blue('INFO') + "  ] Name Applications: " + color.yellow('GdrBot Web Server'));
+console.log("[ " + color.blue('INFO') + "  ] Authors: " + color.yellow('Alexkill536ITA'));
+console.log("[ " + color.blue('INFO') + "  ] Version Running: " + color.yellow("v" + vers.Create.Version));
+console.log("[ " + color.blue('INFO') + "  ] Start Web Service...");
 app.use(express.static('./'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -80,4 +84,4 @@ app.use((err, req, res, next) => {
 /*                     Set Demon                        */
 //------------------------------------------------------//
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, console.info('[ '+color.blue('INFO')+'  ]'+' Server Start on port ['+color.cyan(PORT)+']'));
+app.listen(PORT, console.info('[ ' + color.blue('INFO') + '  ]' + ' Server Start on port [' + color.cyan(PORT) + ']'));
