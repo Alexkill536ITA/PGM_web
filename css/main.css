@@ -273,6 +273,19 @@ iframe {
   padding: 0 5px;
 }
 
+.autoExpand {
+  display: block;
+  box-sizing: padding-box;
+  overflow: hidden;
+  width: 100%;
+  background: transparent;
+  font-family: Poppins-Medium;
+  font-size: 18px;
+  color: #333333;
+  line-height: 1.2;
+  padding: 0 5px;
+}
+
 .focus-input100 {
   position: absolute;
   display: block;
