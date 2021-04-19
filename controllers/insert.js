@@ -42,7 +42,33 @@ exports.Insert_db = (req, res) => {
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
             if (name.length > 0 || razza != "Scegli Razza" || classe != "Scegli Classe" || background != "Scegli Background") {
-                var inventory = {};
+                var inventory = {
+                    "pomata curativa": {
+                        "Nome": "pomata curativa",
+                        "Quantita": 1,
+                        "Sincronia": "0"
+                    },
+                    "pozione di guarigione": {
+                        "Nome": "pozione di guarigione",
+                        "Quantita": 2,
+                        "Sincronia": "0" 
+                    },
+                    "scarsella da cerusico": {
+                        "Nome": "scarsella da cerusico",
+                        "Quantita": 1,
+                        "Sincronia": "0"
+                    },
+                    "tenda": {
+                        "Nome": "tenda",
+                        "Quantita": 1,
+                        "Sincronia": "0"
+                    },
+                    "monete d'oro degli Mékaris": {
+                        "Nome": "monete d'oro degli Mékaris",
+                        "Quantita": 10,
+                        "Sincronia": "0"
+                    }
+                };
                 var PG_temp;
                 var money = 0;
                 var sotto_razza_net = "Non Assegnata";
