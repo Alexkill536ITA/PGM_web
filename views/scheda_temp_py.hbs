@@ -39,34 +39,69 @@
                 <span class="contact100-form-title">
                     Edit PG
                 </span>
-                <div>
+                <div style="float:left; margin-right: 200px; margin-bottom: 25px;">
                     <h5>Nome PG</h5>
                     <div>
                         <p>{{nome_pg}}</p>
                     </div>
-                </div><br>
-                <div>
+                </div>
+                <div style="float:left; margin-right: 200px; margin-bottom: 25px;">
                     <h5>Razza</h5>
                     <div>
                         <p>{{razza_pg}}</p>
                     </div>
-                </div><br>
+                </div>
+                <!--
                 <div>
                     <h5>Sotto Razza</h5>
                     <div>
                         <p>{{sotto_razza_pg}}</p>
                     </div>
-                </div><br>
-                <div>
+                </div>
+                -->
+                <div style="float:left; margin-right: 50px; margin-bottom: 25px;">
+                    <h5>Livello</h5>
+                    <div>
+                        <p>{{level_pg}}</p>
+                    </div>
+                </div>
+                <div style="float:left; margin-right: 225px; margin-bottom: 25px;">
                     <h5>Classe</h5>
                     <div>
                         <p>{{classe_pg}}</p>
                     </div>
-                </div><br>
-                <div>
+                </div>
+                <div style="float:left; margin-right: 135px; margin-bottom: 25px;">
+                    <h5>Sotto Classe</h5>
+                    <div>
+                        <p>{{sotto_classe_pg}}</p>
+                    </div>
+                </div>
+                <div style="float:left; margin-right: auto; margin-bottom: 25px;">
                     <h5>Background</h5>
                     <div>
                         <p>{{background_pg}}</p>
+                    </div>
+                </div><br>
+                <div style="margin-bottom: 25px;">
+                    <h5>Statistiche</h5>
+                    <div style="float:left;">
+                        <p style="width: auto;float: left;color: black;"><b>Forza: </b>{{forza_pg}}</p>
+                    </div>
+                    <div style="float:left; margin-left: 60px;">
+                        <p style="width: auto;float: left;color: black;"><b>Destrezza: </b>{{destrezza_pg}}</p>
+                    </div>
+                    <div style="float:left; margin-left: 60px;">
+                        <p style="width: auto;float: left;color: black;"><b>Costituzione: </b>{{costituzione_pg}}</p>
+                    </div><br>
+                    <div style="float:left;">
+                        <p style="width: auto;float: left;color: black;"><b>Intelligenza: </b>{{intelligenza_pg}}</p>
+                    </div>
+                    <div style="float:left; margin-left: 22px;">
+                        <p style="width: auto;float: left;color: black;"><b>Saggezza: </b>{{saggezza_pg}}</p>
+                    </div>
+                    <div style="float:left; margin-left: 60px;">
+                        <p style="width: auto;float: left;color: black;"><b>Carisma: </b>{{carisma_pg}}</p>
                     </div>
                 </div><br>
                 <div>
@@ -84,13 +119,13 @@
                     <h5 style="margin-bottom: 10px">Inventario</h5>
                     <ul id="inventorilist">
                         {{#if object_nome}}
-                            <script>
-                                const root = document.getElementById('inventorilist');
-                                const obj_nome = new Array({{{object_nome}}});
-                                const obj_quan = new Array({{{object_quan}}});
-                                const obj_note = new Array({{{object_note}}});
-                                for (var i in obj_nome) {
-                                    var list_pg = `
+                        <script>
+                            const root = document.getElementById('inventorilist');
+                            const obj_nome = new Array({{{ object_nome }}});
+                            const obj_quan = new Array({{{ object_quan }}});
+                            const obj_note = new Array({{{ object_note }}});
+                            for (var i in obj_nome) {
+                                var list_pg = `
                                         <li>
                                             <h6>Nome oggetto:</h6>
                                             <div>
@@ -100,21 +135,21 @@
                                             <div>
                                                 <p>${obj_quan[i]}</p>
                                             </div>
-                                            <h6>Note:</h6>
+                                            <h6>Sincronia:</h6>
                                             <div>
                                                 <p>${obj_note[i]}</p>
                                             </div>
                                             <p>----------------------------------------------------------------------------------------------------</p>
                                         </li>
                                     `;
-                                    root.insertAdjacentHTML('beforeend', list_pg);
-                                }
-                            </script>
+                                root.insertAdjacentHTML('beforeend', list_pg);
+                            }
+                        </script>
                         {{/if}}
                     </ul>
                 </div>
             </form>
-            <div  class="container-contact120-form-btn">
+            <div class="container-contact120-form-btn">
                 <div class="wrap-contact120-form-btn">
                     <div class="contact120-form-bgbtn"></div>
                     <button id="btn_cancel" class="contact120-form-btn" onclick="cancel()">
@@ -130,7 +165,8 @@
     <div id="dropDownSelect1"></div>
 
     <!--===============================================================================================-->
-    {{!-- <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    {{!--
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/animsition/js/animsition.min.js"></script>
     <script src="vendor/bootstrap/js/popper.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -156,13 +192,14 @@
         gtag('config', 'UA-23581568-13');
     </script>
     <script>
-        function cancel(){
+        function cancel() {
             var domanda = confirm("Sei sicuro di voler Annullare?");
             if (domanda === true) {
-                location.href = '/dashboard';  
-            }dashboard
+                location.href = '/dashboard';
+            } dashboard
         }
     </script>
 
 </body>
+
 </html>

@@ -6,15 +6,15 @@ const { post } = require('../routes');
 
 exports.Crea_sheda = (req, res) => {
     const token = req.cookies['jwt'];
-    jwt.verify(token, process.env.JWT_SECRET,async function (err, decoded) {
+    jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
             var on_sevice_db = await methodDB.open_db();
             if (on_sevice_db != 1) {
                 id_scheda = mongo.ObjectID(decoded.id);
-                var query = { _id: id_scheda, Id_discord : decoded.user};
+                var query = { _id: id_scheda, Id_discord: decoded.user };
                 methodDB.settab_db("Utenti_web");
                 var cursor = methodDB.find_Json(query);
-                cursor.then(async function(result) {
+                cursor.then(async function (result) {
                     if (result == null) {
                         res.render('dashboard', { message_error: 'Errore nel ricerca profilo' });
                     } else if (result.master == 1) {
@@ -24,7 +24,7 @@ exports.Crea_sheda = (req, res) => {
                     } else {
                         res.render('dashboard', { message_warn: 'Non puoi avere più di una scheda' });
                     }
-                }); 
+                });
             } else {
                 res.render('page500.hbs');
             }
@@ -36,7 +36,7 @@ exports.Crea_sheda = (req, res) => {
 
 exports.Insert_db = (req, res) => {
     const token = req.cookies['jwt'];
-    const { name, razza, classe, background, descrizone, razza_altro, sot_razza_altro, sot_razza, sot_classe} = req.body;
+    const { name, razza, classe, background, descrizone, razza_altro, sot_razza_altro, sot_razza, sot_classe, forza, destrezza, costituzione, intelligenza, saggezza, carisma} = req.body;
     const master_user = req.body.master_user;
 
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
@@ -51,7 +51,7 @@ exports.Insert_db = (req, res) => {
                     "pozione di guarigione": {
                         "Nome": "pozione di guarigione",
                         "Quantita": 2,
-                        "Sincronia": "0" 
+                        "Sincronia": "0"
                     },
                     "scarsella da cerusico": {
                         "Nome": "scarsella da cerusico",
@@ -85,6 +85,7 @@ exports.Insert_db = (req, res) => {
                 } else {
                     sotto_razza_net = sot_razza;
                 }
+
                 if (sotto_razza_net == 'Scegli Sotto Razza') {
                     sotto_razza_net = "Non Assegnata";
                 }
@@ -93,6 +94,42 @@ exports.Insert_db = (req, res) => {
                     sotto_classe_net = "Non Assegnata";
                 } else {
                     sotto_classe_net = sot_classe;
+                }
+
+                if (forza == null || forza == undefined) {
+                    var forza_load = 8;
+                } else {
+                    var forza_load = forza; 
+                }
+                
+                if (destrezza == null || destrezza == undefined) {
+                    var destrezza_load = 8;
+                } else {
+                    var destrezza_load = destrezza; 
+                }
+                
+                if (costituzione == null || costituzione == undefined) {
+                    var costituzione_load = 8;
+                } else {
+                    var costituzione_load = costituzione; 
+                }
+                
+                if (intelligenza == null || intelligenza == undefined) {
+                    var intelligenza_load = 8;
+                } else {
+                    var intelligenza_load = intelligenza; 
+                }
+                
+                if (saggezza == null || saggezza == undefined) {
+                    var saggezza_load = 8;
+                } else {
+                    var saggezza_load = saggezza; 
+                }
+                
+                if (carisma == null || carisma == undefined) {
+                    var carisma_load = 8;
+                } else {
+                    var carisma_load = carisma; 
                 }
 
                 if (classe == "Artefice" || classe == "Bardo" || classe == "Chierico" || classe == "Guerriero" || classe == "Paladino" || classe == "Renger") {
@@ -129,6 +166,12 @@ exports.Insert_db = (req, res) => {
                         "Sotto Classe": sotto_classe_net,
                         "Background": background,
                         "Descrizione": descrizone,
+                        "Forza": forza_load,
+                        "Destrezza": destrezza_load,
+                        "Costituzione": costituzione_load,
+                        "Intelligenza": intelligenza_load,
+                        "Saggezza": saggezza_load,
+                        "Carisma": carisma_load,
                         "Money": money,
                         "Inventory": inventory
                     }
@@ -160,6 +203,12 @@ exports.Insert_db = (req, res) => {
                         "Sotto Classe": sotto_classe_net,
                         "Background": background,
                         "Descrizione": descrizone,
+                        "Forza": forza_load,
+                        "Destrezza": destrezza_load,
+                        "Costituzione": costituzione_load,
+                        "Intelligenza": intelligenza_load,
+                        "Saggezza": saggezza_load,
+                        "Carisma": carisma_load,
                         "Money": money,
                         "Inventory": inventory
                     }

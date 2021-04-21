@@ -39,34 +39,69 @@
                 <span class="contact100-form-title">
                     Edit PG
                 </span>
-                <div>
+                <div style="float:left; margin-right: 200px; margin-bottom: 25px;">
                     <h5>Nome PG</h5>
                     <div>
                         <p>{{nome_pg}}</p>
                     </div>
-                </div><br>
-                <div>
+                </div>
+                <div style="float:left; margin-right: 200px; margin-bottom: 25px;">
                     <h5>Razza</h5>
                     <div>
                         <p>{{razza_pg}}</p>
                     </div>
-                </div><br>
+                </div>
+                <!--
                 <div>
                     <h5>Sotto Razza</h5>
                     <div>
                         <p>{{sotto_razza_pg}}</p>
                     </div>
-                </div><br>
-                <div>
+                </div>
+                -->
+                <div style="float:left; margin-right: 50px; margin-bottom: 25px;">
+                    <h5>Livello</h5>
+                    <div>
+                        <p>{{level_pg}}</p>
+                    </div>
+                </div>
+                <div style="float:left; margin-right: 225px; margin-bottom: 25px;">
                     <h5>Classe</h5>
                     <div>
                         <p>{{classe_pg}}</p>
                     </div>
-                </div><br>
-                <div>
+                </div>
+                <div style="float:left; margin-right: 135px; margin-bottom: 25px;">
+                    <h5>Sotto Classe</h5>
+                    <div>
+                        <p>{{sotto_classe_pg}}</p>
+                    </div>
+                </div>
+                <div style="float:left; margin-right: auto; margin-bottom: 25px;">
                     <h5>Background</h5>
                     <div>
                         <p>{{background_pg}}</p>
+                    </div>
+                </div><br>
+                <div style="margin-bottom: 25px;">
+                    <h5>Statistiche</h5>
+                    <div style="float:left;">
+                        <p style="width: auto;float: left;color: black;"><b>Forza: </b>{{forza_pg}}</p>
+                    </div>
+                    <div style="float:left; margin-left: 60px;">
+                        <p style="width: auto;float: left;color: black;"><b>Destrezza: </b>{{destrezza_pg}}</p>
+                    </div>
+                    <div style="float:left; margin-left: 60px;">
+                        <p style="width: auto;float: left;color: black;"><b>Costituzione: </b>{{costituzione_pg}}</p>
+                    </div><br>
+                    <div style="float:left;">
+                        <p style="width: auto;float: left;color: black;"><b>Intelligenza: </b>{{intelligenza_pg}}</p>
+                    </div>
+                    <div style="float:left; margin-left: 22px;">
+                        <p style="width: auto;float: left;color: black;"><b>Saggezza: </b>{{saggezza_pg}}</p>
+                    </div>
+                    <div style="float:left; margin-left: 60px;">
+                        <p style="width: auto;float: left;color: black;"><b>Carisma: </b>{{carisma_pg}}</p>
                     </div>
                 </div><br>
                 <div>
@@ -77,27 +112,27 @@
                 </div><br>
                 <div class="wrap-input100 validate-input" data-validate="monete">
                     <h5 style="margin-bottom: 10px">Monete</h5>
-                            <p style="width: 50px;float: left;color: black"><b>Oro:</b></p>
-                            <input class="label-input150" name="oro" value="{{monete_pg}}">mo
+                    <p style="width: 50px;float: left;color: black"><b>Oro:</b></p>
+                    <input class="label-input150" name="oro" value="{{monete_pg}}">mo
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Message is required">
                     <h5 style="margin-bottom: 10px">Inventario</h5>
                     <ul id="inventorilist">
                         {{#if object_nome}}
-                            <script>
-                                const root = document.getElementById('inventorilist');
-                                const obj_nome = new Array({{{object_nome}}});
-                                const obj_quan = new Array({{{object_quan}}});
-                                const obj_note = new Array({{{object_note}}});
-                                for (var i in obj_nome) {
-                                    var list_pg = `
+                        <script>
+                            const root = document.getElementById('inventorilist');
+                            const obj_nome = new Array({{{ object_nome }}});
+                            const obj_quan = new Array({{{ object_quan }}});
+                            const obj_note = new Array({{{ object_note }}});
+                            for (var i in obj_nome) {
+                                var list_pg = `
                                         <li>
                                             <p style="width: 110px;float: left;color: black">Nome oggetto:</p>
                                             <input style="float: left" class="label-input120" name="nome_oggetto" value="${obj_nome[i]}">
                                             <p style="width: 60px;float: left;color: black">Quantità:</p>
                                             <input style="float: left; width: 50px" class="label-input120" name="quantita" value="${obj_quan[i]}">
-                                            <p style="width: 60px;color: black">Note:</p>
+                                            <p style="width: 60px;color: black">Sincronia:</p>
                                             <textarea style="min-height: 60px" class="input100" name="note" placeholder="Informazione sull' oggetto.">${obj_note[i]}</textarea>
                                             <div class="container-contact120-form-btn">
                                                 <div style="width: 50px; max-height: 50px" class="wrap-contact100-form-btn">
@@ -110,9 +145,9 @@
                                             <p>----------------------------------------------------------------------------------------------------</p>
                                         </li>
                                     `;
-                                    root.insertAdjacentHTML('beforeend', list_pg);
-                                }
-                            </script>
+                                root.insertAdjacentHTML('beforeend', list_pg);
+                            }
+                        </script>
                         {{/if}}
                     </ul>
                     <div class="container-contact100-form-btn">
@@ -138,7 +173,7 @@
                     </div>
                 </div>
             </form>
-            <div  class="container-contact120-form-btn">
+            <div class="container-contact120-form-btn">
                 <div class="wrap-contact120-form-btn">
                     <div class="contact120-form-bgbtn"></div>
                     <button id="btn_cancel" class="contact120-form-btn" onclick="cancel()">
@@ -154,7 +189,8 @@
     <div id="dropDownSelect1"></div>
 
     <!--===============================================================================================-->
-    {{!-- <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    {{!--
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/animsition/js/animsition.min.js"></script>
     <script src="vendor/bootstrap/js/popper.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -180,13 +216,14 @@
         gtag('config', 'UA-23581568-13');
     </script>
     <script>
-        function cancel(){
+        function cancel() {
             var domanda = confirm("Sei sicuro di voler Annullare?");
             if (domanda === true) {
-                location.href = '/dashboard';  
+                location.href = '/dashboard';
             }
         }
     </script>
 
 </body>
+
 </html>

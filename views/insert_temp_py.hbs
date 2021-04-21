@@ -8,10 +8,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/jpg" href="images/Logo_bot.jpg" />
     <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">   
-    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">    
-    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">   
-    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">    
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
     <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
     <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" type="text/css" href="/css/util.css">
@@ -43,7 +43,8 @@
 
                 <div class="wrap-input100 validate-input" data-validate="Nome PG">
                     <span class="label-input100">Nome PG</span>
-                    <input id="nome_pg" style="border: none" class="input100" type="text" name="name" placeholder="Inserire Nome PG">
+                    <input id="nome_pg" style="border: none" class="input100" type="text" name="name"
+                        placeholder="Inserire Nome PG">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -174,15 +175,47 @@
                     <span class="focus-input100"></span>
                 </div>
 
+                <div class="wrap-input100 validate-input" style="height: 90px;">
+                    <span class="label-input100">Statistiche</span><br>
+                    <div style="float:left; margin-left: 5px;">
+                        <p style="width: auto;float: left;color: black;"><b>Forza:</b></p>
+                        <input id="forza_pg" type='number' class="label-input150" style="margin-left: 67px" ; name="forza" value="0">
+                    </div>
+                    <div style="float:left; margin-left: 10px;">
+                        <p style="width: auto;float: left;color: black;"><b>Destrezza:</b></p>
+                        <input id="destrezza_pg" type='number' class="label-input150" name="destrezza" value="0">
+                    </div>
+                    <div style="float:left; margin-left: 10px;">
+                        <p style="width: auto;float: left;color: black;"><b>Costituzione:</b></p>
+                        <input id="costituzione_pg" type='number' class="label-input150" name="costituzione" value="0">
+                    </div><br>
+                    <div style="float:left; margin-left: 5px;">
+                        <p style="width: auto;float: left;color: black;"><b>Intelligenza:</b></p>
+                        <input id="intelligenza_pg" type='number' class="label-input150" name="intelligenza" value="0">
+                    </div>
+                    <div style="float:left; margin-left: 10px;">
+                        <p style="width: auto;float: left;color: black; margin-right: 1px;"><b>Saggezza:</b></p>
+                        <input id="saggezza_pg" type='number' class="label-input150" name="saggezza " value="0">
+                    </div>
+                    <div style="float:left; margin-left: 10px;">
+                        <p style="width: auto;float: left;color: black;"><b>Carisma:</b></p>
+                        <input id="carisma_pg" type='number' class="label-input150" style="margin-left: 50px" ; name="carisma"
+                            value="0">
+                    </div>
+                    <span class="focus-input100"></span>
+                </div>
+
                 <div class="wrap-input100 validate-input">
                     <span class="label-input100">Descrizione</span>
-                    <textarea id="descrizone" style="min-height: 100px; height: auto; border: none" rows='4' data-min-rows='4' maxlength="2048" class="autoExpand" type="text" name="descrizone" placeholder="Decrizione personaggio"></textarea>
+                    <textarea id="descrizone" style="min-height: 100px; height: auto; border: none" rows='4'
+                        data-min-rows='4' maxlength="2048" class="autoExpand" type="text" name="descrizone"
+                        placeholder="Decrizione personaggio"></textarea>
                     <span class="focus-input100"></span>
                 </div>
 
                 <div id="Inventori_Container" style="visibility: hidden;"></div>
             </form>
-            <div  class="container-contact120-form-btn">
+            <div class="container-contact120-form-btn">
                 <div class="wrap-contact120-form-btn">
                     <div class="contact120-form-bgbtn"></div>
                     <button id="btn_cancel" class="contact120-form-btn" onclick="cancel()">
@@ -198,7 +231,7 @@
     <div id="dropDownSelect1"></div>
 
     <!--===============================================================================================-->
-    
+
     <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="/vendor/animsition/js/animsition.min.js"></script>
     <script src="/vendor/bootstrap/js/popper.js"></script>
@@ -209,7 +242,7 @@
             minimumResultsForSearch: 20,
             dropdownParent: $('#dropDownSelect1')
         });
-    </script>   
+    </script>
     <script src="/vendor/daterangepicker/moment.min.js"></script>
     <script src="/vendor/daterangepicker/daterangepicker.js"></script>
     <script src="/vendor/countdowntime/countdowntime.js"></script>
@@ -225,18 +258,18 @@
         gtag('config', 'UA-23581568-13');
     </script>
     <script>
-        function getScrollHeight(elm){
+        function getScrollHeight(elm) {
             var savedValue = elm.value
             elm.value = ''
             elm._baseScrollHeight = elm.scrollHeight
             elm.value = savedValue
         }
 
-        function onExpandableTextareaInput({ target:elm }){
+        function onExpandableTextareaInput({ target: elm }) {
             // make sure the input event originated from a textarea and it's desired to be auto-expandable
-            if( !elm.classList.contains('autoExpand') || !elm.nodeName == 'TEXTAREA' ) return
-            
-            var minRows = elm.getAttribute('data-min-rows')|0, rows;
+            if (!elm.classList.contains('autoExpand') || !elm.nodeName == 'TEXTAREA') return
+
+            var minRows = elm.getAttribute('data-min-rows') | 0, rows;
             !elm._baseScrollHeight && getScrollHeight(elm)
 
             elm.rows = minRows
@@ -251,12 +284,13 @@
     <script src="/models/Oggetto_inventario.js"></script>
     <script src="/js/controll_empty.js"></script>
     <script>
-        function cancel(){
+        function cancel() {
             var domanda = confirm("Sei sicuro di voler Annullare?");
             if (domanda === true) {
-                location.href = '/dashboard';  
+                location.href = '/dashboard';
             }
         }
     </script>
 </body>
+
 </html>
