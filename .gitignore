@@ -1,3 +1,4 @@
 PGM_web.code-workspace
 .env
 node_modules/
+package-lock.json
