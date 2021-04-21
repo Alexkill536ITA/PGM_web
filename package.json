@@ -1,6 +1,6 @@
 {
   "name": "discord_bot_pgm_web",
-  "version": "1.0.0",
+  "version": "1.0.30",
   "description": "",
   "main": "app.js",
   "dependencies": {
