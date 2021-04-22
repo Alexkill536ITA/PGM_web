@@ -36,7 +36,7 @@ exports.Crea_sheda = (req, res) => {
 
 exports.Insert_db = (req, res) => {
     const token = req.cookies['jwt'];
-    const { name, razza, classe, background, descrizone, razza_altro, sot_razza_altro, sot_razza, sot_classe, forza, destrezza, costituzione, intelligenza, saggezza, carisma} = req.body;
+    const { name, razza, classe, background, descrizone, razza_altro, sot_razza_altro, sot_razza, sot_classe, forza, destrezza, costituzione, intelligenza, saggezza, carisma, url_avatar} = req.body;
     const master_user = req.body.master_user;
 
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
@@ -132,6 +132,16 @@ exports.Insert_db = (req, res) => {
                     var carisma_load = carisma; 
                 }
 
+                if (url_avatar == null || url_avatar == undefined) {
+                    var url_avatar_load = "Non Assegnata";
+                } else {
+                    if (validURL(url_avatar) == true) {
+                        var url_avatar_load = url_avatar;    
+                    } else {
+                        var url_avatar_load = "Non Assegnata";
+                    } 
+                }
+
                 if (classe == "Artefice" || classe == "Bardo" || classe == "Chierico" || classe == "Guerriero" || classe == "Paladino" || classe == "Renger") {
                     money = 200;
                 } else if (classe == "Barbaro") {
@@ -157,6 +167,7 @@ exports.Insert_db = (req, res) => {
 
                     PG_temp = {
                         "Nome_Discord": id_user,
+                        "Avatar": url_avatar_load,
                         "Livello": 3,
                         "Exp": 0,
                         "Nome_PG": name,
@@ -194,6 +205,7 @@ exports.Insert_db = (req, res) => {
                 } else {
                     PG_temp = {
                         "Nome_Discord": decoded.user,
+                        "Avatar": url_avatar_load,
                         "Livello": 3,
                         "Exp": 0,
                         "Nome_PG": name,
@@ -238,3 +250,13 @@ exports.Insert_db = (req, res) => {
         }
     });
 };
+
+function validURL(str) {
+    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+      '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    return !!pattern.test(str);
+  }
