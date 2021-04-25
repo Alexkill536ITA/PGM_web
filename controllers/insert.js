@@ -129,7 +129,11 @@ exports.Insert_db = (req, res) => {
                 if (sot_classe == 'Scegli Sotto Classe') {
                     sotto_classe_net = "Non Assegnata";
                 } else if (sot_classe == 'Altro') {
-                    sotto_classe_net = sot_classe_altro;
+                    if (sot_classe_altro.length > 0) {
+                        sotto_classe_net = sot_classe_altro;
+                    } else {
+                        sotto_classe_net = "Altro";
+                    }  
                 } else {
                     sotto_classe_net = sot_classe;
                 }

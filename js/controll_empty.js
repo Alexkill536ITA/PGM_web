@@ -118,6 +118,16 @@ function ceck_empy() {
         check_empy_3 = true;
     }
 
+    if (sot_classe_pg != "Scegli Classe") {
+        if (sot_classe_pg == "Altro") {
+            label_create('label_up_cla', root_3, label_temp_2)
+        } else {
+            label_destroy('label_up_cla');
+        }
+    } else {
+        label_destroy('label_up_cla')
+    }
+
     if (background_pg != "Scegli Background") {
         if (background_pg == "Altro") {
             label_create('label_up_bac', root_4, label_temp_3)
