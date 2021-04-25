@@ -36,7 +36,27 @@ exports.Crea_sheda = (req, res) => {
 
 exports.Insert_db = (req, res) => {
     const token = req.cookies['jwt'];
-    const { name, razza, classe, background, descrizone, razza_altro, sot_razza_altro, sot_razza, sot_classe, forza, destrezza, costituzione, intelligenza, saggezza, carisma, url_avatar} = req.body;
+    const {
+        name,
+        razza,
+        razza_altro,
+        sot_razza,
+        sot_razza_altro,
+        classe,
+        sot_classe,
+        classe_altro,
+        sot_classe_altro,
+        background,
+        Background_altro,
+        descrizone,
+        forza,
+        destrezza,
+        costituzione,
+        intelligenza,
+        saggezza,
+        carisma,
+        url_avatar
+    } = req.body;
     const master_user = req.body.master_user;
 
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
@@ -73,11 +93,27 @@ exports.Insert_db = (req, res) => {
                 var money = 0;
                 var sotto_razza_net = "Non Assegnata";
                 var sotto_classe_net = "Non Assegnata";
+                var razza_net = "Altro";
+                var classe_net = "Altro";
+                var Background_net = "Altro";
 
+                // Check Value Altro
                 if (razza == 'Altro') {
                     razza_net = razza_altro;
                 } else {
                     razza_net = razza;
+                }
+
+                if (classe == 'Altro') {
+                    classe_net = classe_altro;
+                } else {
+                    classe_net = classe;
+                }
+
+                if (background == 'Altro') {
+                    Background_net = Background_altro;
+                } else {
+                    Background_net = background;
                 }
 
                 if (sotto_razza_net == 'Altro') {
@@ -92,56 +128,61 @@ exports.Insert_db = (req, res) => {
 
                 if (sot_classe == 'Scegli Sotto Classe') {
                     sotto_classe_net = "Non Assegnata";
+                } else if (sot_classe == 'Altro') {
+                    sotto_classe_net = sot_classe_altro;
                 } else {
                     sotto_classe_net = sot_classe;
                 }
 
+                // Stasts
                 if (forza == null || forza == undefined) {
                     var forza_load = 8;
                 } else {
-                    var forza_load = forza; 
+                    var forza_load = forza;
                 }
-                
+
                 if (destrezza == null || destrezza == undefined) {
                     var destrezza_load = 8;
                 } else {
-                    var destrezza_load = destrezza; 
+                    var destrezza_load = destrezza;
                 }
-                
+
                 if (costituzione == null || costituzione == undefined) {
                     var costituzione_load = 8;
                 } else {
-                    var costituzione_load = costituzione; 
+                    var costituzione_load = costituzione;
                 }
-                
+
                 if (intelligenza == null || intelligenza == undefined) {
                     var intelligenza_load = 8;
                 } else {
-                    var intelligenza_load = intelligenza; 
+                    var intelligenza_load = intelligenza;
                 }
-                
+
                 if (saggezza == null || saggezza == undefined) {
                     var saggezza_load = 8;
                 } else {
-                    var saggezza_load = saggezza; 
+                    var saggezza_load = saggezza;
                 }
-                
+
                 if (carisma == null || carisma == undefined) {
                     var carisma_load = 8;
                 } else {
-                    var carisma_load = carisma; 
+                    var carisma_load = carisma;
                 }
 
+                // Avatar
                 if (url_avatar == null || url_avatar == undefined) {
                     var url_avatar_load = "Non Assegnata";
                 } else {
                     if (validURL(url_avatar) == true) {
-                        var url_avatar_load = url_avatar;    
+                        var url_avatar_load = url_avatar;
                     } else {
                         var url_avatar_load = "Non Assegnata";
-                    } 
+                    }
                 }
 
+                // Money by Class
                 if (classe == "Artefice" || classe == "Bardo" || classe == "Chierico" || classe == "Guerriero" || classe == "Paladino" || classe == "Renger") {
                     money = 200;
                 } else if (classe == "Barbaro") {
@@ -173,9 +214,9 @@ exports.Insert_db = (req, res) => {
                         "Nome_PG": name,
                         "Razza": razza_net,
                         //"Sotto Razza": sotto_razza_net,
-                        "Classe": classe,
+                        "Classe": classe_net,
                         "Sotto Classe": sotto_classe_net,
-                        "Background": background,
+                        "Background": Background_net,
                         "Descrizione": descrizone,
                         "Forza": forza_load,
                         "Destrezza": destrezza_load,
@@ -211,9 +252,9 @@ exports.Insert_db = (req, res) => {
                         "Nome_PG": name,
                         "Razza": razza_net,
                         //"Sotto Razza": sotto_razza_net,
-                        "Classe": classe,
+                        "Classe": classe_net,
                         "Sotto Classe": sotto_classe_net,
-                        "Background": background,
+                        "Background": Background_net,
                         "Descrizione": descrizone,
                         "Forza": forza_load,
                         "Destrezza": destrezza_load,
@@ -252,11 +293,11 @@ exports.Insert_db = (req, res) => {
 };
 
 function validURL(str) {
-    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-      '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
     return !!pattern.test(str);
-  }
+}
