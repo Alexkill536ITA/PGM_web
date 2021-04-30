@@ -228,6 +228,7 @@ exports.Insert_db = (req, res) => {
                         "Intelligenza": intelligenza_load,
                         "Saggezza": saggezza_load,
                         "Carisma": carisma_load,
+                        "Competenze": {},
                         "Money": money,
                         "Inventory": inventory
                     }
@@ -266,6 +267,7 @@ exports.Insert_db = (req, res) => {
                         "Intelligenza": intelligenza_load,
                         "Saggezza": saggezza_load,
                         "Carisma": carisma_load,
+                        "Competenze": {},
                         "Money": money,
                         "Inventory": inventory
                     }
