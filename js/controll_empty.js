@@ -48,15 +48,15 @@ const label_temp_2 = `<div id="label_up_cla" class="wrap-input100 validate-input
 <span class="focus-input100"></span>
 </div>`
 
-const label_temp_3 = `<div id="label_up_bac" class="wrap-input100 validate-input" data-validate="razza_altro">
-<span class="label-input100">Inserire Background</span>
-<input id="Background_altro" style="border: none" class="input100" type="text" name="Background_altro" placeholder="Altro Background">
+const label_temp_3 = `<div id="label_up_sot_cla" class="wrap-input100 validate-input" data-validate="razza_altro">
+<span class="label-input100">Inserire Nome Classe</span>
+<input id="sot_classe_altro" style="border: none" class="input100" type="text" name="sot_classe_altro" placeholder="Altra Sotto Classe">
 <span class="focus-input100"></span>
 </div>`
 
-const label_temp_4 = `<div id="label_up_sot_cla" class="wrap-input100 validate-input" data-validate="razza_altro">
-<span class="label-input100">Inserire Nome Classe</span>
-<input id="sot_classe_altro" style="border: none" class="input100" type="text" name="sot_classe_altro" placeholder="Altra Sotto Classe">
+const label_temp_4 = `<div id="label_up_bac" class="wrap-input100 validate-input" data-validate="razza_altro">
+<span class="label-input100">Inserire Background</span>
+<input id="Background_altro" style="border: none" class="input100" type="text" name="Background_altro" placeholder="Altro Background">
 <span class="focus-input100"></span>
 </div>`
 
@@ -118,19 +118,22 @@ function ceck_empy() {
         check_empy_3 = true;
     }
 
-    if (sot_classe_pg != "Scegli Classe") {
+    if (sot_classe_pg != "Scegli Sotto Classe") {
         if (sot_classe_pg == "Altro") {
-            label_create('label_up_cla', root_3, label_temp_2)
+            label_create('label_up_sot_cla', root_5, label_temp_3)
         } else {
-            label_destroy('label_up_cla');
+            label_destroy('label_up_sot_cla');
+            
         }
+        check_empy_5 = false;
     } else {
-        label_destroy('label_up_cla')
+        label_destroy('label_up_sot_cla')
+        check_empy_5 = true;
     }
 
     if (background_pg != "Scegli Background") {
         if (background_pg == "Altro") {
-            label_create('label_up_bac', root_4, label_temp_3)
+            label_create('label_up_bac', root_4, label_temp_4)
         } else {
             label_destroy('label_up_bac')
         }
@@ -140,7 +143,7 @@ function ceck_empy() {
         check_empy_4 = true;
     }
 
-    if (check_empy_1 == true || check_empy_2 == true || check_empy_3 == true || check_empy_4 == true) {
+    if (check_empy_1 == true || check_empy_2 == true || check_empy_3 == true || check_empy_4 == true || check_empy_5 == true) {
         btn_submit_destroy()
     } else {
         btn_submit_create()
@@ -189,9 +192,22 @@ input_name.addEventListener('change', (event) => {
         check_empy_3 = true;
     }
 
+    if (sot_classe_pg != "Scegli Sotto Classe") {
+        if (sot_classe_pg == "Altro") {
+            label_create('label_up_sot_cla', root_5, label_temp_3)
+        } else {
+            label_destroy('label_up_sot_cla');
+            
+        }
+        check_empy_5 = false;
+    } else {
+        label_destroy('label_up_sot_cla')
+        check_empy_5 = true;
+    }
+
     if (background_pg != "Scegli Background") {
         if (background_pg == "Altro") {
-            label_create('label_up_bac', root_4, label_temp_3)
+            label_create('label_up_bac', root_4, label_temp_4)
         } else {
             label_destroy('label_up_bac')
         }
@@ -201,7 +217,7 @@ input_name.addEventListener('change', (event) => {
         check_empy_4 = true;
     }
 
-    if (check_empy_1 == true || check_empy_2 == true || check_empy_3 == true || check_empy_4 == true) {
+    if (check_empy_1 == true || check_empy_2 == true || check_empy_3 == true || check_empy_4 == true || check_empy_5 == true) {
         btn_submit_destroy()
     } else {
         btn_submit_create()
