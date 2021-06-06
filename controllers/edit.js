@@ -44,7 +44,7 @@ exports.modifica_sheda = (req, res) => {
 
                                 if (js_result['Avatar'] == "" || js_result['Avatar'] == null || js_result['Avatar'] == "Non Assegnata") {
                                     avatar_ck = "/images/stemma_gilda_f.png"
-                                    avatar_ck_url = "Non Assegnata"
+                                    avatar_ck_url = "Avatar Mancante o Non Disponibile"
                                 } else {
                                     avatar_ck = js_result['Avatar']
                                     avatar_ck_url = js_result['Avatar']
