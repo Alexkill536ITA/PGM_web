@@ -42,7 +42,7 @@ exports.modifica_sheda = (req, res) => {
                                     money_ck = js_result['Money']
                                 }
 
-                                if (js_result['Avatar'] == "" || js_result['Avatar'] == null) {
+                                if (js_result['Avatar'] == "" || js_result['Avatar'] == null || js_result['Avatar'] == "Non Assegnata") {
                                     avatar_ck = "/images/stemma_gilda_f.png"
                                 } else {
                                     avatar_ck = js_result['Avatar']

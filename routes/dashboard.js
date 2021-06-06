@@ -31,7 +31,7 @@ router.all('/dashboard', (req, res) => {
                                     for (let index = 0; index < list_max; index++) {
                                         id_scheda[index] = result[index]._id;
                                         name_pg[index] = result[index].Nome_PG;
-                                        if (result[index].Avatar == "" || result[index].Avatar == null) {
+                                        if (result[index].Avatar == "" || result[index].Avatar == null || result[index].Avatar == "Non Assegnata") {
                                             avatar[index] = "/images/stemma_gilda_f.png"
                                         } else {
                                             avatar[index] = result[index].Avatar;
