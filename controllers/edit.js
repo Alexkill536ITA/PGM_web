@@ -36,17 +36,23 @@ exports.modifica_sheda = (req, res) => {
                             if (results == null) {
                                 res.render('dashboard', { message_error: 'Errore nel ricerca profilo' });
                             } else if (results.master == 1) {
-                                if (isNaN(js_result['Money'])) {
+                                if (isNaN(js_result['Money']) == true || js_result['Money'] == null) {
                                     money_ck = -9999;
                                 } else {
                                     money_ck = js_result['Money']
+                                }
+
+                                if (isNaN(js_result['Avatar']) == true || js_result['Avatar'] == null) {
+                                    avatar_ck = "/images/stemma_gilda_f.png"
+                                } else {
+                                    avatar_ck = js_result['Avatar']
                                 }
 
                                 res.render('scheda_temp.hbs', {
                                     id_scheda: js_result['_id'],
                                     level_pg: js_result['Livello'],
                                     nome_pg: js_result['Nome_PG'],
-                                    avatar_pg: js_result['Avatar'],
+                                    avatar_pg: avatar_ck,
                                     razza_pg: js_result['Razza'],
                                     classe_pg: js_result['Classe'],
                                     sotto_classe_pg: js_result['Sotto Classe'],
@@ -61,14 +67,28 @@ exports.modifica_sheda = (req, res) => {
                                     monete_pg: money_ck.toString(),
                                     object_nome: obj_nome,
                                     object_quan: obj_quan,
-                                    object_note: obj_note
+                                    object_note: obj_note,
+                                    img_class: Chek_class(js_result['Classe']),
+                                    img_class_sot: Chek_class(js_result['Sotto Classe'])
                                 });
                             } else {
+                                if (isNaN(js_result['Money']) == true || js_result['Money'] == null) {
+                                    money_ck = -9999;
+                                } else {
+                                    money_ck = js_result['Money']
+                                }
+
+                                if (isNaN(js_result['Avatar']) == true || js_result['Avatar'] == null) {
+                                    avatar_ck = "/images/stemma_gilda_f.png"
+                                } else {
+                                    avatar_ck = js_result['Avatar']
+                                }
+
                                 res.render('scheda_temp_py.hbs', {
                                     id_scheda: js_result['_id'],
                                     level_pg: js_result['Livello'],
                                     nome_pg: js_result['Nome_PG'],
-                                    avatar_pg: js_result['Avatar'],
+                                    avatar_pg: avatar_ck,
                                     razza_pg: js_result['Razza'],
                                     classe_pg: js_result['Classe'],
                                     sotto_classe_pg: js_result['Sotto Classe'],
@@ -123,4 +143,36 @@ exports.cancella_sheda = async (req, res) => {
             }
         }
     });
+}
+
+function Chek_class(classe) {
+    if (classe == "Barbaro") {
+        return "/images/Barbaro.png"
+    } else if (classe == "Bardo") {
+        return "/images/Bardo.png"
+    } else if (classe == "Chierico") {
+        return "/images/Chierico.png"
+    } else if (classe == "Druido") {
+        return "/images/Druido.png"
+    } else if (classe == "Guerriero") {
+        return "/images/Combatente.png"
+    } else if (classe == "Ladro") {
+        return "/images/Ladro.png"
+    } else if (classe == "Mago") {
+        return "/images/Mago.png"
+    } else if (classe == "Monaco") {
+        return "/images/Monaco.png"
+    } else if (classe == "Paladino") {
+        return "/images/Paladino.png"
+    } else if (classe == "Ranger") {
+        return "/images/Ranger.png"
+    } else if (classe == "Stregone") {
+        return "/images/Stregone.png"
+    } else if (classe == "Warlock") {
+        return "/images/Warlock.png"
+    } else if (classe == "Artefice") {
+        return "/images/Altro.png"
+    } else {
+        return "/images/Altro.png"
+    }
 }

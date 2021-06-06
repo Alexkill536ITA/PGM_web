@@ -26,14 +26,20 @@ router.all('/dashboard', (req, res) => {
                                 } else {
                                     var id_scheda = [];
                                     var name_pg = [];
+                                    var avatar = [];
                                     var list_max = result.length;
                                     for (let index = 0; index < list_max; index++) {
                                         id_scheda[index] = result[index]._id;
                                         name_pg[index] = result[index].Nome_PG;
+                                        if (isNaN(result[index].Avatar) == true || result[index].Avatar == "" || result[index].Avatar !== undefined) {
+                                            avatar[index] = "/images/stemma_gilda_f.png"
+                                        } else {
+                                            avatar[index] = result[index].Avatar;
+                                        }
                                     }
                                 }
                                 db.close();
-                                res.render('dashboard.hbs', {list_pg:list_max, id:id_scheda, name:name_pg});
+                                res.render('dashboard.hbs', {list_pg:list_max, id:id_scheda, name:name_pg, avatar_pg:avatar});
                             }
                         }
                     });

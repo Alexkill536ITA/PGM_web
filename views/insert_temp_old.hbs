@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>Tisifea</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="images/Logo_bot.jpg" />
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+
+<body>
+    <div class="navbar navbar-expand-sm fixed-top">
+        <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">
+                <div class="contact100-form-bgbtn"></div>
+                <form method="POST" action="/logout">
+                    <button class="contact100-form-btn">
+                        <span>
+                            Logout
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-contact100">
+        <div class="wrap-contact150">
+            <form class="contact100-form validate-form" action="/insert/insert" method="POST">
+                <input style="visibility: hidden;" id="master_user" name="master_user" value="{{eanbele_count}}">
+                <span class="contact100-form-title" id="Creazione PG">
+                    Creazione PG
+                </span>
+
+                <div class="wrap-input100 validate-input" data-validate="Nome PG">
+                    <span class="label-input100">Nome PG</span>
+                    <input id="nome_pg" style="border: none" class="input100" type="text" name="name"
+                        placeholder="Inserire Nome PG">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div id="end_select_raz" class="wrap-input100 input100-select">
+                    <span class="label-input100">Razza</span>
+                    <div>
+                        <select id="razza_pg" class="selection-2" name="razza" onchange="ceck_empy()">
+                            <option>Scegli Razza</option>
+                            <option>Anidaris</option>
+                            <option>Drakanir</option>
+                            <option>Mékaris</option>
+                            <option>Pakvaris</option>
+                            <option>Svingli</option>
+                            <option>Ulfar</option>
+                            <option>Ulfaris</option>
+                            <option>Vastaris</option>
+                            <option>Vhòr</option>
+                            <option>Athemàj</option>
+                            <option>Devataris</option>
+                            <option>Gabral</option>
+                            <option>Ibanya</option>
+                            <option>Vajkuth</option>
+                            <option>Marmarok</option>
+                            <option>Altro</option>
+                        </select>
+                    </div>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <!--<div id="end_select_raz" class="wrap-input100 input100-select">
+                    <span class="label-input100">Sotto Razza</span>
+                    <div>
+                        <select id="sot_razza_pg" class="selection-2" name="sot_razza" onchange="ceck_empy()">
+                            <option>Scegli Sotto Razza</option>
+                            <option>Anidaris</option>
+                            <option>Drakanir</option>
+                            <option>Mékaris</option>
+                            <option>Pakvaris</option>
+                            <option>Svingli</option>
+                            <option>Ulfar</option>
+                            <option>Ulfaris</option>
+                            <option>Vastaris</option>
+                            <option>Vhòr</option>
+                            <option>Athemàj</option>
+                            <option>Devataris</option>
+                            <option>Gabral</option>
+                            <option>Ibanya</option>
+                            <option>Vajkuth</option>
+                            <option>Marmarok</option>
+                            <option>Altro</option>
+                        </select>
+                    </div>
+                    <span class="focus-input100"></span>
+                </div>-->
+
+                <div id="end_select_cla" class="wrap-input100 input100-select">
+                    <span class="label-input100">Classi</span>
+                    <div>
+                        <select id="classe_pg" class="selection-2" name="classe" onchange="ceck_empy()">
+                            <option>Scegli Classe</option>
+                            <option>Barbaro</option>
+                            <option>Bardo</option>
+                            <option>Chierico</option>
+                            <option>Druido</option>
+                            <option>Guerriero</option>
+                            <option>Ladro</option>
+                            <option>Mago</option>
+                            <option>Monaco</option>
+                            <option>Paladino</option>
+                            <option>Ranger</option>
+                            <option>Stregone</option>
+                            <option>Warlock</option>
+                            <option>Artefice</option>
+                            <option>Altro</option>
+                        </select>
+                    </div>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div id="end_select_sot_cla" class="wrap-input100 input100-select">
+                    <span class="label-input100">Sotto Classi</span>
+                    <div>
+                        <select id="sot_classe_pg" class="selection-2" name="sot_classe" onchange="ceck_empy()">
+                            <option>Scegli Sotto Classe</option>
+                            <option>Barbaro</option>
+                            <option>Bardo</option>
+                            <option>Chierico</option>
+                            <option>Druido</option>
+                            <option>Guerriero</option>
+                            <option>Ladro</option>
+                            <option>Mago</option>
+                            <option>Monaco</option>
+                            <option>Paladino</option>
+                            <option>Ranger</option>
+                            <option>Stregone</option>
+                            <option>Warlock</option>
+                            <option>Artefice</option>
+                            <option>Altro</option>
+                        </select>
+                    </div>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div id="end_select_bac" class="wrap-input100 input100-select">
+                    <span class="label-input100">Background</span>
+                    <div>
+                        <select id="background_pg" class="selection-2" name="background" onchange="ceck_empy()">
+                            <option>Scegli Background</option>
+                            <option>Accolito</option>
+                            <option>Ciarlatano</option>
+                            <option>Criminale</option>
+                            <option>Intrattenitore</option>
+                            <option>Eroe del Popolo</option>
+                            <option>Gladiatore</option>
+                            <option>Eremita</option>
+                            <option>Cavaliere</option>
+                            <option>Nobile</option>
+                            <option>Forestiero</option>
+                            <option>Pirata</option>
+                            <option>Saggio</option>
+                            <option>Marinaio</option>
+                            <option>Soldato</option>
+                            <option>Modello</option>
+                            <option>Artigiano di Gilda</option>
+                            <option>Mercante di Gilda</option>
+                            <option>Altro</option>
+                        </select>
+                    </div>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" style="height: 90px;">
+                    <span class="label-input100">Statistiche</span><br>
+                    <div style="float:left; margin-left: 5px;">
+                        <p style="width: auto;float: left;color: black;"><b>Forza:</b></p>
+                        <input id="forza_pg" type='number' class="label-input150" style="margin-left: 67px" ; name="forza" value="0">
+                    </div>
+                    <div style="float:left; margin-left: 10px;">
+                        <p style="width: auto;float: left;color: black;"><b>Destrezza:</b></p>
+                        <input id="destrezza_pg" type='number' class="label-input150" name="destrezza" value="0">
+                    </div>
+                    <div style="float:left; margin-left: 10px;">
+                        <p style="width: auto;float: left;color: black;"><b>Costituzione:</b></p>
+                        <input id="costituzione_pg" type='number' class="label-input150" name="costituzione" value="0">
+                    </div><br>
+                    <div style="float:left; margin-left: 5px;">
+                        <p style="width: auto;float: left;color: black;"><b>Intelligenza:</b></p>
+                        <input id="intelligenza_pg" type='number' class="label-input150" name="intelligenza" value="0">
+                    </div>
+                    <div style="float:left; margin-left: 10px;">
+                        <p style="width: auto;float: left;color: black; margin-right: 1px;"><b>Saggezza:</b></p>
+                        <input id="saggezza_pg" type='number' class="label-input150" name="saggezza" value="0">
+                    </div>
+                    <div style="float:left; margin-left: 10px;">
+                        <p style="width: auto;float: left;color: black;"><b>Carisma:</b></p>
+                        <input id="carisma_pg" type='number' class="label-input150" style="margin-left: 50px" ; name="carisma"
+                            value="0">
+                    </div>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input">
+                    <span class="label-input100">URL Avatar PG</span>
+                    <input id="avatar_pg" type="url" style="border: none" class="input100" type="text" name="url_avatar"
+                        placeholder="Inserire URL della Immagine Avatar">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input">
+                    <span class="label-input100">Descrizione</span>
+                    <textarea id="descrizone" style="min-height: 100px; height: auto; border: none" rows='4'
+                        data-min-rows='4' maxlength="2048" class="autoExpand" type="text" name="descrizone"
+                        placeholder="Decrizione personaggio"></textarea>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="monete">
+                    <span class="label-input100">Monete</span>
+                    <div>
+                        <p style="width: 50px;float: left;color: black"><b>Oro:</b></p>
+                        <input id="money_pg" type='number' class="label-input150" name="money" value="0">mo
+                    </div>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div id="Inventori_Container" class="wrap-input100 validate-input" data-validate="Message is required">
+                    <span class="label-input100">Inventario</span>
+                    <input style="visibility: hidden;" id="index_obj" name="index_obj" value="0">
+                    <ul id="Inventori_list"></ul>
+                    <div class="container-contact100-form-btn">
+                        <div style="width: 120px" class="wrap-contact100-form-btn">
+                            <div class="contact100-form-bgbtn"></div>
+                            <button class="contact100-form-btn" type="button" id="add_object">
+                                <span>
+                                    <b style="font-size: 50px">+</b>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <span class="focus-input100"></span>
+                </div>
+
+            </form>
+            <div class="container-contact120-form-btn">
+                <div class="wrap-contact120-form-btn">
+                    <div class="contact120-form-bgbtn"></div>
+                    <button id="btn_cancel" class="contact120-form-btn" onclick="cancel()">
+                        <span>
+                            Annulla
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+
+    <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/vendor/animsition/js/animsition.min.js"></script>
+    <script src="/vendor/bootstrap/js/popper.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/vendor/select2/select2.min.js"></script>
+    <script>
+        $(".selection-2").select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $('#dropDownSelect1')
+        });
+    </script>
+    <script src="/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="/vendor/countdowntime/countdowntime.js"></script>
+    <script src="/js/main.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-23581568-13');
+    </script>
+    <script>
+        function getScrollHeight(elm) {
+            var savedValue = elm.value
+            elm.value = ''
+            elm._baseScrollHeight = elm.scrollHeight
+            elm.value = savedValue
+        }
+
+        function onExpandableTextareaInput({ target: elm }) {
+            // make sure the input event originated from a textarea and it's desired to be auto-expandable
+            if (!elm.classList.contains('autoExpand') || !elm.nodeName == 'TEXTAREA') return
+
+            var minRows = elm.getAttribute('data-min-rows') | 0, rows;
+            !elm._baseScrollHeight && getScrollHeight(elm)
+
+            elm.rows = minRows
+            rows = Math.ceil((elm.scrollHeight - elm._baseScrollHeight) / 16)
+            elm.rows = minRows + rows
+        }
+
+
+        // global delegated event listener
+        document.addEventListener('input', onExpandableTextareaInput)
+    </script>
+    <script src="/models/Oggetto_inventario.js"></script>
+    <script src="/js/controll_empty.js"></script>
+    <script>
+        function cancel() {
+            var domanda = confirm("Sei sicuro di voler Annullare?");
+            if (domanda === true) {
+                location.href = '/dashboard';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -2,3 +2,4 @@ PGM_web.code-workspace
 .env
 node_modules/
 package-lock.json
+WEB_gdr_V2/

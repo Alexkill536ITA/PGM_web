@@ -1,86 +1,143 @@
 <!DOCTYPE html>
-<html lang="it">
+<html style="font-size: 16px;" lang="it">
 
 <head>
-    <title>Tisifea Dashboard</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" type="image/jpg" href="images/Logo_bot.jpg" />
-    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
-    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
-    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" type="text/css" href="/css/util.css">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Dashboard">
+  <meta name="description" content="">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <title>Dashboard</title>
+  <link rel="icon" type="image/jpg" href="images/Logo_bot.jpg">
+  <link rel="stylesheet" href="../css/nicepage.css" media="screen">
+  <link rel="stylesheet" href="../css/Dashboard.css" media="screen">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <script class="u-script" type="text/javascript" src="../js/jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="../js/nicepage.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="../js/copy_clipboard.js"></script>
+  <meta name="generator" content="Nicepage 3.16.0, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"url": "/",
+		"logo": "/images/stemma_gilda_f.png"
+}</script>
+  <meta property="og:title" content="Dashboard">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#478ac9">
+  <link rel="canonical" href="/">
+  <meta property="og:url" content="index.hbs">
 </head>
-<body>
-    <div class="navbar navbar-expand-sm fixed-top">
-        <div class="container-contact100-form-btn">
-            <div class="wrap-contact100-form-btn">
-                <div class="contact100-form-bgbtn"></div>
-                <form method="POST" action="/logout">
-                    <button class="contact100-form-btn">
-                        <span>
-                            Logout
-                        </span>
-                    </button>
-                </form>
-            </div>
+
+<body class="u-body">
+  <header class="u-border-2 u-border-grey-75 u-clearfix u-header u-sticky u-white u-header" id="sec-8d3a">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <a href="/" class="u-image u-logo u-image-1" data-image-width="2000" data-image-height="1333">
+        <img src="/images/stemma_gilda_f.png" class="u-logo-image u-logo-image-1" data-image-width="64">
+      </a>
+      <nav class="u-align-right u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+            href="#">
+            <svg>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <defs>
+                <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
+                  <rect y="1" width="16" height="2"></rect>
+                  <rect y="7" width="16" height="2"></rect>
+                  <rect y="13" width="16" height="2"></rect>
+                </symbol>
+              </defs>
+            </svg>
+          </a>
         </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-spacing-30 u-unstyled u-nav-1">
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="/" style="padding: 10px 0px;">Home</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="BlogPost.html" style="padding: 10px 0px;">BlogPost</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="/login" style="padding: 10px 0px;">Dashboard</a>
+            </li>
+            <li class="u-nav-item">
+              <form method="POST" action="/logout">
+                <button
+                  class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                  type="submit" style="padding: 10px 0px;">Logout</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/" style="padding: 10px 0px;">Home</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="BlogPost.html"
+                    style="padding: 10px 0px;">BlogPost</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/login"
+                    style="padding: 10px 0px;">Dashboard</a>
+                </li>
+                <li class="u-nav-item">
+                  <form method="POST" action="/logout">
+                    <button class="u-button-style u-nav-link" type="submit" style="padding: 10px 0px;">Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
     </div>
-    <div id="body" class="container-contact100">
-        <div class="wrap-contact150">
-            <span class="contact100-form-title">
-                Dashboard
-            </span>
-            {{#if message_suces}}
-					<h4 class="alert alert-success mt-4">{{message_suces}}</h4>
-			{{/if}}
-            {{#if message_warn}}
-					<h4 class="alert alert-warning mt-4">{{message_warn}}</h4>
-			{{/if}}
-            {{#if message_error}}
-					<h4 class="alert alert-danger mt-4">{{message_error}}</h4>
-			{{/if}}
-                <table style="border-spacing: 10px; margin-bottom: 25px;">
-                    <tr>
-                        <td>
-                            <p style="font-size: 20px; width: 280px; margin-right: 200px;">Seleziona scheda:</p>
-                        </td>
-                        <td>
-                            <div style="float: left; margin-left: 80px;width: 130px; max-height: 50px" class="wrap-contact100-form-btn">
-                                <div class="contact100-form-bgbtn"></div>
-                                <form method="POST" action="/insert/make">
-                                    <button class="contact100-form-btn" id="crea_scheda" name="crea_scheda" type="submit">
-                                        <span>
-                                            Crea Scheda
-                                        </span>
-                                    </button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <div class="wrap-contact100-form-btn" style="margin-bottom: 25px;">
-                    <div class="contact100-form-bgbtn"></div>
-                    <form method="POST" action="/dashboard">
-                        <button class="contact100-form-btn" id="crea_scheda" name="crea_scheda" type="submit">
-                            <span>
-                                Aggiorna
-                            </span>
-                        </button>
-                    </form>
-                </div>
-                <table id="list_PG" style="border-spacing: 10px;">
-                    {{#if list_pg}}
-                        <script>
-                            const root_element = document.getElementById('list_PG');
-                            function cancell_create(id_scheda, nome_pg) {
-                                var tempplate = `<div id="alert_cancell">
+  </header>
+
+  <section class="u-align-center u-clearfix u-image u-section-1" id="sec-5507" data-image-width="400"
+    data-image-height="265">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div
+        class="u-align-center u-container-style u-expanded-width u-group u-radius-25 u-shape-round u-white u-group-1">
+        <div class="u-container-layout u-valign-middle u-container-layout-1">
+          <h1 class="u-align-center u-text u-text-1">Dashboard</h1>
+          {{#if message_suces}}
+            <h4 class="u-align-center u-text u-text-1 alert alert-success mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message_suces}}</h4>
+          {{/if}}
+          {{#if message_warn}}
+            <h4 class="u-align-center u-text u-text-1 alert alert-warning mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">{{message_warn}}</h4>
+          {{/if}}
+          {{#if message_error}}
+            <h4 class="u-align-center u-text u-text-1 alert alert-danger mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message_error}}</h4>
+          {{/if}}
+          <form action="/insert/make" method="POST">
+            <div class="u-align-center u-form-group u-form-submit">
+              <button type="submit"
+                class="custom_button">Crea Scheda<br>
+              </a>
+            </button>
+            </div>
+          </form>
+          <div class="u-align-center u-expanded-width u-list u-list-1">
+            <div id="root_div_list" class="u-repeater u-repeater-1">
+              {{#if list_pg}}
+              <script>
+                const root_element = document.getElementById('root_div_list');
+                function cancell_create(id_scheda, nome_pg) {
+                  var tempplate = `<div id="alert_cancell">
                                     <div id="alert_cancell_are">
                                         <div  class="wrap-contact150">
                                             <span class="contact100-form-title">
@@ -91,13 +148,12 @@
                                                 <div class="wrap-input100">
                                                     <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="id_scheda_delete" name="id_scheda_delete" value="${id_scheda}">
                                                     <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="nome_delete" name="nome_delete" value="${nome_pg}">
-                                                    <input style="border: none;" class="input100" type="text" id="check_delete" name="check_delete" placeholder="Inserire Nome PG">
-                                                    <span class="focus-input100"></span>
+                                                    <input style="border: none;" class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" type="text" id="check_delete" name="check_delete" placeholder="Inserire Nome PG">
                                                 </div>
                                                 <div class="container-contact100-form-btn">
                                                     <div class="wrap-contact100-form-btn">
                                                     <div class="contact100-form-bgbtn"></div>
-                                                        <button id="btn_sub" class="contact100-form-btn" submit="submit" >
+                                                        <button id="btn_sub" class="custom_button_del" submit="submit" >
                                                             <span>
                                                                 Elimina
                                                             </span>
@@ -108,7 +164,7 @@
                                             <div  class="container-contact120-form-btn">
                                                 <div class="wrap-contact120-form-btn">
                                                     <div class="contact120-form-bgbtn"></div>
-                                                    <button id="btn_cancel" class="contact120-form-btn" onclick="cancell_destroy()">
+                                                    <button id="btn_cancel" class="custom_button" onclick="cancell_destroy()">
                                                         <span>
                                                             Annulla
                                                         </span>
@@ -118,81 +174,64 @@
                                         </div>
                                     </div>
                                 </div>`;
-                                root_element.insertAdjacentHTML('afterend', tempplate);
-                            }
-                            function cancell_destroy() {
-                                var element = document.getElementById('alert_cancell');
-                                element.remove();
-                            }
-                            var max = "{{list_pg}}";
-                            var id_scheda_temp = "{{id}}";
-                            var name_temp = "{{name}}";
-                            var id_scheda = id_scheda_temp.split(",");
-                            var name_pg = name_temp.split(",");
-                            for (let index = 0; index<max; index++) {
-                                var list_pg = `
-                                        <tr id="Scheda_${index}">
-                                            <td>
-                                                <p style="width: 280px; margin-right: 10px;"><b>Id Scheda:</b> ${id_scheda[index]}</p>
-                                            </td>
-                                            <td>
-                                                <p style="width: 255px; margin-right: 10px;"><b>Nome PG:</b> ${name_pg[index]}</p>
-                                            </td>
-                                            <td>                     
-                                                <button  class="button_del" onclick="cancell_create('${id_scheda[index]}','${name_pg[index]}')">
-                                                    <i class="fa fa-trash m-l-7" aria-hidden="true"></i>
-                                                 </button>
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <form method="POST" action="/edit/edit" style="dispaly= block; felx-wrap: wrap;">
-                                                        <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="id_scheda_edit" name="id_scheda_edit" value="${id_scheda[index]}">
-                                                        <button style="margin-right: 0px;" class="button_opt">
-                                                            <i class="fa fa-pencil-square-o m-l-7" aria-hidden="true"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td><br>
-                                        </tr>                                        
-                                    `;
-                                root_element.insertAdjacentHTML('beforeend', list_pg);
-                            }
-                        </script>
-                    {{/if}}
-                </table>
+                  root_element.insertAdjacentHTML('afterend', tempplate);
+                }
+                function cancell_destroy() {
+                  var element = document.getElementById('alert_cancell');
+                  element.remove();
+                }
+                var max = "{{list_pg}}";
+                var id_scheda_temp = "{{id}}";
+                var name_temp = "{{name}}";
+                var avatar_temp = "{{avatar_pg}}";
+                var id_scheda = id_scheda_temp.split(",");
+                var name_pg = name_temp.split(",");
+                var avatar_pg = avatar_temp.split(",");
+                for (let index = 0; index < max; index++) {
+                  var list_pg = `
+                  <div id="Scheda_${index}" class="u-align-center u-container-style u-list-item u-repeater-item">
+                    <div class="u-container-layout u-similar-container u-valign-middle-xl u-container-layout-2">
+                      <div alt="" class="u-align-center u-image u-image-circle u-image-1" style="background-image: url('${avatar_pg[index]}')" data-image-width="2000"
+                        data-image-height="1333"></div>
+                      <h3 class="u-text u-text-2">${name_pg[index]}</h3>
+                      <div class="u-border-1 u-border-grey-dark-1 u-expanded-width u-line u-line-horizontal u-line-1"></div>
+                      <form method="POST" action="/edit/edit">
+                        <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="id_scheda_edit" name="id_scheda_edit" value="${id_scheda[index]}">
+                        <button type="submit"
+                          class="custom_button">VEDI SCHEDA</button>
+                      </form>
+                      <div style="float:left;>
+                        <button type="submit" onclick="copiy_text('${id_scheda[index]}','${name_pg[index]}')"
+                          class="custom_button_copy" style="">
+                            Copia ID Scheda <i class="fa fa-files-o m-l-7" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <div style="float:left;>
+                        <button type="submit" onclick="cancell_create('${id_scheda[index]}','${name_pg[index]}')"
+                          class="custom_button_del">
+                            Elimina <i class="fa fa-trash m-l-7" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>`;
+                  root_element.insertAdjacentHTML('beforeend', list_pg);
+                }
+              </script>
+              {{/if}}
+
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </section>
 
-    <div id="dropDownSelect1"></div>
-
-    <!--===============================================================================================-->
-    <!-- <script src="routes/dashboard.js"></script> -->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
-    <script>
-        $(".selection-2").select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $('#dropDownSelect1')
-        });
-    </script>
-    <script src="vendor/daterangepicker/moment.min.js"></script>
-    <script src="vendor/daterangepicker/daterangepicker.js"></script>
-    <script src="vendor/countdowntime/countdowntime.js"></script>
-    <script src="js/main.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    {{!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script> --}}
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-23581568-13');
-    </script>
-
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-7fbf">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1">Copyright 2020-2021 Alexkill536ITA - All Rights Reserved to
+        Bjarka Energy®.</p>
+    </div>
+  </footer>
 </body>
+
 </html>

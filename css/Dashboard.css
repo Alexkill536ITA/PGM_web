@@ -1,0 +1,366 @@
+.u-section-1 {
+  background-image: url("/images/Mappa_di_Tisifea.jpg");
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 100vh;
+}
+
+.u-section-1 .u-group-1 {
+  min-height: 509px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 30px 30px 27px;
+}
+
+.u-section-1 .u-text-1 {
+  font-weight: 700;
+  width: 241px;
+  margin: 0 auto;
+}
+
+.u-section-1 .u-btn-1 {
+  align-self: center;
+  background-image: none;
+  border-style: solid;
+  font-weight: 700;
+  margin: 11px auto 0;
+}
+
+.u-section-1 .u-list-1 {
+  grid-template-rows: auto;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.u-section-1 .u-repeater-1 {
+  grid-auto-columns: 33.3333%;
+  grid-template-columns: repeat(3, 33.3333%);
+  min-height: 317px;
+  grid-gap: 0px;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 30px 30px 0;
+}
+
+.u-section-1 .u-image-1 {
+  height: 92px;
+  width: 92px;
+  background-position: 50% 50%;
+  margin: 0 auto;
+}
+
+.u-section-1 .u-text-2 {
+  width: 154px;
+  margin: 20px auto 0;
+}
+
+.u-section-1 .u-line-1 {
+  transform-origin: left center;
+  margin: 30px auto 0;
+}
+
+.u-section-1 .u-btn-2 {
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  border-style: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: none;
+  margin: 20px auto 4px;
+}
+
+.u-section-1 .u-container-layout-3 {
+  padding: 30px 30px 0;
+}
+
+.u-section-1 .u-image-2 {
+  height: 92px;
+  width: 92px;
+  background-position: 50% 50%;
+  margin: 0 auto;
+}
+
+.u-section-1 .u-text-3 {
+  width: 154px;
+  margin: 20px auto 0;
+}
+
+.u-section-1 .u-line-2 {
+  transform-origin: left center;
+  margin: 30px auto 0;
+}
+
+.u-section-1 .u-btn-3 {
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  border-style: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: none;
+  margin: 20px auto 4px;
+}
+
+.u-section-1 .u-container-layout-4 {
+  padding: 30px 30px 0;
+}
+
+.u-section-1 .u-image-3 {
+  height: 92px;
+  width: 92px;
+  background-position: 50% 50%;
+  margin: 0 auto;
+}
+
+.u-section-1 .u-text-4 {
+  width: 154px;
+  margin: 20px auto 0;
+}
+
+.u-section-1 .u-line-3 {
+  transform-origin: left center;
+  margin: 30px auto 0;
+}
+
+.u-section-1 .u-btn-4 {
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  border-style: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: none;
+  margin: 20px auto 4px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-text-1 {
+    width: 240px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    grid-auto-columns: 33.333333333333336%;
+    grid-template-columns: repeat(3, 33.333333333333336%);
+    min-height: 258px;
+  }
+
+  .u-section-1 .u-line-1 {
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-1 .u-btn-2 {
+    margin-bottom: 0;
+    height: 38px;
+    padding: 8px 26px;
+  }
+
+  .u-section-1 .u-line-2 {
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-1 .u-btn-3 {
+    margin-bottom: 0;
+    height: 38px;
+    padding: 8px 26px;
+  }
+
+  .u-section-1 .u-line-3 {
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-1 .u-btn-4 {
+    margin-bottom: 0;
+    height: 38px;
+    padding: 8px 26px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-repeater-1 {
+    grid-auto-columns: 50%;
+    grid-template-columns: repeat(2, 50%);
+    min-height: 581px;
+  }
+
+  .u-section-1 .u-btn-2 {
+    width: 99px;
+  }
+
+  .u-section-1 .u-btn-3 {
+    width: 99px;
+  }
+
+  .u-section-1 .u-btn-4 {
+    width: 99px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1076px;
+  }
+
+  .u-section-1 .u-group-1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    grid-auto-columns: 100%;
+    grid-template-columns: repeat(1, 100%);
+    grid-gap: 20px;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-container-layout-3 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-container-layout-4 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1009px;
+  }
+
+  .u-section-1 .u-group-1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    grid-template-columns: 100%;
+  }
+}
+
+.custom_button{
+  background-color: black;
+  color: white;
+  border-width: 2px;
+  border-radius: 50px !important;
+  letter-spacing: 1px;
+  border-style: solid;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: none;
+  width: 100%;
+  border-color: #000000 !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
+  transition-duration: 0.1s;
+}
+
+.custom_button:hover{
+  background-color: white;
+  color: black;
+}
+
+.custom_button_del {
+	background-color: red;
+  color: white;
+  border-width: 2px;
+  border-radius: 50px !important;
+  letter-spacing: 1px;
+  border-style: solid;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: none;
+  width: 100%;
+  border-color: #000000 !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 10px;
+  transition-duration: 0.1s;
+}
+.custom_button_del:hover {
+	background-color:#c20000;
+}
+.button_del:active {
+	position:relative;
+	top:1px;
+}
+
+.custom_button_copy {
+	background-color: rgb(144, 212, 41);
+  color: white;
+  border-width: 2px;
+  border-radius: 50px !important;
+  letter-spacing: 1px;
+  border-style: solid;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: none;
+  width: 100%;
+  border-color: #000000 !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 10px;
+  transition-duration: 0.1s;
+}
+.custom_button_copy:hover {
+	background-color: green;
+}
+.custom_button_copy:active {
+	position:relative;
+	top:1px;
+}
+
+#alert_cancell {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.7);
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  text-shadow: none;
+}
+
+#alert_cancell_are{
+  position:absolute;
+  width: 800px;
+  height: 600px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.wrap-contact150 {
+  width: auto;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 42px 55px 45px 55px;
+}
