@@ -1,3 +1,7 @@
+.border_custom{
+  border: 2px solid black;
+}
+
 .u-section-1 {
   background-image: url("/images/Mappa_di_Tisifea.jpg");
 }

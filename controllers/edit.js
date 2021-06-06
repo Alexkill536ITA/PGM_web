@@ -35,14 +35,14 @@ exports.modifica_sheda = (req, res) => {
                         cursor.then(function (results) {
                             if (results == null) {
                                 res.render('dashboard', { message_error: 'Errore nel ricerca profilo' });
-                            } else if (results.master == 1) {
+                            } else {
                                 if (isNaN(js_result['Money']) == true || js_result['Money'] == null) {
                                     money_ck = -9999;
                                 } else {
                                     money_ck = js_result['Money']
                                 }
 
-                                if (isNaN(js_result['Avatar']) == true || js_result['Avatar'] == null) {
+                                if (js_result['Avatar'] == "" || js_result['Avatar'] == null) {
                                     avatar_ck = "/images/stemma_gilda_f.png"
                                 } else {
                                     avatar_ck = js_result['Avatar']
@@ -70,40 +70,6 @@ exports.modifica_sheda = (req, res) => {
                                     object_note: obj_note,
                                     img_class: Chek_class(js_result['Classe']),
                                     img_class_sot: Chek_class(js_result['Sotto Classe'])
-                                });
-                            } else {
-                                if (isNaN(js_result['Money']) == true || js_result['Money'] == null) {
-                                    money_ck = -9999;
-                                } else {
-                                    money_ck = js_result['Money']
-                                }
-
-                                if (isNaN(js_result['Avatar']) == true || js_result['Avatar'] == null) {
-                                    avatar_ck = "/images/stemma_gilda_f.png"
-                                } else {
-                                    avatar_ck = js_result['Avatar']
-                                }
-
-                                res.render('scheda_temp_py.hbs', {
-                                    id_scheda: js_result['_id'],
-                                    level_pg: js_result['Livello'],
-                                    nome_pg: js_result['Nome_PG'],
-                                    avatar_pg: avatar_ck,
-                                    razza_pg: js_result['Razza'],
-                                    classe_pg: js_result['Classe'],
-                                    sotto_classe_pg: js_result['Sotto Classe'],
-                                    background_pg: js_result['Background'],
-                                    descrizone: js_result['Descrizione'],
-                                    forza_pg: js_result['Forza'],
-                                    destrezza_pg: js_result['Destrezza'],
-                                    costituzione_pg: js_result['Costituzione'],
-                                    intelligenza_pg: js_result['Intelligenza'],
-                                    saggezza_pg: js_result['Saggezza'],
-                                    carisma_pg: js_result['Carisma'],
-                                    monete_pg: js_result['Money'].toString(),
-                                    object_nome: obj_nome,
-                                    object_quan: obj_quan,
-                                    object_note: obj_note
                                 });
                             }
                         });
@@ -167,7 +133,7 @@ function Chek_class(classe) {
     } else if (classe == "Ranger") {
         return "/images/Ranger.png"
     } else if (classe == "Stregone") {
-        return "/images/Stregone.png"
+        return "/images/Altro.png"
     } else if (classe == "Warlock") {
         return "/images/Warlock.png"
     } else if (classe == "Artefice") {
