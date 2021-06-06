@@ -368,3 +368,8 @@
   overflow: hidden;
   padding: 42px 55px 45px 55px;
 }
+
+.custom_logout {
+  background: transparent;
+  border-style: none;
+}
