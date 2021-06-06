@@ -44,8 +44,10 @@ exports.modifica_sheda = (req, res) => {
 
                                 if (js_result['Avatar'] == "" || js_result['Avatar'] == null || js_result['Avatar'] == "Non Assegnata") {
                                     avatar_ck = "/images/stemma_gilda_f.png"
+                                    avatar_ck_url = "Non Assegnata"
                                 } else {
                                     avatar_ck = js_result['Avatar']
+                                    avatar_ck_url = js_result['Avatar']
                                 }
 
                                 res.render('scheda_temp.hbs', {
@@ -53,6 +55,7 @@ exports.modifica_sheda = (req, res) => {
                                     level_pg: js_result['Livello'],
                                     nome_pg: js_result['Nome_PG'],
                                     avatar_pg: avatar_ck,
+                                    avatar_pg_url: avatar_ck_url,
                                     razza_pg: js_result['Razza'],
                                     classe_pg: js_result['Classe'],
                                     sotto_classe_pg: js_result['Sotto Classe'],
