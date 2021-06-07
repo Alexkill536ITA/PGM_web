@@ -6,3 +6,4 @@ WEB_gdr_V2/
 .greenlockrc
 .greenlock.d/
 greenlock.d/
+app_local.js
