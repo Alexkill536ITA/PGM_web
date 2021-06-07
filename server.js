@@ -6,7 +6,7 @@ require("greenlock-express")
     .init({
         packageRoot: __dirname,
 
-        configDir: "./greenlock.d",
+        configDir: "./.greenlock.d",
 
         // contact for security and critical bug notices
         maintainerEmail: "alexkill536@libero.it",
