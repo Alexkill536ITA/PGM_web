@@ -83,5 +83,7 @@ app.use((err, req, res, next) => {
 //------------------------------------------------------//
 /*                     Set Demon                        */
 //------------------------------------------------------//
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, console.info('[ ' + color.blue('INFO') + '  ]' + ' Server Start on port [' + color.cyan(PORT) + ']'));
+console.info('[ ' + color.blue('INFO') + '  ]' + ' Server HTTP Start on port [' + color.cyan(80) + ']')
+console.info('[ ' + color.blue('INFO') + '  ]' + ' Server HTTPS Start on port [' + color.cyan(443) + ']')
+
+module.exports = app;

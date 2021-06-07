@@ -3,3 +3,6 @@ PGM_web.code-workspace
 node_modules/
 package-lock.json
 WEB_gdr_V2/
+.greenlockrc
+.greenlock.d/
+greenlock.d/
