@@ -20,7 +20,7 @@ exports.Crea_sheda = (req, res) => {
                     } else if (result.master == 1) {
                         res.render('insert_temp', { eanbele_count: 0 });
                     } else if (result.N_schede == 0) {
-                        res.render('insert_temp_py', { eanbele_count: 1 });
+                        res.render('insert_temp', { eanbele_count: 1 });
                     } else {
                         res.render('dashboard', { message_warn: 'Non puoi avere più di una scheda' });
                     }

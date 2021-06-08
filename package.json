@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon app_local.js"
   },
   "keywords": [],
   "author": "Alexkill536ITA",
