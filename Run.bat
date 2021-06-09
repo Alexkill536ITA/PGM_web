@@ -1,2 +1,2 @@
-start node.exe app.js
+start node.exe server.js
 exit
