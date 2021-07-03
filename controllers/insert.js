@@ -278,7 +278,7 @@ exports.Insert_db = (req, res) => {
                 if (on_sevice_db != 1) {
                     var erros = await methodDB.insert_db(PG_temp);
                     if (erros == 0) {
-                        if (master_user == 1) {
+                        if (master_user == 0) {
                             methodDB.settab_db("Utenti_web");
                             methodDB.N_schede_update(decoded.user);
                             res.redirect('/dashboard');
