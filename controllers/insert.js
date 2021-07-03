@@ -55,12 +55,12 @@ exports.Insert_db = (req, res) => {
         intelligenza,
         saggezza,
         carisma,
-        url_avatar
+        url_avatar,
     } = req.body;
-    const master_user = req.body.master_user;
 
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
+            const master_user = decoded.master
             if (name.length > 0 || razza != "Scegli Razza" || classe != "Scegli Classe" || background != "Scegli Background") {
                 var inventory = {
                     "pomata curativa": {
@@ -203,7 +203,7 @@ exports.Insert_db = (req, res) => {
                     money = 0;
                 }
 
-                if (master_user == 0) {
+                if (master_user == "0") {
                     const id_user = decoded.user.toString();
                     const nome_oggetto_obj = req.body.nome_oggetto;
                     const quantita_obj = req.body.quantita;
@@ -278,7 +278,7 @@ exports.Insert_db = (req, res) => {
                 if (on_sevice_db != 1) {
                     var erros = await methodDB.insert_db(PG_temp);
                     if (erros == 0) {
-                        if (master_user == 0) {
+                        if (master_user == "0") {
                             methodDB.settab_db("Utenti_web");
                             methodDB.N_schede_update(id_user);
                             res.redirect('/dashboard');
