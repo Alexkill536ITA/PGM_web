@@ -90,7 +90,8 @@ exports.exp_update =function (id_scheda, value_new) {
 }
 
 exports.N_schede_update = function (id_discord) {
-    collection.updateOne({ 'Id_discord': id_discord }, {$inc: {N_schede:+1}});
+    id = mongo.ObjectID(id_discord);
+    collection.updateOne({ '_id': id }, {$inc: {N_schede:+1}});
     return 0;
 }
 
