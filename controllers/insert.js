@@ -133,7 +133,7 @@ exports.Insert_db = (req, res) => {
                         sotto_classe_net = sot_classe_altro;
                     } else {
                         sotto_classe_net = "Altro";
-                    }  
+                    }
                 } else {
                     sotto_classe_net = sot_classe;
                 }
@@ -203,75 +203,75 @@ exports.Insert_db = (req, res) => {
                     money = 0;
                 }
 
-                if (master_user == "0") {
-                    const id_user = decoded.user.toString();
-                    const nome_oggetto_obj = req.body.nome_oggetto;
-                    const quantita_obj = req.body.quantita;
-                    const note_obj = req.body.note;
-                    const index_obj = req.body.index_obj;
+                // if (master_user == "0") {
+                //     const id_user = decoded.user.toString();
+                //     const nome_oggetto_obj = req.body.nome_oggetto;
+                //     const quantita_obj = req.body.quantita;
+                //     const note_obj = req.body.note;
+                //     const index_obj = req.body.index_obj;
 
-                    PG_temp = {
-                        "Nome_Discord": id_user,
-                        "Avatar": url_avatar_load,
-                        "Livello": 3,
-                        "Exp": 0,
-                        "Nome_PG": name,
-                        "Razza": razza_net,
-                        //"Sotto Razza": sotto_razza_net,
-                        "Classe": classe_net,
-                        "Sotto Classe": sotto_classe_net,
-                        "Background": Background_net,
-                        "Descrizione": descrizone,
-                        "Forza": forza_load,
-                        "Destrezza": destrezza_load,
-                        "Costituzione": costituzione_load,
-                        "Intelligenza": intelligenza_load,
-                        "Saggezza": saggezza_load,
-                        "Carisma": carisma_load,
-                        "Competenze": {},
-                        "Money": money,
-                        "Inventory": inventory
-                    }
+                //     PG_temp = {
+                //         "Nome_Discord": id_user,
+                //         "Avatar": url_avatar_load,
+                //         "Livello": 3,
+                //         "Exp": 0,
+                //         "Nome_PG": name,
+                //         "Razza": razza_net,
+                //         //"Sotto Razza": sotto_razza_net,
+                //         "Classe": classe_net,
+                //         "Sotto Classe": sotto_classe_net,
+                //         "Background": Background_net,
+                //         "Descrizione": descrizone,
+                //         "Forza": forza_load,
+                //         "Destrezza": destrezza_load,
+                //         "Costituzione": costituzione_load,
+                //         "Intelligenza": intelligenza_load,
+                //         "Saggezza": saggezza_load,
+                //         "Carisma": carisma_load,
+                //         "Competenze": {},
+                //         "Money": money,
+                //         "Inventory": inventory
+                //     }
 
-                    if (index_obj == 1) {
-                        inventory[nome_oggetto_obj] = {
-                            "Nome": nome_oggetto_obj,
-                            "Quantita": quantita_obj,
-                            "Note": note_obj
-                        }
-                    } else if (index_obj > 1) {
-                        for (let index = 0; index < index_obj; index++) {
-                            inventory[nome_oggetto_obj[index]] = {
-                                "Nome": nome_oggetto_obj[index],
-                                "Quantita": quantita_obj[index],
-                                "Note": note_obj[index]
-                            }
-                        }
-                    }
-                } else {
-                    PG_temp = {
-                        "Nome_Discord": decoded.user,
-                        "Avatar": url_avatar_load,
-                        "Livello": 3,
-                        "Exp": 0,
-                        "Nome_PG": name,
-                        "Razza": razza_net,
-                        //"Sotto Razza": sotto_razza_net,
-                        "Classe": classe_net,
-                        "Sotto Classe": sotto_classe_net,
-                        "Background": Background_net,
-                        "Descrizione": descrizone,
-                        "Forza": forza_load,
-                        "Destrezza": destrezza_load,
-                        "Costituzione": costituzione_load,
-                        "Intelligenza": intelligenza_load,
-                        "Saggezza": saggezza_load,
-                        "Carisma": carisma_load,
-                        "Competenze": {},
-                        "Money": money,
-                        "Inventory": inventory
-                    }
+                //     if (index_obj == 1) {
+                //         inventory[nome_oggetto_obj] = {
+                //             "Nome": nome_oggetto_obj,
+                //             "Quantita": quantita_obj,
+                //             "Note": note_obj
+                //         }
+                //     } else if (index_obj > 1) {
+                //         for (let index = 0; index < index_obj; index++) {
+                //             inventory[nome_oggetto_obj[index]] = {
+                //                 "Nome": nome_oggetto_obj[index],
+                //                 "Quantita": quantita_obj[index],
+                //                 "Note": note_obj[index]
+                //             }
+                //         }
+                //     }
+                // } else {
+                PG_temp = {
+                    "Nome_Discord": decoded.user,
+                    "Avatar": url_avatar_load,
+                    "Livello": 3,
+                    "Exp": 0,
+                    "Nome_PG": name,
+                    "Razza": razza_net,
+                    //"Sotto Razza": sotto_razza_net,
+                    "Classe": classe_net,
+                    "Sotto Classe": sotto_classe_net,
+                    "Background": Background_net,
+                    "Descrizione": descrizone,
+                    "Forza": forza_load,
+                    "Destrezza": destrezza_load,
+                    "Costituzione": costituzione_load,
+                    "Intelligenza": intelligenza_load,
+                    "Saggezza": saggezza_load,
+                    "Carisma": carisma_load,
+                    "Competenze": {},
+                    "Money": money,
+                    "Inventory": inventory
                 }
+                // }
 
                 var on_sevice_db = await methodDB.open_db();
                 methodDB.settab_db("Schede_PG");
