@@ -280,7 +280,7 @@ exports.Insert_db = (req, res) => {
                     if (erros == 0) {
                         if (master_user == 0) {
                             methodDB.settab_db("Utenti_web");
-                            methodDB.N_schede_update(decoded.user);
+                            methodDB.N_schede_update(id_user);
                             res.redirect('/dashboard');
                         } else {
                             res.redirect('/dashboard');
