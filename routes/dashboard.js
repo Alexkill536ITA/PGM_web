@@ -11,7 +11,7 @@ router.all('/dashboard', (req, res) => {
             var MongoClient = require('mongodb').MongoClient;
             var url = process.env.DATABASE_MONGDB;
 
-            await MongoClient.connect(url, function(err, db) {
+            await MongoClient.connect(url,{ useUnifiedTopology: true }, function(err, db) {
                 if (!err) { 
                     var dbo = db.db("Piccolo_Grande_Mondo");
                     var query = { Nome_Discord: decoded.user};
@@ -23,6 +23,11 @@ router.all('/dashboard', (req, res) => {
                                     var id_scheda = result[0]._id;
                                     var name_pg = result[0].Nome_PG;
                                     var list_max = result.length;
+                                    if (result[0].Avatar == "" || result[0].Avatar == null || result[0].Avatar == "Non Assegnata") {
+                                        avatar = "/images/stemma_gilda_f.png"
+                                    } else {
+                                        avatar = result[0].Avatar;
+                                    }
                                 } else {
                                     var id_scheda = [];
                                     var name_pg = [];

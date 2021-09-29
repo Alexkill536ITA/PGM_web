@@ -95,7 +95,7 @@
                 </li>
                 <li class="u-nav-item">
                   <form class="u-button-style u-nav-link" style="padding: 10px 0px;" method="POST" action="/logout">
-                    <button class="custom_logout" type="submit" >Logout</button>
+                    <button class="custom_logout" type="submit">Logout</button>
                   </form>
                 </li>
               </ul>
@@ -115,20 +115,22 @@
         <div class="u-container-layout u-valign-middle u-container-layout-1">
           <h1 class="u-align-center u-text u-text-1">Dashboard</h1>
           {{#if message_suces}}
-            <h4 class="u-align-center u-text u-text-1 alert alert-success mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message_suces}}</h4>
+          <h4 class="u-align-center u-text u-text-1 alert alert-success mt-4"
+            style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message_suces}}</h4>
           {{/if}}
           {{#if message_warn}}
-            <h4 class="u-align-center u-text u-text-1 alert alert-warning mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">{{message_warn}}</h4>
+          <h4 class="u-align-center u-text u-text-1 alert alert-warning mt-4"
+            style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">{{message_warn}}</h4>
           {{/if}}
           {{#if message_error}}
-            <h4 class="u-align-center u-text u-text-1 alert alert-danger mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message_error}}</h4>
+          <h4 class="u-align-center u-text u-text-1 alert alert-danger mt-4"
+            style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message_error}}</h4>
           {{/if}}
           <form action="/insert/make" method="POST">
             <div class="u-align-center u-form-group u-form-submit">
-              <button type="submit"
-                class="custom_button">Crea Scheda<br>
-              </a>
-            </button>
+              <button type="submit" class="custom_button">Crea Scheda<br>
+                </a>
+              </button>
             </div>
           </form>
           <div class="u-align-center u-expanded-width u-list u-list-1">
@@ -189,31 +191,31 @@
                 var avatar_pg = avatar_temp.split(",");
                 for (let index = 0; index < max; index++) {
                   var list_pg = `
-                  <div id="Scheda_${index}" class="u-align-center u-container-style u-list-item u-repeater-item">
-                    <div class="u-container-layout u-similar-container u-valign-middle-xl u-container-layout-2">
-                      <div alt="" class="border_custom u-align-center u-image u-image-circle u-image-1" style="background-image: url('${avatar_pg[index]}')" data-image-width="2000"
-                        data-image-height="1333"></div>
-                      <h3 class="u-text u-text-2">${name_pg[index]}</h3>
-                      <div class="u-border-1 u-border-grey-dark-1 u-expanded-width u-line u-line-horizontal u-line-1"></div>
-                      <form method="POST" action="/edit/edit">
-                        <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="id_scheda_edit" name="id_scheda_edit" value="${id_scheda[index]}">
-                        <button type="submit"
-                          class="custom_button">VEDI SCHEDA</button>
-                      </form>
-                      <div style="float:left;>
-                        <button type="submit" onclick='copiy_text("${id_scheda[index]}","${name_pg[index]}")'
-                          class="custom_button_copy" style="">
-                            Copia ID Scheda <i class="fa fa-files-o m-l-7" aria-hidden="true"></i>
-                        </button>
+                    <div id="Scheda_${index}" class="u-align-center u-container-style u-list-item u-repeater-item">
+                      <div class="u-container-layout u-similar-container u-valign-middle-xl u-container-layout-2">
+                        <div alt="" class="border_custom u-align-center u-image u-image-circle u-image-1" style="background-image: url('${avatar_pg[index]}')" data-image-width="2000"
+                          data-image-height="1333"></div>
+                        <h3 class="u-text u-text-2">${name_pg[index]}</h3>
+                        <div class="u-border-1 u-border-grey-dark-1 u-expanded-width u-line u-line-horizontal u-line-1"></div>
+                        <form method="POST" action="/edit/edit">
+                          <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="id_scheda_edit" name="id_scheda_edit" value="${id_scheda[index]}">
+                          <button type="submit"
+                            class="custom_button">VEDI SCHEDA</button>
+                        </form>
+                        <div style="float:left;>
+                          <button type="submit" onclick='copiy_text("${id_scheda[index]}","${name_pg[index]}")'
+                            class="custom_button_copy" style="">
+                              Copia ID Scheda <i class="fa fa-files-o m-l-7" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                        <div style="float:left;>
+                          <button type="submit" onclick='cancell_create("${id_scheda[index]}","${name_pg[index]}")'
+                            class="custom_button_del">
+                              Elimina <i class="fa fa-trash m-l-7" aria-hidden="true"></i>
+                          </button>
+                        </div>
                       </div>
-                      <div style="float:left;>
-                        <button type="submit" onclick='cancell_create("${id_scheda[index]}","${name_pg[index]}")'
-                          class="custom_button_del">
-                            Elimina <i class="fa fa-trash m-l-7" aria-hidden="true"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>`;
+                    </div>`;
                   root_element.insertAdjacentHTML('beforeend', list_pg);
                 }
               </script>
