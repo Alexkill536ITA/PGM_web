@@ -7,3 +7,4 @@ WEB_gdr_V2/
 .greenlock.d/
 greenlock.d/
 app_local.js
+template/*

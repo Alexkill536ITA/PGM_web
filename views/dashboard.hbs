@@ -150,7 +150,7 @@
                                                 <div class="wrap-input100">
                                                     <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="id_scheda_delete" name="id_scheda_delete" value="${id_scheda}">
                                                     <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="nome_delete" name="nome_delete" value="${nome_pg}">
-                                                    <input style="border: none;" class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" type="text" id="check_delete" name="check_delete" placeholder="Inserire Nome PG">
+                                                    <input id="Input_delete" style="border: none;" class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" type="text" id="check_delete" name="check_delete" placeholder="Inserire Nome PG">
                                                 </div>
                                                 <div class="container-contact100-form-btn">
                                                     <div class="wrap-contact100-form-btn">
@@ -177,6 +177,7 @@
                                     </div>
                                 </div>`;
                   root_element.insertAdjacentHTML('afterend', tempplate);
+                  document.getElementById('Input_delete').focus();
                 }
                 function cancell_destroy() {
                   var element = document.getElementById('alert_cancell');

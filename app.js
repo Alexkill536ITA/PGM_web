@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const metho_doverride = require('method-override');
 const { session } = require('passport');
+const jwt = require('jsonwebtoken');
 const app = express();
 
 //------------------------------------------------------//
@@ -20,7 +21,7 @@ dotenv.config({ path: './.env' });
 console.log("[ " + color.blue('INFO') + "  ] Start Process");
 console.log("[ " + color.blue('INFO') + "  ] Name Applications: " + color.yellow('GdrBot Web Server'));
 console.log("[ " + color.blue('INFO') + "  ] Authors: " + color.yellow('Alexkill536ITA'));
-console.log("[ " + color.blue('INFO') + "  ] Version Running: " + color.yellow("v1.0.30"));
+console.log("[ " + color.blue('INFO') + "  ] Version Running: " + color.yellow("v1.1.0"));
 console.log("[ " + color.blue('INFO') + "  ] Start Web Service...");
 app.use(express.static('./'));
 app.set('views', path.join(__dirname, 'views'));
@@ -58,6 +59,11 @@ app.use(cookieParser());
 app.use('/auth', require('./routes/auth'));
 app.use('/insert', require('./routes/insert'));
 app.use('/edit', require('./routes/edit'));
+app.use('/mission/make', require('./routes/dashboard-mission'));
+app.use('/mission/insert', require('./routes/dashboard-mission'));
+app.use('/mission/edit', require('./routes/dashboard-mission'));
+app.use(require('./routes/dashboard-mission.js'))
+app.use(require('./routes/Blogpost.js'));
 app.use(require('./routes/Login.js'));
 app.use(require('./routes/Register.js'));
 app.use(require('./routes/dashboard.js'));
@@ -66,7 +72,21 @@ app.use(require('./routes/edit.js'));
 
 // Get
 app.get('/', (req, res) => {
-    res.render('index.hbs');
+    const token = req.cookies['jwt'];
+    jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
+        if (!err) {
+            var loged = true
+            res.render('index.hbs', {loged:loged});
+        } else {
+            var loged = false
+            res.render('index.hbs', {loged:loged});
+        }
+    });
+});
+
+// Error 401
+app.use((req, res, next) => {
+    res.status(401).render('page401.hbs');
 });
 
 // Error 404

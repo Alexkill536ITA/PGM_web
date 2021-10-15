@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Dashboard">
+  <meta name="description" content="">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <title>Dashboard</title>
+  <link rel="icon" type="image/jpg" href="../images/Logo_bot.jpg">
+  <link rel="stylesheet" href="../css/nicepage.css" media="screen">
+  <link rel="stylesheet" href="../css/insert_mission.css" media="screen">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <script class="u-script" type="text/javascript" src="../js/jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="../js/nicepage.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="../js/copy_clipboard.js"></script>
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+  <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "",
+        "url": "/",
+        "logo": "../images/stemma_gilda_f.png"
+    }</script>
+  <meta property="og:title" content="Dashboard">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#478ac9">
+  <link rel="canonical" href="/">
+  <meta property="og:url" content="index.hbs">
+</head>
+
+<body class="u-body">
+  <header class="u-border-2 u-border-grey-75 u-clearfix u-header u-sticky u-white u-header" id="sec-8d3a">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <a href="#" class="u-image u-logo u-image-1" data-image-width="2000" data-image-height="1333">
+        <img src="../images/stemma_gilda_f.png" class="u-logo-image u-logo-image-1" data-image-width="64">
+      </a>
+      <nav class="u-align-right u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+            href="#">
+            <svg>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <defs>
+                <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
+                  <rect y="1" width="16" height="2"></rect>
+                  <rect y="7" width="16" height="2"></rect>
+                  <rect y="13" width="16" height="2"></rect>
+                </symbol>
+              </defs>
+            </svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-spacing-30 u-unstyled u-nav-1">
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="/" style="padding: 10px 0px;">Home</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="BlogPost.html" style="padding: 10px 0px;">BlogPost</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2  u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link  u-text-grey-90 u-text-hover-grey-90"
+                href="/login" style="padding: 10px 0px;">Dashboard</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90 active"
+                href="/dashboard-mission" style="padding: 10px 0px;">Missions</a>
+            </li>
+            <li class="u-nav-item">
+              <form method="POST" action="/logout">
+                <button
+                  class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                  type="submit" style="padding: 10px 0px;">Logout</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/" style="padding: 10px 0px;">Home</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="BlogPost.html"
+                    style="padding: 10px 0px;">BlogPost</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/login"
+                    style="padding: 10px 0px;">Dashboard</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/dashboard-mission"
+                    style="padding: 10px 0px;">Missions</a>
+                </li>
+                <li class="u-nav-item">
+                  <form class="u-button-style u-nav-link" style="padding: 10px 0px;" method="POST" action="/logout">
+                    <button class="custom_logout" type="submit">Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="u-align-center u-clearfix u-image u-section-1" id="sec-05f2" data-image-width="2000"
+    data-image-height="1333">
+    <form action="/mission/insert" method="POST">
+      <input id="type_insert" style="width: 0px;height 0px; visibility: hidden;" type="hidden" name="type_insert"
+        value="1">
+      <script>
+        const root_mission_element = document.getElementById('sec-05f2');
+        function cancell_create(id_missione, nome_missione) {
+          var tempplate = `<div id="alert_cancell">
+                                      <div id="alert_cancell_are">
+                                          <div  class="wrap-contact150">
+                                              <span class="contact100-form-title">
+                                                  Sei sicuro di volere cancellare La Missione?
+                                              </span>
+                                              <P>Questa azione non può essere annullata. Questo cancellerà definitivamente la Missione <b>${nome_missione}</b>\nSi prega di digitare <b>${nome_missione}</b> per confermare.</P><br>
+                                              <form method="POST" action="/mission/delete" style="dispaly= block; felx-wrap: wrap;">
+                                                  <div class="wrap-input100">
+                                                      <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="id_scheda_delete" name="id_scheda_delete" value="${id_missione}">
+                                                      <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="nome_delete" name="nome_delete" value="${nome_missione}">
+                                                      <input id="Input_delete" style="border: none;" class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" type="text" id="check_delete" name="check_delete" placeholder="Inserire Id Missone">
+                                                  </div>
+                                                  <div class="container-contact100-form-btn">
+                                                      <div class="wrap-contact100-form-btn">
+                                                      <div class="contact100-form-bgbtn"></div>
+                                                          <button id="btn_sub" class="custom_button_del_bis" submit="submit" >
+                                                              <span>
+                                                                  Elimina
+                                                              </span>
+                                                          </button>                                                
+                                                      </div>
+                                                  </div>
+                                              </form>
+                                              <div  class="container-contact120-form-btn">
+                                                  <div class="wrap-contact120-form-btn">
+                                                      <div class="contact120-form-bgbtn"></div>
+                                                      <button id="btn_cancel" class="custom_button_bis" onclick="cancell_destroy()">
+                                                          <span>
+                                                              Annulla
+                                                          </span>
+                                                      </button>    
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>`;
+          root_mission_element.insertAdjacentHTML('afterend', tempplate);
+          document.getElementById('Input_delete').focus();
+        }
+        function cancell_destroy() {
+          var element = document.getElementById('alert_cancell');
+          element.remove();
+        }
+      </script>
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-container-style u-expanded-width u-group u-radius-30 u-shape-round u-white u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <h1 class="u-align-center u-text u-text-1">Missione</h1>
+            <input id="id_mission" style="width: 0px;height 0px; visibility: hidden;" type="hidden" name="id_mission"
+              value="{{id_missione}}">
+            <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+              <div class="u-layout">
+                <div class="u-layout-col">
+                  <div class="u-size-30">
+                    <div class="u-layout-row">
+                      <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+                        <div class="u-container-layout u-container-layout-2">
+                          <h3 class="u-align-center-lg u-text u-text-2">Nome Missione</h3>
+                          <p id="nome_missione" class="u-text u-text-3 u-radius-5" name="nome_missione">{{ Nome }}</p>
+                        </div>
+                      </div>
+                      <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                        <div class="u-container-layout u-container-layout-3">
+                          <h3 class="u-text u-text-4">Player Rischiesti</h3>
+                          <input id="player_min_missione" class="u-text u-text-5 u-radius-5" type="number"
+                            name="player_min_missione" value="{{Player_min}}" placeholder="Inserire Numero Player">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-size-30">
+                    <div class="u-layout-row">
+                      <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-3">
+                        <div class="u-container-layout u-container-layout-4">
+                          <h3 class="u-text u-text-6">Data ora Missione</h3>
+                          <div
+                            class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xl u-text u-text-7">
+                            <input id="data_missione" name="data_missione" type="datetime-local"
+                              value="{{Data_ora_missione}}">
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="u-align-center u-align-center-sm u-align-center-xs u-container-style u-layout-cell u-size-30 u-layout-cell-4">
+                        <div class="u-container-layout u-container-layout-5">
+                          <h3 class="u-text u-text-8"> Data Scadenza</h3>
+                          <div class="u-align-center-lg u-align-center-xl u-text u-text-9">
+                            <input id="Scadenza_missione" name="Scadenza_missione" type="datetime-local"
+                              value="{{Data_scadenza}}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-clearfix u-expanded-width u-gutter-10 u-layout-wrap u-layout-wrap-2">
+              <div class="u-layout">
+                <div class="u-layout-row">
+                  <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-5">
+                    <div id="root_Select_level" class="u-container-layout u-container-layout-6">
+                      <h2 class="u-align-center u-text u-text-10">Select Level Player</h2>
+                      <script>
+                        var Select_level_temp = "{{ Select_level }}";
+                        var Select = Select_level_temp.split(",");
+                        const root_element = document.getElementById('root_Select_level');
+                        var tempplate = `<div class="u-align-center u-text u-text-11">
+                              <input id="Select_rame" type="checkbox" name="Select_rame" value="Rame" ${Select[0]}> Rame
+                            </div>
+                            <div class="u-align-center u-text u-text-12">
+                              <input id="Select_bronzo" type="checkbox" name="Select_bronzo" value="Bronzo" ${Select[1]}> Bronzo
+                            </div>
+                            <div class="u-align-center u-text u-text-13">
+                              <input id="Select_ferro" type="checkbox" name="Select_ferro" value="Ferro" ${Select[2]}> Ferro
+                            </div>
+                            <div class="u-align-center u-text u-text-14">
+                              <input id="Select_argento" type="checkbox" name="Select_argento" value="Argento" ${Select[3]}> Argento
+                            </div>
+                            <div class="u-align-center u-text u-text-15">
+                              <input id="Select_electrum" type="checkbox" name="Select_electrum" value="Electrum" ${Select[4]}> Electrum
+                            </div>
+                            <div class="u-align-center u-text u-text-16">
+                              <input id="Select_oro" type="checkbox" name="Select_oro" value="Oro" ${Select[5]}> Oro
+                            </div>
+                            <div class="u-align-center u-text u-text-17">
+                              <input id="Select_platino" type="checkbox" name="Select_platino" value="Platino" ${Select[6]}> Platino
+                            </div>
+                            <div class="u-align-center u-text u-text-18">
+                              <input id="Select_mithril" type="checkbox" name="Select_mithril" value="Mithril" ${Select[7]}> Mithril
+                            </div>
+                            <div class="u-align-center u-text u-text-19">
+                              <input id="Select_adamantio" type="checkbox" name="Select_adamantio" value="Adamantio" ${Select[8]}> Adamantio
+                            </div>`;
+                        root_element.insertAdjacentHTML('beforeend', tempplate);
+                      </script>
+
+                      <h2 class="u-align-center u-text u-text-20">Tag</h2>
+                      <div class="u-align-center u-text u-text-21">
+                        <input id="tag_missione" class="u-radius-5" type="text" name="tag_missione"
+                          placeholder="Aventura, Diplomazia" style="height: 100%; width: 100%;" rows='5'
+                          data-max-rows='5' maxlength="1024" value="{{tag}}">
+                      </div>
+                      <h2 class="u-align-center u-text u-text-22">Descrizione Breve</h2>
+                      <div class="u-align-center u-text u-text-23">
+                        <textarea id="descrizone_breve_missione" class="u-radius-5" type="text"
+                          name="descrizone_breve_missione" placeholder="Inserire Decrizione Missione Breve"
+                          style="height: 100%; width: 100%; max-height: 140px;"
+                          maxlength="124">{{Descrizione_breve}}</textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-6">
+                    <div class="u-container-layout u-valign-top u-container-layout-7">
+                      <img
+                        class="u-align-center u-border-2 u-border-grey-75 u-expanded-width u-image u-image-round u-radius-30 u-image-1"
+                        src="{{URL_Image}}" alt="" data-image-width="2000" data-image-height="1333">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-container-style u-expanded-width u-group u-group-2">
+              <div class="u-container-layout u-container-layout-8">
+                <h2 class="u-align-left u-text u-text-24">Avatar URL</h2>
+                <div>
+                  <input id="Url_missione" class="u-align-left u-text u-text-25 u-radius-5" style="width:100%;"
+                    type="text" name="Url_missione" placeholder="Inserire URL della Immagine" value="{{URL_Image}}">
+                </div>
+              </div>
+            </div>
+            <div class="u-container-style u-expanded-width u-group u-group-3">
+              <div class="u-container-layout u-container-layout-9">
+                <h2 class="u-text u-text-26">Dscrizione</h2>
+                <textarea id="descrizone_missione" style="min-height: 100px; width:100%; height: 90%;" rows='4'
+                  data-min-rows='4' maxlength="2048" class="autoExpand" type="text" name="descrizone_missione"
+                  placeholder="Decrizione Missione">{{Descrizione}}</textarea>
+              </div>
+            </div>
+            <div id="root_player_list">
+              {{#if Player_list}}
+              <h2 class="u-align-left u-text u-text-28">Lista Player</h2>
+              <div class="u-list u-list-1">
+                <div id="root_player" class="u-repeater u-repeater-1">
+                  <script>
+                    var root_element_player = document.getElementById('root_player');
+                    var max = "{{ Player_max }}";
+                    var nome_player_temp = "{{ Player_name }}";
+                    var disprezzo_temp = "{{ Player_priority }}";
+                    var Select_player_temp = "{{ Player_status }}";
+                    var nome_player = nome_player_temp.split(",");
+                    var disprezzo = disprezzo_temp.split(",");
+                    var Select_player = Select_player_temp.split(",");
+                    for (let index = 0; index < max; index++) {
+                      let Select_fin_1 = "";
+                      let Select_fin_2 = "";
+                      let Select_fin_3 = "";
+                      let Select_fin_4 = "";
+                      if (Select_player[index] == "Attesa") {
+                        Select_fin_1 = "selected"
+                      }
+                      if (Select_player[index] == "Accettato") {
+                        Select_fin_2 = "selected"
+                      }
+                      if (Select_player[index] == "Rifiutato") {
+                        Select_fin_3 = "selected"
+                      }
+                      if (Select_player[index] == "Riserva") {
+                        Select_fin_4 = "selected"
+                      }
+                      var list_players = `
+                          <div id="player_${index}" style="max-height: 324px; height: min-content;"
+                            class="u-border-2 u-border-grey-75 u-container-style u-list-item u-radius-30 u-repeater-item u-shape-round">
+                            <div class="u-container-layout u-similar-container u-container-layout-10">
+                              <p class="u-text u-text-29" >Nome PG:</p>
+                              <p id="player_name_${index}" name="player_name_${index}" class="u-text u-text-30">${nome_player[index]}</p>
+                              <p class="u-text u-text-31">Disprezzo:</p>
+                              <p class="u-text u-text-32">${disprezzo[index]}</p>
+                              <p class="u-text u-text-33" style="float: left; margin: 10px 0 0 0;">Status Accetazione:</p>
+                              <select id="status${index}" name="status${index}" style="width: 226px; margin: 10px 0 0 0; float: right;">
+                                <option value="Attesa" ${Select_fin_1}>Attesa</option>
+                                <option value="Accettato" ${Select_fin_2}>Accettato</option>
+                                <option value="Rifiutato" ${Select_fin_3}>Rifiutato</option>
+                                <option value="Riserva" ${Select_fin_4}>Riserva</option>
+                              </select>
+                            </div>
+                          </div>`;
+                      root_element_player.insertAdjacentHTML('beforeend', list_players);
+                    }
+                  </script>
+                </div>
+              </div>
+              {{/if}}
+            </div>
+            <button class="custom_button_del u-btn u-btn-1" style="display: inline-block;" type="button"
+              onclick='cancell_create("{{id_missione}}","{{ Nome }}")'>ELIMINA Missione</button>
+            <button class="custom_button_green custom_button_dimension" style="float: right; margin-left: 15px;"
+              type="submit">Salva
+              Modifiche</button>
+            <a class="custom_button custom_button_dimension" href="/dashboard-mission"
+              style=" float: right;">annulla</a>
+            <br>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-7fbf">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1">Copyright 2020-2021 Alexkill536ITA - All Rights Reserved to
+        Bjarka Energy®.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

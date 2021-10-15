@@ -66,6 +66,11 @@ exports.load_pg =function(id_discord, id_scheda) {
     return cursor;
 }
 
+exports.load_person = async function(id_discord) {
+    let cursor = await collection.findOne({'Id_discord': id_discord });
+    return cursor;
+}
+
 exports.find_Json = function(query) {
     return collection.findOne(query);
 }
