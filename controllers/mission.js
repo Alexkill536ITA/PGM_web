@@ -67,6 +67,7 @@ exports.Edit_mission_db = (req, res) => {
                         }
 
                         var Player_status_list = [];
+                        var Player_id_list = [];
                         var Player_nome_list = [];
                         var Player_priority = [];
                         for (let index = 0; index < result.Player_list.length; index++) {
@@ -87,6 +88,8 @@ exports.Edit_mission_db = (req, res) => {
                             } else {
                                 Player_priority[index] = "Null";
                             }
+
+                            Player_id_list[index] = result.Player_list[index]["ID_Discord"];
                         }
 
                         if (result.URL_Image == "" || result.URL_Image == null || result.URL_Image == "Non Assegnata") {
@@ -96,7 +99,7 @@ exports.Edit_mission_db = (req, res) => {
                         }
 
                         res.render('mission.hbs', {
-                            id_missione: result._id,
+                            id_missione: result['ID'],
                             Nome: result.Nome,
                             Player_min: result.Player_min,
                             Data_scadenza: GetFormatDate(result.Data_scadenza),
@@ -108,6 +111,7 @@ exports.Edit_mission_db = (req, res) => {
                             Descrizione: result.Descrizione,
                             Player_list: Player_list_temp,
                             Player_max: result.Player_list.length,
+                            Player_id: Player_id_list,
                             Player_name: Player_nome_list,
                             Player_priority: Player_priority,
                             Player_status: Player_status_list
@@ -152,11 +156,29 @@ exports.Insert_mission_db = (req, res) => {
                 Url_missione,
                 descrizone_missione
             } = req.body;
-            console.log(req.body)
 
             if (id_mission == undefined) {
                 id_mission = randomString(6, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
             }
+
+            var index = 0;
+            var player_list = [];
+            do {
+                var player_id = "player_id_" + String(index);
+                var player_name = "player_name_" + String(index);
+                var player_status = "status" + String(index);
+                object_player = {
+                    "ID_Discord": req.body[player_id],
+                    "Nome_PG": req.body[player_name],
+                    "Status": req.body[player_status]
+                }
+
+                if (req.body[player_id] != undefined) {
+                    player_list.push(object_player)
+                    index++;
+                }
+
+            } while (req.body[player_id] != undefined);
 
             var grado = [];
             if (Select_rame == "Rame") {
@@ -187,23 +209,6 @@ exports.Insert_mission_db = (req, res) => {
                 grado.push("Adamantio")
             }
 
-            var index = 0;
-            var List_player = [];
-            do {
-                var tep = "player_name_" + String(index)
-                var tep2 = "status" + String(index)
-                var player_name = req.body
-                var player_status = req.body
-                object_player = {
-                    "ID_Discord":"695228583727202305",
-                    "Nome_PG": player_name,
-                    "Status": player_status
-                }
-                List_player.push(object_player)
-                index++;
-            } while (player_list[index] != undefined);
-            console.log(player_list)
-
             template = {
                 "ID": id_mission,
                 "Status_missione": "Attivo",
@@ -219,10 +224,21 @@ exports.Insert_mission_db = (req, res) => {
                 "Esito_missione": "",
                 "Master_id": decoded.user,
                 "Player_min": player_min_missione,
-                "Player_list": List_player
+                "Player_list": player_list
             }
 
-            console.log(template);
+            var on_sevice_db = await methodDB.open_db();
+            if (on_sevice_db != 1) {
+                methodDB.settab_db("Registro_missioni");
+                if (type_insert == 0) {
+                    methodDB.insert_db(template);
+                } else {
+                    methodDB.mission_update(id_mission, template);
+                };
+                res.redirect('/dashboard-mission');
+            } else {
+                res.render('page500.hbs');
+            }
 
         } else {
             res.render('page401.hbs');

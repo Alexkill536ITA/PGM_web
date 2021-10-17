@@ -180,7 +180,9 @@
                       <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-1">
                         <div class="u-container-layout u-container-layout-2">
                           <h3 class="u-align-center-lg u-text u-text-2">Nome Missione</h3>
-                          <p id="nome_missione" class="u-text u-text-3 u-radius-5" name="nome_missione">{{ Nome }}</p>
+                          <input id="nome_missione" class="u-text u-text-3 u-radius-5" type="text" name="nome_missione"
+                            placeholder="Inserire Nome Missione" value="{{ Nome }}" hidden>
+                          <p class="u-text u-text-3 u-radius-5">{{ Nome }}</p>
                         </div>
                       </div>
                       <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-2">
@@ -309,9 +311,11 @@
                   <script>
                     var root_element_player = document.getElementById('root_player');
                     var max = "{{ Player_max }}";
+                    var player_id_temp = "{{ Player_id }}"
                     var nome_player_temp = "{{ Player_name }}";
                     var disprezzo_temp = "{{ Player_priority }}";
                     var Select_player_temp = "{{ Player_status }}";
+                    var player_id = player_id_temp.split(",");
                     var nome_player = nome_player_temp.split(",");
                     var disprezzo = disprezzo_temp.split(",");
                     var Select_player = Select_player_temp.split(",");
@@ -336,8 +340,10 @@
                           <div id="player_${index}" style="max-height: 324px; height: min-content;"
                             class="u-border-2 u-border-grey-75 u-container-style u-list-item u-radius-30 u-repeater-item u-shape-round">
                             <div class="u-container-layout u-similar-container u-container-layout-10">
+                              <input id="player_id_${index}" name="player_id_${index}" class="u-text u-text-30" value="${player_id[index]}" hidden>
                               <p class="u-text u-text-29" >Nome PG:</p>
-                              <p id="player_name_${index}" name="player_name_${index}" class="u-text u-text-30">${nome_player[index]}</p>
+                              <input id="player_name_${index}" name="player_name_${index}" class="u-text u-text-30" value="${nome_player[index]}" hidden>
+                              <p class="u-text u-text-30">${nome_player[index]}</p>
                               <p class="u-text u-text-31">Disprezzo:</p>
                               <p class="u-text u-text-32">${disprezzo[index]}</p>
                               <p class="u-text u-text-33" style="float: left; margin: 10px 0 0 0;">Status Accetazione:</p>

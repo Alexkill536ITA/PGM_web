@@ -76,10 +76,14 @@ app.get('/', (req, res) => {
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
             var loged = true
-            res.render('index.hbs', {loged:loged});
+            if (decoded.master == 1) {
+                mastr = true
+            }
+            res.render('index.hbs', {loged:loged, master:mastr});
         } else {
             var loged = false
-            res.render('index.hbs', {loged:loged});
+            var mastr = false
+            res.render('index.hbs', {loged:loged, master:mastr});
         }
     });
 });

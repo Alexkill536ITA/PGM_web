@@ -64,13 +64,28 @@
                 href="/" style="padding: 10px 0px;">Home</a>
             </li>
             <li class="u-nav-item"><a
-                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90 active"
                 href="/blogpost" style="padding: 10px 0px;">BlogPost</a>
             </li>
             <li class="u-nav-item"><a
                 class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
                 href="/login" style="padding: 10px 0px;">Dashboard</a>
             </li>
+            {{#if master}}
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="/dashboard-mission" style="padding: 10px 0px;">Missions</a>
+            </li>
+            {{/if}}
+            {{#if loged}}
+            <li class="u-nav-item">
+              <form method="POST" action="/logout">
+                <button
+                  class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                  type="submit" style="padding: 10px 0px;">Logout</button>
+              </form>
+            </li>
+            {{/if}}
           </ul>
         </div>
         <div class="u-custom-menu u-nav-container-collapse">
@@ -87,6 +102,18 @@
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/login"
                     style="padding: 10px 0px;">Dashboard</a>
                 </li>
+                {{#if master}}
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/dashboard-mission"
+                    style="padding: 10px 0px;">Missions</a>
+                </li>
+                {{/if}}
+                {{#if loged}}
+                <li class="u-nav-item">
+                  <form class="u-button-style u-nav-link" style="padding: 10px 0px;" method="POST" action="/logout">
+                    <button class="custom_logout" type="submit">Logout</button>
+                  </form>
+                </li>
+                {{/if}}
               </ul>
             </div>
           </div>

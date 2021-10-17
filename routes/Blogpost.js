@@ -1,8 +1,23 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 /* GET Home Page */
-router.get('/blogpost', async function(reg, res, next) {
+router.get('/blogpost', async function(req, res, next) {
+    const token = req.cookies['jwt'];
+    jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
+        if (!err) {
+            var loged = true
+            if (decoded.master == 1) {
+                mastr = true
+            }
+            res.render('blogpost', {loged:loged, master:mastr});
+        } else {
+            var loged = false
+            var mastr = false
+            res.render('blogpost', {loged:loged, master:mastr});
+        }
+    });
     // var MongoClient = require('mongodb').MongoClient;
     //         var url = process.env.DATABASE_MONGDB;
 
@@ -22,7 +37,6 @@ router.get('/blogpost', async function(reg, res, next) {
     //                 res.render('page500.hbs');
     //             }
     //         });
-    res.render('blogpost');
 });
 
 module.exports = router;
