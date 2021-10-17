@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const { MongoClient } = require("mongodb");
 const mongodb = require("mongodb");
 const methodDB = require("../mongodb_controll.js");
@@ -227,18 +228,20 @@ exports.Insert_mission_db = (req, res) => {
                 "Player_list": player_list
             }
 
-            var on_sevice_db = await methodDB.open_db();
-            if (on_sevice_db != 1) {
-                methodDB.settab_db("Registro_missioni");
-                if (type_insert == 0) {
-                    methodDB.insert_db(template);
-                } else {
-                    methodDB.mission_update(id_mission, template);
-                };
-                res.redirect('/dashboard-mission');
-            } else {
-                res.render('page500.hbs');
-            }
+
+            call_Discord_bot();
+            // var on_sevice_db = await methodDB.open_db();
+            // if (on_sevice_db != 1) {
+            //     methodDB.settab_db("Registro_missioni");
+            //     if (type_insert == 0) {
+            //         methodDB.insert_db(template);
+            //     } else {
+            //         methodDB.mission_update(id_mission, template);
+            //     };
+            //     res.redirect('/dashboard-mission');
+            // } else {
+            //     res.render('page500.hbs');
+            // }
 
         } else {
             res.render('page401.hbs');
@@ -306,4 +309,9 @@ function randomString(length, chars) {
     var result = '';
     for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
     return result;
+}
+
+function call_Discord_bot() {
+    const hook = new Discord.WebhookClient('899252118509199441', 'kjnOU3O5RiqAUuKblgKHy8ICoQZPoAgHGep9cn6n7wulCjZX54Jijtyf7-7SkMhvwY8J');
+    hook.send('&mission init ABC123');
 }
