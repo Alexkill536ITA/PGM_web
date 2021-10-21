@@ -162,6 +162,10 @@ exports.Insert_mission_db = (req, res) => {
                 id_mission = randomString(6, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
             }
 
+            if (Scadenza_missione == undefined || Scadenza_missione == null || Scadenza_missione == "") {
+                Scadenza_missione = new Date().getTime() - 1;
+            }
+
             var index = 0;
             var player_list = [];
             do {
@@ -273,7 +277,7 @@ exports.Delete_mission_db = async (req, res) => {
 }
 
 function GetFormatDate(String_date) {
-    let current_datetime = new Date(String_date,)
+    let current_datetime = new Date(String_date)
     var Month = current_datetime.getMonth() + 1
     var Day = current_datetime.getDate()
     var Hours = current_datetime.getHours()

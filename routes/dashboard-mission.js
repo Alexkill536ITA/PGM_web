@@ -25,7 +25,7 @@ router.all('/dashboard-mission', (req, res) => {
                                         var id_mission = result[0]._id;
                                         var name_mission = result[0].Nome;
                                         var Descrizione_breve = result[0].Descrizione_breve + "%new%,";
-                                        var Data_scadenza = result[0].Data_scadenza;
+                                        var Data_scadenza = format_date(result[0].Data_scadenza);
                                         var Player_min = result[0].Player_min;
                                         var Player_list = result[0].Player_list.length;
                                         var Player = "";
@@ -51,7 +51,7 @@ router.all('/dashboard-mission', (req, res) => {
                                             id_mission[index] = result[index]._id;
                                             name_mission[index] = result[index].Nome;
                                             Descrizione_breve[index] = result[index].Descrizione_breve + "%new%,";
-                                            Data_scadenza[index] = result[index].Data_scadenza;
+                                            Data_scadenza[index] = format_date(result[index].Data_scadenza);
                                             Player_min[index] = result[index].Player_min;
                                             Player_list[index] = result[index].Player_list.length;
                                             Player[index] = String(Player_list[index]) +"/" + String(Player_min[index]);
@@ -80,6 +80,22 @@ router.all('/dashboard-mission', (req, res) => {
     });
     // res.render('dashboard-mission.hbs');
 });
+
+function format_date(date_int) {
+    var today = new Date(date_int);
+    var year = today.getFullYear();
+    var month = today.getMonth();
+    var day = today.getDate();
+    month = String(parseInt(month)+1);
+    if (day < 10) {
+        day = "0" + day;
+    }
+    if (month < 10) {
+        month = "0" + month;
+    }
+    return day + "/" + month + "/" + year
+}
+
 
 router.post('/mission/make', Controller.Make_mission);
 router.post('/mission/edit', Controller.Edit_mission_db);
