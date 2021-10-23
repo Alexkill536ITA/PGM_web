@@ -31,6 +31,21 @@ exports.Edit_mission_db = (req, res) => {
                 var cursor = methodDB.serachbyid(id_serch);
                 cursor.then(async function (result) {
                     if (result != null) {
+
+                        var Status_enbele = false;
+                        var Status_execute = false;
+                        var Status_disable = false;
+                        var Enable_result = false;
+                        if (result.Status_missione == "enable") {
+                            Status_enbele = true;
+                        } else if (result.Status_missione == "execute") {
+                            Status_execute = true;
+                            Enable_result = true;
+                        } else {
+                            Status_disable = true;
+                            Enable_result = true;
+                        }
+
                         var Select_level_temp = ["", "", "", "", "", "", "", "", ""]
                         for (let index = 0; index < result.Grado.length; index++) {
                             if (result.Grado[index] == "Rame") {
@@ -101,6 +116,10 @@ exports.Edit_mission_db = (req, res) => {
 
                         res.render('mission.hbs', {
                             id_missione: result['ID'],
+                            Status_enbele: Status_enbele,
+                            Status_execute: Status_execute,
+                            Status_disable: Status_disable,
+                            Enable_result: Enable_result,
                             Nome: result.Nome,
                             Player_min: result.Player_min,
                             Data_scadenza: GetFormatDate(result.Data_scadenza),
@@ -110,6 +129,7 @@ exports.Edit_mission_db = (req, res) => {
                             Descrizione_breve: result.Descrizione_breve,
                             URL_Image: avatar,
                             Descrizione: result.Descrizione,
+                            Esito_missione: result.Esito_missione,
                             Player_list: Player_list_temp,
                             Player_max: result.Player_list.length,
                             Player_id: Player_id_list,
@@ -155,7 +175,9 @@ exports.Insert_mission_db = (req, res) => {
                 tag_missione,
                 descrizone_breve_missione,
                 Url_missione,
-                descrizone_missione
+                descrizone_missione,
+                esito_missione,
+                type_close
             } = req.body;
 
             if (id_mission == undefined) {
@@ -214,9 +236,15 @@ exports.Insert_mission_db = (req, res) => {
                 grado.push("Adamantio")
             }
 
+            if (esito_missione == undefined || esito_missione == null) {
+                var esito = "";
+            } else {
+                var esito = esito_missione;
+            }
+
             template = {
                 "ID": id_mission,
-                "Status_missione": "Attivo",
+                "Status_missione": "enable",
                 "Data_creazione": Date_now,
                 "Data_scadenza": Scadenza_missione,
                 "Data_ora_missione": data_missione,
@@ -226,26 +254,31 @@ exports.Insert_mission_db = (req, res) => {
                 "Descrizione_breve": descrizone_breve_missione,
                 "Grado": grado,
                 "URL_Image": Url_missione,
-                "Esito_missione": "",
+                "Esito_missione": esito,
                 "Master_id": decoded.user,
                 "Player_min": player_min_missione,
                 "Player_list": player_list
             }
 
-
-            call_Discord_bot();
-            // var on_sevice_db = await methodDB.open_db();
-            // if (on_sevice_db != 1) {
-            //     methodDB.settab_db("Registro_missioni");
-            //     if (type_insert == 0) {
-            //         methodDB.insert_db(template);
-            //     } else {
-            //         methodDB.mission_update(id_mission, template);
-            //     };
-            //     res.redirect('/dashboard-mission');
-            // } else {
-            //     res.render('page500.hbs');
-            // }
+            var on_sevice_db = await methodDB.open_db();
+            if (on_sevice_db != 1) {
+                methodDB.settab_db("Registro_missioni");
+                if (type_close == 1) {
+                    template['Status_missione'] = "disable";
+                    methodDB.mission_update(id_mission, template);
+                    call_Discord_bot('response', id_mission);
+                } else {
+                    if (type_insert == 0) {
+                        methodDB.insert_db(template);
+                    } else {
+                        methodDB.mission_update(id_mission, template);
+                    };
+                    call_Discord_bot('init', id_mission);
+                }
+                res.redirect('/dashboard-mission');
+            } else {
+                res.render('page500.hbs');
+            }
 
         } else {
             res.render('page401.hbs');
@@ -315,7 +348,7 @@ function randomString(length, chars) {
     return result;
 }
 
-function call_Discord_bot() {
-    const hook = new Discord.WebhookClient('899252118509199441', 'kjnOU3O5RiqAUuKblgKHy8ICoQZPoAgHGep9cn6n7wulCjZX54Jijtyf7-7SkMhvwY8J');
-    hook.send('&mission init ABC123');
+function call_Discord_bot(option, id_mission) {
+    const hook = new Discord.WebhookClient('901616598819950663', 'oN38giB7PjkL58Eo2Sv8zzjH4AtmrmjaegQHxFQeLi_APSKHjNS-22T67lg2RgxAfCt8');
+    hook.send('&mission ' + option + ' ' + id_mission);
 }

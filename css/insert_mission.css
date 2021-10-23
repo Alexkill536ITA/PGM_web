@@ -1239,6 +1239,23 @@
 	top:1px;
 }
 
+.custom_button_yello {
+	background-color: rgb(255, 255, 0) !important;
+  color: black !important;
+  border-width: 2px;
+  border-radius: 50px !important;
+  border-style: solid !important;
+  border-color: #000000 !important;
+  transition-duration: 0.1s !important;
+}
+.custom_button_yello:hover {
+	background-color: rgb(200, 200, 0) !important;
+}
+.custom_button_yello:active {
+	position:relative;
+	top:1px;
+}
+
 .custom_button_bis{
   background-color: black;
   color: white;
