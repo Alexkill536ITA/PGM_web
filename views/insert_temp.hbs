@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
   <title>Profilo</title>
-  <link rel="icon" type="image/jpg" href="images/Logo_bot.jpg">
+  <link rel="icon" type="image/jpg" href="../images/Logo_bot.jpg">
   <link rel="stylesheet" href="/css/nicepage.css" media="screen">
   <link rel="stylesheet" href="/css/Profilo.css" media="screen">
   <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
 		"@type": "Organization",
 		"name": "",
 		"url": "/",
-		"logo": "/images/stemma_gilda_f.png"
+		"logo": "../images/stemma_gilda_f.png"
   }
 </script>
   <meta property="og:title" content="Profilo">
@@ -38,7 +38,7 @@
   <header class="u-border-2 u-border-grey-75 u-clearfix u-header u-sticky u-white u-header" id="sec-8d3a">
     <div class="u-clearfix u-sheet u-sheet-1">
       <a href="/" class="u-image u-logo u-image-1" data-image-width="2000" data-image-height="1333">
-        <img src="/images/stemma_gilda_f.png" class="u-logo-image u-logo-image-1" data-image-width="64">
+        <img src="../images/stemma_gilda_f.png" class="u-logo-image u-logo-image-1" data-image-width="64">
       </a>
       <nav class="u-align-right u-menu u-menu-dropdown u-offcanvas u-menu-1">
         <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
@@ -107,7 +107,7 @@
                 {{/if}}
                 <li class="u-nav-item">
                   <form class="u-button-style u-nav-link" style="padding: 10px 0px;" method="POST" action="/logout">
-                    <button class="custom_logout" type="submit" >Logout</button>
+                    <button class="custom_logout" type="submit">Logout</button>
                   </form>
                 </li>
               </ul>
@@ -268,6 +268,67 @@
                             <option>Modello</option>
                             <option>Artigiano di Gilda</option>
                             <option>Mercante di Gilda</option>
+                            <option>Altro</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-size-30">
+                    <div class="u-layout-row">
+                      <div class="u-align-center-xs u-container-style u-layout-cell u-size-20 u-layout-cell-4">
+                        <div
+                          class="u-container-layout u-valign-middle-md u-valign-middle-sm u-valign-top-xl u-container-layout-5">
+                          <div id="img_class_multi"
+                            class="border_custom u-hidden-md u-hidden-sm u-hidden-xs u-image u-image-circle u-image-4"
+                            style="background-image: url('/images/Altro.png');" alt="" data-image-width="400"
+                            data-image-height="265"></div>
+                          <h3
+                            class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xl u-text u-text-8">
+                            Multi Classe</h3>
+                          <select id="classe_multi" class="u-text u-text-3" name="classe_multi" onchange="ceck_empy()">
+                            <option>Scegli Multi Classe</option>
+                            <option>Barbaro</option>
+                            <option>Bardo</option>
+                            <option>Chierico</option>
+                            <option>Druido</option>
+                            <option>Guerriero</option>
+                            <option>Ladro</option>
+                            <option>Mago</option>
+                            <option>Monaco</option>
+                            <option>Paladino</option>
+                            <option>Ranger</option>
+                            <option>Stregone</option>
+                            <option>Warlock</option>
+                            <option>Artefice</option>
+                            <option>Altro</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div
+                        class="u-align-center-md u-align-center-sm u-align-center-xs u-container-style u-layout-cell u-size-20 u-layout-cell-5">
+                        <div
+                          class="u-container-layout u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-valign-top-xl u-container-layout-6">
+                          <div id="img_class_multi_2"
+                            class="border_custom u-hidden-md u-hidden-sm u-hidden-xs u-image u-image-circle u-image-5"
+                            style="background-image: url('/images/Altro.png');" alt="" data-image-width="400"
+                            data-image-height="265"></div>
+                          <h4 class="u-align-center-lg u-align-center-xl u-text u-text-10">Sotto Multi Classe</h4>
+                          <select id="sot_classe_multi" class="u-text u-text-13" name="sot_classe_multi" onchange="ceck_empy()">
+                            <option>Scegli Sotto Multi Classe</option>
+                            <option>Barbaro</option>
+                            <option>Bardo</option>
+                            <option>Chierico</option>
+                            <option>Druido</option>
+                            <option>Guerriero</option>
+                            <option>Ladro</option>
+                            <option>Mago</option>
+                            <option>Monaco</option>
+                            <option>Paladino</option>
+                            <option>Ranger</option>
+                            <option>Stregone</option>
+                            <option>Warlock</option>
+                            <option>Artefice</option>
                             <option>Altro</option>
                           </select>
                         </div>

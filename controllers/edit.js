@@ -56,6 +56,12 @@ exports.modifica_sheda = (req, res) => {
                                     avatar_ck_url = js_result['Avatar']
                                 }
 
+                                if (js_result['Multi Classe'] == "" || js_result['Multi Classe'] == null || js_result['Multi Classe'] == "Non Assegnata") {
+                                    var render_mult = false;    
+                                } else {
+                                    var render_mult = true;
+                                }
+
                                 res.render('scheda_temp.hbs', {
                                     master: mastr,
                                     id_scheda: js_result['_id'],
@@ -66,6 +72,9 @@ exports.modifica_sheda = (req, res) => {
                                     razza_pg: js_result['Razza'],
                                     classe_pg: js_result['Classe'],
                                     sotto_classe_pg: js_result['Sotto Classe'],
+                                    render_mult: render_mult,
+                                    classe_multi: js_result['Multi Classe'],
+                                    sot_classe_multi: js_result['Multi Sotto Classe'],
                                     background_pg: js_result['Background'],
                                     descrizone: js_result['Descrizione'],
                                     forza_pg: js_result['Forza'],
@@ -79,7 +88,9 @@ exports.modifica_sheda = (req, res) => {
                                     object_quan: obj_quan,
                                     object_note: obj_note,
                                     img_class: Chek_class(js_result['Classe']),
-                                    img_class_sot: Chek_class(js_result['Sotto Classe'])
+                                    img_class_sot: Chek_class(js_result['Sotto Classe']),
+                                    img_class_multi: Chek_class(js_result['Multi Classe']),
+                                    img_class_sot_multi: Chek_class(js_result['Multi Sotto Classe']),
                                 });
                             }
                         });
