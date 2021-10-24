@@ -23,9 +23,9 @@ exports.Crea_sheda = (req, res) => {
                     if (result == null) {
                         res.render('dashboard', { message_error: 'Errore nel ricerca profilo' });
                     } else if (result.master == 1) {
-                        res.render('insert_temp', { eanbele_count: 0, master:mastr });
+                        res.render('insert_temp', { eanbele_count: 0, master: mastr });
                     } else if (result.N_schede == 0) {
-                        res.render('insert_temp', { eanbele_count: 1, master:mastr });
+                        res.render('insert_temp', { eanbele_count: 1, master: mastr });
                     } else {
                         res.render('dashboard', { message_warn: 'Non puoi avere più di una scheda' });
                     }
@@ -51,6 +51,10 @@ exports.Insert_db = (req, res) => {
         sot_classe,
         classe_altro,
         sot_classe_altro,
+        classe_multi,
+        sot_classe_multi,
+        classe_multi_altro,
+        sot_classe_muti_altro,
         background,
         Background_altro,
         descrizone,
@@ -98,49 +102,117 @@ exports.Insert_db = (req, res) => {
                 var money = 0;
                 var sotto_razza_net = "Non Assegnata";
                 var sotto_classe_net = "Non Assegnata";
+                var sotto_classe_multi_net = "Non Assegnata";
                 var razza_net = "Altro";
                 var classe_net = "Altro";
+                var classe_multi_net = "Altro";
                 var Background_net = "Altro";
 
                 // Check Value Altro
-                if (razza == 'Altro') {
-                    razza_net = razza_altro;
+                if (razza != null && razza != undefined && razza != "") {
+                    if (razza == 'Altro') {
+                        if (razza_altro != null && razza_altro != undefined && razza_altro != "") {
+                            razza_net = razza_altro;
+                        } else {
+                            razza_net = "Altro";
+                        }
+                    } else {
+                        razza_net = razza;
+                    }
                 } else {
-                    razza_net = razza;
+                    razza_net = "Non Assegnata";
                 }
 
-                if (classe == 'Altro') {
-                    classe_net = classe_altro;
+                if (classe != null && classe != undefined && classe != "") {
+                    if (classe == 'Altro') {
+                        if (classe_altro != null && classe_altro != undefined && classe_altro != "") {
+                            classe_net = classe_altro;
+                        } else {
+                            classe_net = "Altro";
+                        }
+                    } else {
+                        classe_net = classe;
+                    }
                 } else {
-                    classe_net = classe;
+                    classe_net = "Non Assegnata";
                 }
 
-                if (background == 'Altro') {
-                    Background_net = Background_altro;
+                if (classe_multi != null && classe_multi != undefined && classe_multi != "") {
+                    if (classe_multi == 'Altro') {
+                        if (classe_multi_altro != null && classe_multi_altro != undefined && classe_multi_altro != "") {
+                            classe_multi_net = classe_multi_altro;
+                        } else {
+                            classe_multi_net = "Altro";
+                        }
+                    } else {
+                        classe_multi_net = classe_multi;
+                    }
                 } else {
-                    Background_net = background;
+                    classe_multi_net = "Non Assegnata";
                 }
 
-                if (sotto_razza_net == 'Altro') {
-                    sotto_razza_net = sot_razza_altro;
+                if (background != null && background != undefined && background != "") {
+                    if (background == 'Altro') {
+                        if (Background_altro != null && Background_altro != undefined && Background_altro != "") {
+                            Background_net = Background_altro;
+                        } else {
+                            Background_net = "Altro";
+                        }
+                    } else {
+                        Background_net = background;
+                    }
                 } else {
-                    sotto_razza_net = sot_razza;
+                    Background_net = "Non Assegnata";
                 }
 
-                if (sotto_razza_net == 'Scegli Sotto Razza') {
+                if (sot_razza != null && sot_razza != undefined && sot_razza != "") {
+                    if (sot_razza == 'Scegli Sotto Razza') {
+                        if (sot_razza == 'Altro') {
+                            if (sot_razza_altro != null && sot_razza_altro != undefined && sot_razza_altro != "") {
+                                sotto_razza_net = sot_razza_altro;
+                            } else {
+                                sotto_razza_net = "Altro";
+                            }
+                        } else {
+                            sotto_razza_net = sot_razza;
+                        }
+                    } else {
+                        sotto_razza_net = "Non Assegnata";
+                    }
+                } else {
                     sotto_razza_net = "Non Assegnata";
                 }
 
-                if (sot_classe == 'Scegli Sotto Classe') {
-                    sotto_classe_net = "Non Assegnata";
-                } else if (sot_classe == 'Altro') {
-                    if (sot_classe_altro.length > 0) {
-                        sotto_classe_net = sot_classe_altro;
+                if (sot_classe != null && sot_classe != undefined && sot_classe != "") {
+                    if (sot_classe == 'Scegli Sotto Classe') {
+                        sotto_classe_net = "Non Assegnata";
+                    } else if (sot_classe == 'Altro') {
+                        if (sot_classe_altro != null && sot_classe_altro != undefined && sot_classe_altro != "") {
+                            sotto_classe_net = sot_classe_altro;
+                        } else {
+                            sotto_classe_net = "Altro";
+                        }
                     } else {
-                        sotto_classe_net = "Altro";
+                        sotto_classe_net = sot_classe;
                     }
                 } else {
-                    sotto_classe_net = sot_classe;
+                    sotto_classe_net = "Non Assegnata";
+                }
+
+                if (sot_classe_multi != null && sot_classe_multi != undefined && sot_classe_multi != "") {
+                    if (sot_classe_multi == 'Scegli Sotto Classe') {
+                        sotto_classe_multi_net = "Non Assegnata";
+                    } else if (sot_classe_multi == 'Altro') {
+                        if (sot_classe_muti_altro != null && sot_classe_muti_altro != undefined && sot_classe_muti_altro != "") {
+                            sotto_classe_multi_net = sot_classe_muti_altro;
+                        } else {
+                            sotto_classe_multi_net = "Altro";
+                        }
+                    } else {
+                        sotto_classe_multi_net = sot_classe_multi;
+                    }
+                } else {
+                    sotto_classe_multi_net = "Non Assegnata";
                 }
 
                 // Stasts
@@ -208,63 +280,67 @@ exports.Insert_db = (req, res) => {
                     money = 0;
                 }
 
-                // if (master_user == "0") {
-                //     const id_user = decoded.user.toString();
-                //     const nome_oggetto_obj = req.body.nome_oggetto;
-                //     const quantita_obj = req.body.quantita;
-                //     const note_obj = req.body.note;
-                //     const index_obj = req.body.index_obj;
-
-                //     PG_temp = {
-                //         "Nome_Discord": id_user,
-                //         "Avatar": url_avatar_load,
-                //         "Livello": 3,
-                //         "Exp": 0,
-                //         "Nome_PG": name,
-                //         "Razza": razza_net,
-                //         //"Sotto Razza": sotto_razza_net,
-                //         "Classe": classe_net,
-                //         "Sotto Classe": sotto_classe_net,
-                //         "Background": Background_net,
-                //         "Descrizione": descrizone,
-                //         "Forza": forza_load,
-                //         "Destrezza": destrezza_load,
-                //         "Costituzione": costituzione_load,
-                //         "Intelligenza": intelligenza_load,
-                //         "Saggezza": saggezza_load,
-                //         "Carisma": carisma_load,
-                //         "Competenze": {},
-                //         "Money": money,
-                //         "Inventory": inventory
-                //     }
-
-                //     if (index_obj == 1) {
-                //         inventory[nome_oggetto_obj] = {
-                //             "Nome": nome_oggetto_obj,
-                //             "Quantita": quantita_obj,
-                //             "Note": note_obj
-                //         }
-                //     } else if (index_obj > 1) {
-                //         for (let index = 0; index < index_obj; index++) {
-                //             inventory[nome_oggetto_obj[index]] = {
-                //                 "Nome": nome_oggetto_obj[index],
-                //                 "Quantita": quantita_obj[index],
-                //                 "Note": note_obj[index]
-                //             }
-                //         }
-                //     }
-                // } else {
+                /*
+                if (master_user == "0") {
+                    const id_user = decoded.user.toString();
+                    const nome_oggetto_obj = req.body.nome_oggetto;
+                    const quantita_obj = req.body.quantita;
+                    const note_obj = req.body.note;
+                    const index_obj = req.body.index_obj;
+ 
+                    PG_temp = {
+                        "Nome_Discord": id_user,
+                        "Avatar": url_avatar_load,
+                        "Livello": 3,
+                        "Exp": 0,
+                        "Nome_PG": name,
+                        "Razza": razza_net,
+                        //"Sotto Razza": sotto_razza_net,
+                        "Classe": classe_net,
+                        "Sotto Classe": sotto_classe_net,
+                        "Background": Background_net,
+                        "Descrizione": descrizone,
+                        "Forza": forza_load,
+                        "Destrezza": destrezza_load,
+                        "Costituzione": costituzione_load,
+                        "Intelligenza": intelligenza_load,
+                        "Saggezza": saggezza_load,
+                        "Carisma": carisma_load,
+                        "Competenze": {},
+                        "Money": money,
+                        "Inventory": inventory
+                    }
+ 
+                    if (index_obj == 1) {
+                        inventory[nome_oggetto_obj] = {
+                            "Nome": nome_oggetto_obj,
+                            "Quantita": quantita_obj,
+                            "Note": note_obj
+                        }
+                    } else if (index_obj > 1) {
+                        for (let index = 0; index < index_obj; index++) {
+                            inventory[nome_oggetto_obj[index]] = {
+                                "Nome": nome_oggetto_obj[index],
+                                "Quantita": quantita_obj[index],
+                                "Note": note_obj[index]
+                            }
+                        }
+                    }
+                } else { 
+                */
                 PG_temp = {
                     "Nome_Discord": decoded.user,
                     "Avatar": url_avatar_load,
                     "Livello": 3,
                     "Exp": 0,
                     "Nome_PG": name,
-                    "Razza": razza_net,
+                    "Razza": String(razza_net),
                     //"Sotto Razza": sotto_razza_net,
-                    "Classe": classe_net,
-                    "Sotto Classe": sotto_classe_net,
-                    "Background": Background_net,
+                    "Classe": String(classe_net),
+                    "Sotto Classe": String(sotto_classe_net),
+                    "Multi Classe": String(classe_multi_net),
+                    "Multi Sotto Classe": String(sotto_classe_multi_net),
+                    "Background": String(Background_net),
                     "Descrizione": descrizone,
                     "Forza": forza_load,
                     "Destrezza": destrezza_load,
@@ -297,7 +373,7 @@ exports.Insert_db = (req, res) => {
                     res.render('page500.hbs');
                 }
             } else {
-                res.render('insert_temp', { message_warn: 'Riempire i calpi', master:mastr });
+                res.render('insert_temp', { message_warn: 'Riempire i calpi', master: mastr });
             }
         }
     });
@@ -311,4 +387,14 @@ function validURL(str) {
         '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
         '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
     return !!pattern.test(str);
+}
+
+function not_null() {
+    if (condition) {
+
+        return
+    } else {
+
+        return
+    }
 }

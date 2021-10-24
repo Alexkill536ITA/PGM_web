@@ -4,6 +4,8 @@ const root_2 = document.getElementById('razza_pg');
 const root_3 = document.getElementById('classe_pg');
 const root_4 = document.getElementById('background_pg');
 const root_5 = document.getElementById('sot_classe_pg');
+const root_6 = document.getElementById('classe_multi');
+const root_7 = document.getElementById('sot_classe_multi');
 const btn_cancel = document.getElementById('btn_cancel');
 var ceck_name = false;
 
@@ -34,6 +36,10 @@ const label_temp_3 = `<input id="sot_classe_altro" class="u-text u-text-3" style
 
 const label_temp_4 = `<input id="Background_altro" class="u-text u-text-3" style="margin-top: 10px;" type="text" name="Background_altro" placeholder="Altro Background">`
 
+const label_temp_5 = `<input id="classe_multi_altro"" class="u-text u-text-3" style="margin-top: 10px;" type="text" name="classe_multi_altro" placeholder="Altra Multi Classe">`
+
+const label_temp_6 = `<input id="sot_classe_muti_altro" class="u-text u-text-3" style="margin-top: 10px;" type="text" name="sot_classe_muti_altro" placeholder="Altra Sotto Multi Classe">`
+
 //  Create and Drestroy label input
 function label_create(elemt, root_elemet, template) {
     var label_up = document.getElementById(elemt);
@@ -55,6 +61,8 @@ function ceck_empy() {
     var razza_pg = document.getElementById('razza_pg').value;
     var classe_pg = document.getElementById('classe_pg').value;
     var sot_classe_pg = document.getElementById('sot_classe_pg').value;
+    var classe_multi = document.getElementById('classe_multi').value;
+    var sot_classe_multi = document.getElementById('sot_classe_multi').value;
     var background_pg = document.getElementById('background_pg').value;
     var check_empy_1 = true;
     var check_empy_2 = true;
@@ -62,6 +70,7 @@ function ceck_empy() {
     var check_empy_4 = true;
     var check_empy_5 = true;
     var check_empy_6 = true;
+    var check_empy_7 = true;
     if (nome_pg != "") {
         check_empy_1 = false;
     } else {
@@ -105,6 +114,31 @@ function ceck_empy() {
         check_empy_5 = false;
     }
 
+    if (classe_multi != "Scegli Multi Classe") {
+        if (classe_multi == "Altro") {
+            label_create('classe_multi_altro', root_6, label_temp_5)
+        } else {
+            label_destroy('classe_multi_altro');
+        }
+        check_empy_6 = false;
+    } else {
+        label_destroy('classe_multi_altro')
+        check_empy_6 = true;
+    }
+
+    if (sot_classe_multi != "Scegli Sotto Multi Classe") {
+        if (sot_classe_multi == "Altro") {
+            label_create('sot_classe_muti_altro', root_7, label_temp_6)
+        } else {
+            label_destroy('sot_classe_muti_altro');
+            check_empy_7 = false;
+        }
+        check_empy_7 = false;
+    } else {
+        label_destroy('sot_classe_muti_altro')
+        check_empy_7 = false;
+    }
+
     if (background_pg != "Scegli Background") {
         if (background_pg == "Altro") {
             label_create('Background_altro', root_4, label_temp_4)
@@ -125,81 +159,83 @@ function ceck_empy() {
 
     document.getElementById('img_class').style.backgroundImage = "url('"+Chek_class(classe_pg)+ "')"
     document.getElementById('img_class_2').style.backgroundImage = "url('"+Chek_class(sot_classe_pg)+ "')"
+    document.getElementById('img_class_multi').style.backgroundImage = "url('"+Chek_class(classe_multi)+ "')"
+    document.getElementById('img_class_multi_2').style.backgroundImage = "url('"+Chek_class(sot_classe_multi)+ "')"
 }
 
-input_name.addEventListener('change', (event) => {
-    var nome_pg = document.getElementById('nome_pg').value;
-    var razza_pg = document.getElementById('razza_pg').value;
-    var classe_pg = document.getElementById('classe_pg').value;
-    var sot_classe_pg = document.getElementById('sot_classe_pg').value;
-    var background_pg = document.getElementById('background_pg').value;
-    var check_empy_1 = true;
-    var check_empy_2 = true;
-    var check_empy_3 = true;
-    var check_empy_4 = true;
-    var check_empy_5 = true;
-    var check_empy_6 = true;
-    if (nome_pg != "") {
-        check_empy_1 = false;
-    } else {
-        check_empy_1 = true;
-    }
+// input_name.addEventListener('change', (event) => {
+//     var nome_pg = document.getElementById('nome_pg').value;
+//     var razza_pg = document.getElementById('razza_pg').value;
+//     var classe_pg = document.getElementById('classe_pg').value;
+//     var sot_classe_pg = document.getElementById('sot_classe_pg').value;
+//     var background_pg = document.getElementById('background_pg').value;
+//     var check_empy_1 = true;
+//     var check_empy_2 = true;
+//     var check_empy_3 = true;
+//     var check_empy_4 = true;
+//     var check_empy_5 = true;
+//     var check_empy_6 = true;
+//     if (nome_pg != "") {
+//         check_empy_1 = false;
+//     } else {
+//         check_empy_1 = true;
+//     }
 
-    if (razza_pg != "Scegli Razza") {
-        if (razza_pg == "Altro") {
-            label_create('label_up_raz', root_2, label_temp)
-        } else {
-            label_destroy('label_up_raz')
-        }
-        check_empy_2 = false;
-    } else {
-        label_destroy('label_up_raz')
-        check_empy_2 = true;
-    }
+//     if (razza_pg != "Scegli Razza") {
+//         if (razza_pg == "Altro") {
+//             label_create('label_up_raz', root_2, label_temp)
+//         } else {
+//             label_destroy('label_up_raz')
+//         }
+//         check_empy_2 = false;
+//     } else {
+//         label_destroy('label_up_raz')
+//         check_empy_2 = true;
+//     }
 
-    if (classe_pg != "Scegli Classe") {
-        if (classe_pg == "Altro") {
-            label_create('label_up_cla', root_3, label_temp_2)
-        } else {
-            label_destroy('label_up_cla');
-        }
-        check_empy_3 = false;
-    } else {
-        label_destroy('label_up_cla')
-        check_empy_3 = true;
-    }
+//     if (classe_pg != "Scegli Classe") {
+//         if (classe_pg == "Altro") {
+//             label_create('label_up_cla', root_3, label_temp_2)
+//         } else {
+//             label_destroy('label_up_cla');
+//         }
+//         check_empy_3 = false;
+//     } else {
+//         label_destroy('label_up_cla')
+//         check_empy_3 = true;
+//     }
 
-    if (sot_classe_pg != "Scegli Sotto Classe") {
-        if (sot_classe_pg == "Altro") {
-            label_create('label_up_sot_cla', root_5, label_temp_3)
-        } else {
-            label_destroy('label_up_sot_cla');
-            check_empy_5 = false;
-        }
-        check_empy_5 = false;
-    } else {
-        label_destroy('label_up_sot_cla')
-        check_empy_5 = false;
-    }
+//     if (sot_classe_pg != "Scegli Sotto Classe") {
+//         if (sot_classe_pg == "Altro") {
+//             label_create('label_up_sot_cla', root_5, label_temp_3)
+//         } else {
+//             label_destroy('label_up_sot_cla');
+//             check_empy_5 = false;
+//         }
+//         check_empy_5 = false;
+//     } else {
+//         label_destroy('label_up_sot_cla')
+//         check_empy_5 = false;
+//     }
 
-    if (background_pg != "Scegli Background") {
-        if (background_pg == "Altro") {
-            label_create('label_up_bac', root_4, label_temp_4)
-        } else {
-            label_destroy('label_up_bac')
-        }
-        check_empy_4 = false;
-    } else {
-        label_destroy('label_up_bac')
-        check_empy_4 = true;
-    }
+//     if (background_pg != "Scegli Background") {
+//         if (background_pg == "Altro") {
+//             label_create('label_up_bac', root_4, label_temp_4)
+//         } else {
+//             label_destroy('label_up_bac')
+//         }
+//         check_empy_4 = false;
+//     } else {
+//         label_destroy('label_up_bac')
+//         check_empy_4 = true;
+//     }
 
-    if (check_empy_1 == true || check_empy_2 == true || check_empy_3 == true || check_empy_4 == true || check_empy_5 == true) {
-        btn_submit_destroy()
-    } else {
-        btn_submit_create()
-    }
-});
+//     if (check_empy_1 == true || check_empy_2 == true || check_empy_3 == true || check_empy_4 == true || check_empy_5 == true) {
+//         btn_submit_destroy()
+//     } else {
+//         btn_submit_create()
+//     }
+// });
 
 function Chek_class(classe) {
     if (classe == "Barbaro") {
