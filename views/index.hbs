@@ -65,12 +65,27 @@
             </li>
             <li class="u-nav-item"><a
                 class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
-                href="BlogPost.hbs" style="padding: 10px 0px;">BlogPost</a>
+                href="/page401" style="padding: 10px 0px;">BlogPost</a>
             </li>
             <li class="u-nav-item"><a
                 class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
                 href="/login" style="padding: 10px 0px;">Dashboard</a>
             </li>
+            {{#if master}}
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="/dashboard-mission" style="padding: 10px 0px;">Missions</a>
+            </li>
+            {{/if}}
+            {{#if loged}}
+            <li class="u-nav-item">
+              <form method="POST" action="/logout">
+                <button
+                  class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                  type="submit" style="padding: 10px 0px;">Logout</button>
+              </form>
+            </li>
+            {{/if}}
           </ul>
         </div>
         <div class="u-custom-menu u-nav-container-collapse">
@@ -78,15 +93,26 @@
             <div class="u-sidenav-overflow">
               <div class="u-menu-close"></div>
               <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/"
-                    style="padding: 10px 0px;">Home</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/" style="padding: 10px 0px;">Home</a>
                 </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="BlogPost.hbs"
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/page401"
                     style="padding: 10px 0px;">BlogPost</a>
                 </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/login"
                     style="padding: 10px 0px;">Dashboard</a>
                 </li>
+                {{#if master}}
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/dashboard-mission"
+                    style="padding: 10px 0px;">Missions</a>
+                </li>
+                {{/if}}
+                {{#if loged}}
+                <li class="u-nav-item">
+                  <form class="u-button-style u-nav-link" style="padding: 10px 0px;" method="POST" action="/logout">
+                    <button class="custom_logout" type="submit">Logout</button>
+                  </form>
+                </li>
+                {{/if}}
               </ul>
             </div>
           </div>
@@ -98,7 +124,8 @@
 
   <section class="u-clearfix u-image u-section-1" id="sec-7f99" data-image-width="400" data-image-height="465">
     <div class="container-repeat">
-      <img src="images/stemma_gilda_f.png" class="icon-repeat u-image"></div>
+      <img src="images/stemma_gilda_f.png" class="icon-repeat u-image">
+    </div>
     </div>
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
       <div class="u-align-center-xs u-container-style u-group u-radius-25 u-shape-round u-white u-group-1">
@@ -110,7 +137,7 @@
             <a href="/login"
               class="u-black u-border-2 u-border-black u-border-hover-black u-btn u-btn-round u-button-style u-hover-white u-radius-50 u-btn-1">Entra
               in questo mondo di fantasie
-            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i></a>
+              <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i></a>
           </form>
         </div>
       </div>

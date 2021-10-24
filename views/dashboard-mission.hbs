@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="it">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Dashboard">
+  <meta name="description" content="">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <title>Dashboard</title>
+  <link rel="icon" type="image/jpg" href="images/Logo_bot.jpg">
+  <link rel="stylesheet" href="../css/nicepage.css" media="screen">
+  <link rel="stylesheet" href="../css/Dashboard-Missioni.css" media="screen">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <script class="u-script" type="text/javascript" src="../js/jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="../js/nicepage.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="../js/copy_clipboard.js"></script>
+  <meta name="generator" content="Nicepage 3.16.0, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+  <script type="application/ld+json">{
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "",
+      "url": "/",
+      "logo": "/images/stemma_gilda_f.png"
+  }</script>
+  <meta property="og:title" content="Dashboard">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#478ac9">
+  <link rel="canonical" href="/">
+  <meta property="og:url" content="index.hbs">
+</head>
+
+<body class="u-body">
+  <header class="u-border-2 u-border-grey-75 u-clearfix u-header u-sticky u-white u-header" id="sec-8d3a">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <a href="#" class="u-image u-logo u-image-1" data-image-width="2000" data-image-height="1333">
+        <img src="../images/stemma_gilda_f.png" class="u-logo-image u-logo-image-1" data-image-width="64">
+      </a>
+      <nav class="u-align-right u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+            href="#">
+            <svg>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <defs>
+                <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
+                  <rect y="1" width="16" height="2"></rect>
+                  <rect y="7" width="16" height="2"></rect>
+                  <rect y="13" width="16" height="2"></rect>
+                </symbol>
+              </defs>
+            </svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-spacing-30 u-unstyled u-nav-1">
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="/" style="padding: 10px 0px;">Home</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="BlogPost.html" style="padding: 10px 0px;">BlogPost</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2  u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link  u-text-grey-90 u-text-hover-grey-90"
+                href="/login" style="padding: 10px 0px;">Dashboard</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90 active"
+                href="/dashboard-mission" style="padding: 10px 0px;">Missions</a>
+            </li>
+            <li class="u-nav-item">
+              <form method="POST" action="/logout">
+                <button
+                  class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                  type="submit" style="padding: 10px 0px;">Logout</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/" style="padding: 10px 0px;">Home</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="BlogPost.html"
+                    style="padding: 10px 0px;">BlogPost</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/login"
+                    style="padding: 10px 0px;">Dashboard</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/dashboard-mission"
+                    style="padding: 10px 0px;">Missions</a>
+                </li>
+                <li class="u-nav-item">
+                  <form class="u-button-style u-nav-link" style="padding: 10px 0px;" method="POST" action="/logout">
+                    <button class="custom_logout" type="submit">Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="u-align-center u-clearfix u-image u-section-1" id="sec-5507" data-image-width="400"
+    data-image-height="265">
+    <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+      <div class="u-container-style u-expanded-width u-group u-radius-25 u-shape-round u-white u-group-1">
+        <div class="u-container-layout u-container-layout-1" style="padding: 30px 0px;">
+          <h1 class="u-align-center u-text u-text-1">Dashboard Missioni</h1>
+          <form action="/mission/make" method="POST">
+            <div class="u-align-center u-form-group u-form-submit" style="padding-left: 30px; padding-right: 30px;">
+              <button type="submit" class="custom_button_bis">Crea Missione<br>
+                </a>
+              </button>
+            </div>
+          </form>
+          <div class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-list u-list-1">
+            <div id="root_div_list" class="u-repeater u-repeater-1" style="align-content: start;">
+              {{#if list_mission}}
+              <script>
+                const root_element = document.getElementById('root_div_list');
+                function cancell_create(id_missione, nome_missione) {
+                  var tempplate = `<div id="alert_cancell">
+                                      <div id="alert_cancell_are">
+                                          <div  class="wrap-contact150">
+                                              <span class="contact100-form-title">
+                                                  Sei sicuro di volere cancellare La Missione?
+                                              </span>
+                                              <P>Questa azione non può essere annullata. Questo cancellerà definitivamente la Missione <b>${nome_missione}</b>\nSi prega di digitare <b>${nome_missione}</b> per confermare.</P><br>
+                                              <form method="POST" action="/mission/delete" style="dispaly= block; felx-wrap: wrap;">
+                                                  <div class="wrap-input100">
+                                                      <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="id_scheda_delete" name="id_scheda_delete" value="${id_missione}">
+                                                      <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="nome_delete" name="nome_delete" value="${nome_missione}">
+                                                      <input id="Input_delete" style="border: none;" class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" type="text" id="check_delete" name="check_delete" placeholder="Inserire Id Missone">
+                                                  </div>
+                                                  <div class="container-contact100-form-btn">
+                                                      <div class="wrap-contact100-form-btn">
+                                                      <div class="contact100-form-bgbtn"></div>
+                                                          <button id="btn_sub" class="custom_button_del_bis" submit="submit" >
+                                                              <span>
+                                                                  Elimina
+                                                              </span>
+                                                          </button>                                                
+                                                      </div>
+                                                  </div>
+                                              </form>
+                                              <div  class="container-contact120-form-btn">
+                                                  <div class="wrap-contact120-form-btn">
+                                                      <div class="contact120-form-bgbtn"></div>
+                                                      <button id="btn_cancel" class="custom_button_bis" onclick="cancell_destroy()">
+                                                          <span>
+                                                              Annulla
+                                                          </span>
+                                                      </button>    
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>`;
+                  root_element.insertAdjacentHTML('afterend', tempplate);
+                  document.getElementById('Input_delete').focus();
+                }
+                function cancell_destroy() {
+                  var element = document.getElementById('alert_cancell');
+                  element.remove();
+                }
+                var max = "{{list_mission}}";
+                var id_missione_temp = "{{id_missione}}";
+                var missione_temp = "{{nome_missione}}";
+                var missione_avatar_temp = "{{avatar_mission}}";
+                var missione_body_temp = "{{body_missione}}";
+                var missione_exspire_temp = "{{exspire_mission}}";
+                var missione_player_temp = "{{player_missione}}";
+                var id_missione = id_missione_temp.split(",");
+                var name_missione = missione_temp.split(",");
+                var missione_body = missione_body_temp.split("%new%,");
+                var avatar_name_missione = missione_avatar_temp.split(",");
+                var missione_exspire = missione_exspire_temp.split(",");
+                var missione_player = missione_player_temp.split(",");
+                for (let index = 0; index < max; index++) {
+                  var list_missioni = `
+                    <div id="missione_${index}" class="u-border-2 u-border-grey-75 u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round">
+                      <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-2">
+                        <div
+                          class="u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-group-2">
+                          <div class="u-container-layout u-container-layout-3">
+                            <img class="u-image u-image-round u-radius-10 u-image-1" src="${avatar_name_missione[index]}" alt=""
+                              data-image-width="400" data-image-height="265">
+                            <h2 class="u-text u-text-2">${name_missione[index]}</h2>
+                            <p class="u-text u-text-default-xl u-text-3">${missione_body[index]}</p>
+                            <form method="POST" action="/mission/edit">
+                              <input style="width: 0px;height 0px; visibility: hidden;" type="hidden" id="id_missione_edit" name="id_missione_edit" value="${id_missione[index]}">
+                              <button
+                                class="custom_button u-align-right u-border-2 u-btn u-btn-round u-button-style u-radius-50 u-btn-2 type="submit"" type>Visualizza
+                              </button>
+                            </form>
+                            
+                            <button 
+                              class="custom_button_del u-align-right u-border-3 u-btn u-btn-round u-button-style u-radius-50 u-btn-3" type="submit" onclick='cancell_create("${id_missione[index]}","${name_missione[index]}")'>Elimina</button>
+                            <h6 class="u-text u-text-4">Scadenza: ${missione_exspire[index]}</h6>
+                            <h6 class="u-text u-text-default-xl u-text-5">Players Iscritti: ${missione_player[index]}</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>`;
+                  root_element.insertAdjacentHTML('beforeend', list_missioni);
+                }
+              </script>
+              {{/if}}
+
+              {{!-- <div
+                class="u-border-2 u-border-grey-75 u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round">
+                <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-2">
+                  <div
+                    class="u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-group-2">
+                    <div class="u-container-layout u-container-layout-3">
+                      <img class="u-image u-image-round u-radius-10 u-image-1" src="../images/stemma_gilda_f.png" alt=""
+                        data-image-width="400" data-image-height="265">
+                      <h2 class="u-text u-text-2">Missione 1</h2>
+                      <p class="u-text u-text-default-xl u-text-3">Testo di Prova. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
+                      <button
+                        class="custom_button u-align-right u-border-2 u-btn u-btn-round u-button-style u-radius-50 u-btn-2">Visualizza</button>
+                      <button
+                        class="custom_button_del u-align-right u-border-3 u-btn u-btn-round u-button-style u-radius-50 u-btn-3">Elimina</button>
+                      <h6 class="u-text u-text-4">Scadenza: 28/09/2021</h6>
+                      <h6 class="u-text u-text-default-xl u-text-5">Players Iscritti: 5/6</h6>
+                    </div>
+                  </div>
+                </div>
+              </div> --}}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-7fbf">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1">Copyright 2020-2021 Alexkill536ITA - All Rights Reserved to
+        Bjarka Energy®.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

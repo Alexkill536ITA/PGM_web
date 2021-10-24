@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Dashboard">
+  <meta name="description" content="">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <title>Dashboard</title>
+  <link rel="icon" type="image/jpg" href="../images/Logo_bot.jpg">
+  <link rel="stylesheet" href="../css/nicepage.css" media="screen">
+  <link rel="stylesheet" href="../css/insert_mission.css" media="screen">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <script class="u-script" type="text/javascript" src="../js/jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="../js/nicepage.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="../js/copy_clipboard.js"></script>
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+  <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "",
+        "url": "/",
+        "logo": "../images/stemma_gilda_f.png"
+    }</script>
+  <meta property="og:title" content="Dashboard">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#478ac9">
+  <link rel="canonical" href="/">
+  <meta property="og:url" content="index.hbs">
+</head>
+
+<body class="u-body">
+  <header class="u-border-2 u-border-grey-75 u-clearfix u-header u-sticky u-white u-header" id="sec-8d3a">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <a href="#" class="u-image u-logo u-image-1" data-image-width="2000" data-image-height="1333">
+        <img src="../images/stemma_gilda_f.png" class="u-logo-image u-logo-image-1" data-image-width="64">
+      </a>
+      <nav class="u-align-right u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+            href="#">
+            <svg>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <defs>
+                <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
+                  <rect y="1" width="16" height="2"></rect>
+                  <rect y="7" width="16" height="2"></rect>
+                  <rect y="13" width="16" height="2"></rect>
+                </symbol>
+              </defs>
+            </svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-spacing-30 u-unstyled u-nav-1">
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="/" style="padding: 10px 0px;">Home</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                href="BlogPost.html" style="padding: 10px 0px;">BlogPost</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2  u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link  u-text-grey-90 u-text-hover-grey-90"
+                href="/login" style="padding: 10px 0px;">Dashboard</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90 active"
+                href="/dashboard-mission" style="padding: 10px 0px;">Missions</a>
+            </li>
+            <li class="u-nav-item">
+              <form method="POST" action="/logout">
+                <button
+                  class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                  type="submit" style="padding: 10px 0px;">Logout</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/" style="padding: 10px 0px;">Home</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="BlogPost.html"
+                    style="padding: 10px 0px;">BlogPost</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/login"
+                    style="padding: 10px 0px;">Dashboard</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/dashboard-mission"
+                    style="padding: 10px 0px;">Missions</a>
+                </li>
+                <li class="u-nav-item">
+                  <form class="u-button-style u-nav-link" style="padding: 10px 0px;" method="POST" action="/logout">
+                    <button class="custom_logout" type="submit">Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="u-align-center u-clearfix u-image u-section-1" id="sec-05f2" data-image-width="2000"
+    data-image-height="1333">
+    <form action="/mission/insert" method="POST">
+      <input id="type_insert" style="width: 0px;height 0px; visibility: hidden;" type="hidden" name="type_insert"
+        value="0">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-container-style u-expanded-width u-group u-radius-30 u-shape-round u-white u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <h1 class="u-align-center u-text u-text-1">Missione</h1>
+            <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+              <div class="u-layout">
+                <div class="u-layout-col">
+                  <div class="u-size-30">
+                    <div class="u-layout-row">
+                      <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+                        <div class="u-container-layout u-container-layout-2">
+                          <h3 class="u-align-center-lg u-text u-text-2">Nome Missione</h3>
+                          <input id="nome_missione" class="u-text u-text-3 u-radius-5" type="text" name="nome_missione"
+                            placeholder="Inserire Nome Missione">
+                        </div>
+                      </div>
+                      <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                        <div class="u-container-layout u-container-layout-3">
+                          <h3 class="u-text u-text-4">Player Rischiesti</h3>
+                          <input id="player_min_missione" class="u-text u-text-5 u-radius-5" type="number"
+                            name="player_min_missione" placeholder="Inserire Numero Player">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-size-30">
+                    <div class="u-layout-row">
+                      <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-3">
+                        <div class="u-container-layout u-container-layout-4">
+                          <h3 class="u-text u-text-6">Data ora Missione</h3>
+                          <div
+                            class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xl u-text u-text-7">
+                            <input id="data_missione" name="data_missione" type="datetime-local" value="">
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="u-align-center u-align-center-sm u-align-center-xs u-container-style u-layout-cell u-size-30 u-layout-cell-4">
+                        <div class="u-container-layout u-container-layout-5">
+                          <h3 class="u-text u-text-8"> Data Scadenza</h3>
+                          <div class="u-align-center-lg u-align-center-xl u-text u-text-9">
+                            <input id="Scadenza_missione" name="Scadenza_missione" type="datetime-local" value="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-clearfix u-expanded-width u-gutter-10 u-layout-wrap u-layout-wrap-2">
+              <div class="u-layout">
+                <div class="u-layout-row">
+                  <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-5">
+                    <div class="u-container-layout u-container-layout-6">
+                      <h2 class="u-align-center u-text u-text-10">Select Level Player</h2>
+                      <div class="u-align-center u-text u-text-11">
+                        <input id="Select_rame" type="checkbox" name="Select_rame" value="Rame"> Rame
+                      </div>
+                      <div class="u-align-center u-text u-text-12">
+                        <input id="Select_bronzo" type="checkbox" name="Select_bronzo" value="Bronzo"> Bronzo
+                      </div>
+                      <div class="u-align-center u-text u-text-13">
+                        <input id="Select_ferro" type="checkbox" name="Select_ferro" value="Ferro"> Ferro
+                      </div>
+                      <div class="u-align-center u-text u-text-14">
+                        <input id="Select_argento" type="checkbox" name="Select_argento" value="Argento"> Argento
+                      </div>
+                      <div class="u-align-center u-text u-text-15">
+                        <input id="Select_electrum" type="checkbox" name="Select_electrum" value="Electrum"> Electrum
+                      </div>
+                      <div class="u-align-center u-text u-text-16">
+                        <input id="Select_oro" type="checkbox" name="Select_oro" value="Oro"> Oro
+                      </div>
+                      <div class="u-align-center u-text u-text-17">
+                        <input id="Select_platino" type="checkbox" name="Select_platino" value="Platino"> Platino
+                      </div>
+                      <div class="u-align-center u-text u-text-18">
+                        <input id="Select_mithril" type="checkbox" name="Select_mithril" value="Mithril"> Mithril
+                      </div>
+                      <div class="u-align-center u-text u-text-19">
+                        <input id="Select_adamantio" type="checkbox" name="Select_adamantio" value="Adamantio">
+                        Adamantio
+                      </div>
+                      <h2 class="u-align-center u-text u-text-20">Tag</h2>
+                      <div class="u-align-center u-text u-text-21">
+                        <input id="tag_missione" class="u-radius-5" type="text" name="tag_missione"
+                          placeholder="Aventura, Diplomazia" style="height: 100%; width: 100%;" rows='5'
+                          data-max-rows='5' maxlength="1024">
+                      </div>
+                      <h2 class="u-align-center u-text u-text-22">Descrizione Breve</h2>
+                      <div class="u-align-center u-text u-text-23">
+                        <textarea id="descrizone_breve_missione" class="u-radius-5" type="text"
+                          name="descrizone_breve_missione" placeholder="Inserire Decrizione Missione Breve"
+                          style="height: 100%; width: 100%; max-height: 140px;" maxlength="124"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-6">
+                    <div class="u-container-layout u-valign-top u-container-layout-7">
+                      <img
+                        class="u-align-center u-border-2 u-border-grey-75 u-expanded-width u-image u-image-round u-radius-30 u-image-1"
+                        src="../images/stemma_gilda_f.png" alt="" data-image-width="2000" data-image-height="1333">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-container-style u-expanded-width u-group u-group-2">
+              <div class="u-container-layout u-container-layout-8">
+                <h2 class="u-align-left u-text u-text-24">Avatar URL</h2>
+                <div>
+                  <input id="Url_missione" class="u-align-left u-text u-text-25 u-radius-5" style="width:100%;"
+                    type="text" name="Url_missione" placeholder="Inserire URL della Immagine">
+                </div>
+              </div>
+            </div>
+            <div class="u-container-style u-expanded-width u-group u-group-3">
+              <div class="u-container-layout u-container-layout-9">
+                <h2 class="u-text u-text-26">Dscrizione</h2>
+                <textarea id="descrizone_missione" style="min-height: 100px; width:100%; height: 90%;" rows='4'
+                  data-min-rows='4' maxlength="4096" class="autoExpand" type="text" name="descrizone_missione"
+                  placeholder="Decrizione Missione"></textarea>
+              </div>
+            </div>
+            <button class="custom_button_green custom_button_dimension" style="float: right; margin-left: 15px;"
+              type="submit">Crea Missione</button>
+            <a class="custom_button custom_button_dimension" href="/dashboard-mission"
+              style=" float: right;">annulla</a>
+            <br>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-7fbf">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1">Copyright 2020-2021 Alexkill536ITA - All Rights Reserved to
+        Bjarka Energy®.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

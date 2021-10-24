@@ -11,6 +11,12 @@ router.all('/dashboard', (req, res) => {
             var MongoClient = require('mongodb').MongoClient;
             var url = process.env.DATABASE_MONGDB;
 
+            if (decoded.master == 1) {
+                mastr = true
+            } else {
+                mastr = false
+            }
+
             await MongoClient.connect(url,{ useUnifiedTopology: true }, function(err, db) {
                 if (!err) { 
                     var dbo = db.db("Piccolo_Grande_Mondo");
@@ -44,7 +50,7 @@ router.all('/dashboard', (req, res) => {
                                     }
                                 }
                                 db.close();
-                                res.render('dashboard.hbs', {list_pg:list_max, id:id_scheda, name:name_pg, avatar_pg:avatar});
+                                res.render('dashboard.hbs', {master:mastr ,list_pg:list_max, id:id_scheda, name:name_pg, avatar_pg:avatar});
                             }
                         }
                     });

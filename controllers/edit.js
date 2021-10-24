@@ -8,6 +8,12 @@ exports.modifica_sheda = (req, res) => {
     const token = req.cookies['jwt'];
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
+            if (decoded.master == 1) {
+                mastr = true
+            } else {
+                mastr = false
+            }
+
             const id_serch = mongodb.ObjectId(req.body.id_scheda_edit);
             var on_sevice_db = await methodDB.open_db();
             if (on_sevice_db != 1) {
@@ -51,6 +57,7 @@ exports.modifica_sheda = (req, res) => {
                                 }
 
                                 res.render('scheda_temp.hbs', {
+                                    master: mastr,
                                     id_scheda: js_result['_id'],
                                     level_pg: js_result['Livello'],
                                     nome_pg: js_result['Nome_PG'],

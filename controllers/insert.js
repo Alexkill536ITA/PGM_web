@@ -8,6 +8,11 @@ exports.Crea_sheda = (req, res) => {
     const token = req.cookies['jwt'];
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
+            if (decoded.master == 1) {
+                mastr = true
+            } else {
+                mastr = false
+            }
             var on_sevice_db = await methodDB.open_db();
             if (on_sevice_db != 1) {
                 id_scheda = mongo.ObjectID(decoded.id);
@@ -18,9 +23,9 @@ exports.Crea_sheda = (req, res) => {
                     if (result == null) {
                         res.render('dashboard', { message_error: 'Errore nel ricerca profilo' });
                     } else if (result.master == 1) {
-                        res.render('insert_temp', { eanbele_count: 0 });
+                        res.render('insert_temp', { eanbele_count: 0, master:mastr });
                     } else if (result.N_schede == 0) {
-                        res.render('insert_temp', { eanbele_count: 1 });
+                        res.render('insert_temp', { eanbele_count: 1, master:mastr });
                     } else {
                         res.render('dashboard', { message_warn: 'Non puoi avere più di una scheda' });
                     }
@@ -292,7 +297,7 @@ exports.Insert_db = (req, res) => {
                     res.render('page500.hbs');
                 }
             } else {
-                res.render('insert_temp', { message_warn: 'Riempire i calpi' });
+                res.render('insert_temp', { message_warn: 'Riempire i calpi', master:mastr });
             }
         }
     });
