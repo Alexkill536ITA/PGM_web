@@ -138,7 +138,9 @@ exports.Insert_db = (req, res) => {
                 }
 
                 if (classe_multi != null && classe_multi != undefined && classe_multi != "") {
-                    if (classe_multi == 'Altro') {
+                    if (classe_multi == "Scegli Multi Classe") {
+                        classe_multi_net = "Non Assegnata";
+                    } else if (classe_multi == 'Altro') {
                         if (classe_multi_altro != null && classe_multi_altro != undefined && classe_multi_altro != "") {
                             classe_multi_net = classe_multi_altro;
                         } else {
@@ -167,17 +169,15 @@ exports.Insert_db = (req, res) => {
 
                 if (sot_razza != null && sot_razza != undefined && sot_razza != "") {
                     if (sot_razza == 'Scegli Sotto Razza') {
-                        if (sot_razza == 'Altro') {
-                            if (sot_razza_altro != null && sot_razza_altro != undefined && sot_razza_altro != "") {
-                                sotto_razza_net = sot_razza_altro;
-                            } else {
-                                sotto_razza_net = "Altro";
-                            }
+                        sotto_razza_net = "Non Assegnata";
+                    } else if (sot_razza == 'Altro') {
+                        if (sot_razza_altro != null && sot_razza_altro != undefined && sot_razza_altro != "") {
+                            sotto_razza_net = sot_razza_altro;
                         } else {
-                            sotto_razza_net = sot_razza;
+                            sotto_razza_net = "Altro";
                         }
                     } else {
-                        sotto_razza_net = "Non Assegnata";
+                        sotto_razza_net = sot_razza;
                     }
                 } else {
                     sotto_razza_net = "Non Assegnata";
@@ -200,7 +200,7 @@ exports.Insert_db = (req, res) => {
                 }
 
                 if (sot_classe_multi != null && sot_classe_multi != undefined && sot_classe_multi != "") {
-                    if (sot_classe_multi == 'Scegli Sotto Classe') {
+                    if (sot_classe_multi == 'Scegli Sotto Multi Classe') {
                         sotto_classe_multi_net = "Non Assegnata";
                     } else if (sot_classe_multi == 'Altro') {
                         if (sot_classe_muti_altro != null && sot_classe_muti_altro != undefined && sot_classe_muti_altro != "") {
@@ -287,7 +287,7 @@ exports.Insert_db = (req, res) => {
                     const quantita_obj = req.body.quantita;
                     const note_obj = req.body.note;
                     const index_obj = req.body.index_obj;
- 
+     
                     PG_temp = {
                         "Nome_Discord": id_user,
                         "Avatar": url_avatar_load,
@@ -310,7 +310,7 @@ exports.Insert_db = (req, res) => {
                         "Money": money,
                         "Inventory": inventory
                     }
- 
+     
                     if (index_obj == 1) {
                         inventory[nome_oggetto_obj] = {
                             "Nome": nome_oggetto_obj,
