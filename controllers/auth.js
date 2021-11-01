@@ -72,7 +72,7 @@ exports.register = async (req, res) => {
                         return res.render('register.hbs', { message_warn: 'Password non coincidono' });
                     } else if (id_user.length == 18) {
                         let hashedPassword = await bcrypt.hash(Password, 8);
-                        var valid = methodDB.insert_db({ username: name_user, Id_discord: id_user, password: hashedPassword, N_schede: 0, N_sessioni_totali: "0", master: "0", temp_paw: "0" })
+                        var valid = methodDB.insert_db({ username: name_user, Id_discord: id_user, password: hashedPassword, N_schede: 0, N_sessioni_totali: "0", master: "0", temp_paw: "0", Priority: 0 })
                         if (valid != 0) {
                             res.render('page500.hbs');
                         } else {

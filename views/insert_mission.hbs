@@ -115,13 +115,13 @@
 
   <section class="u-align-center u-clearfix u-image u-section-1" id="sec-05f2" data-image-width="2000"
     data-image-height="1333">
-    <form action="/mission/insert" method="POST">
+    <form id="myform" action="/mission/insert" method="POST">
       <input id="type_insert" style="width: 0px;height 0px; visibility: hidden;" type="hidden" name="type_insert"
         value="0">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-container-style u-expanded-width u-group u-radius-30 u-shape-round u-white u-group-1">
           <div class="u-container-layout u-container-layout-1">
-            <h1 class="u-align-center u-text u-text-1">Missione</h1>
+            <h1 id="allert_message" class="u-align-center u-text u-text-1">Missione</h1>
             <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
               <div class="u-layout">
                 <div class="u-layout-col">
@@ -136,7 +136,7 @@
                       </div>
                       <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-2">
                         <div class="u-container-layout u-container-layout-3">
-                          <h3 class="u-text u-text-4">Player Rischiesti</h3>
+                          <h3 class="u-text u-text-4">Player Richiesti</h3>
                           <input id="player_min_missione" class="u-text u-text-5 u-radius-5" type="number"
                             name="player_min_missione" placeholder="Inserire Numero Player">
                         </div>
@@ -243,8 +243,66 @@
                   placeholder="Decrizione Missione"></textarea>
               </div>
             </div>
+            <script>
+              function checkEmpty() {
+                var root = document.getElementById('allert_message');
+                var input_name = false;
+                var input_player = false;
+                var input_descrizone = false;
+                var check_box = false;
+
+                try {
+                  document.getElementById('warn').remove();
+                } catch { }
+
+                if (document.getElementById('nome_missione').value.length > 0 && document.getElementById('nome_missione').value != "") {
+                  input_name = true;
+                }
+
+                if (document.getElementById('player_min_missione').value.length > 0 && document.getElementById('player_min_missione').value != "") {
+                  input_player = true;
+                }
+
+                if (document.getElementById('descrizone_missione').value.length > 0 && document.getElementById('descrizone_missione').value != "") {
+                  input_descrizone = true;
+                }
+
+                var check_g = [];
+                check_g[0] = document.getElementById('Select_rame').checked;
+                check_g[1] = document.getElementById('Select_bronzo').checked;
+                check_g[2] = document.getElementById('Select_ferro').checked;
+                check_g[3] = document.getElementById('Select_argento').checked;
+                check_g[4] = document.getElementById('Select_electrum').checked;
+                check_g[5] = document.getElementById('Select_oro').checked;
+                check_g[6] = document.getElementById('Select_platino').checked;
+                check_g[7] = document.getElementById('Select_mithril').checked;
+                check_g[8] = document.getElementById('Select_adamantio').checked;
+
+                for (i = 0; i < check_g.length; i++) {
+                  if (check_g[i] == true) {
+                    check_box = true;
+                  }
+                }
+
+                if (check_box == true && input_name == true && input_player == true && input_descrizone == true) {
+                  document.getElementById("myform").submit();
+                } else if (input_name == false) {
+                  root.insertAdjacentHTML('afterend', '<h4 id="warn" class="u-align-center u-text u-text-1 alert alert-warning mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">Inserire Nome Missione</h4>');
+                  window.scrollTo(0, 0);
+                } else if (input_player == false) {
+                  root.insertAdjacentHTML('afterend', '<h4 id="warn" class="u-align-center u-text u-text-1 alert alert-warning mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">Inserire Player Richiesti</h4>');
+                  window.scrollTo(0, 0);
+                } else if (input_descrizone == false) {
+                  root.insertAdjacentHTML('afterend', '<h4 id="warn" class="u-align-center u-text u-text-1 alert alert-warning mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">Inserire Descrizone</h4>');
+                  window.scrollTo(0, 0);
+                } else if (check_box == false) {
+                  root.insertAdjacentHTML('afterend', '<h4 id="warn" class="u-align-center u-text u-text-1 alert alert-warning mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">Selezionare almeno un Grado</h4>');
+                  window.scrollTo(0, 0);
+                }
+              }
+            </script>
             <button class="custom_button_green custom_button_dimension" style="float: right; margin-left: 15px;"
-              type="submit">Crea Missione</button>
+              type="button" onclick="checkEmpty()">Crea Missione</button>
             <a class="custom_button custom_button_dimension" href="/dashboard-mission"
               style=" float: right;">annulla</a>
             <br>

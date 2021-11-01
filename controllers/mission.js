@@ -116,6 +116,7 @@ exports.Edit_mission_db = (req, res) => {
 
                         res.render('mission.hbs', {
                             id_missione: result['ID'],
+                            Discord_id_message: result.Discord_id_message,
                             Status_enbele: Status_enbele,
                             Status_execute: Status_execute,
                             Status_disable: Status_disable,
@@ -159,6 +160,7 @@ exports.Insert_mission_db = (req, res) => {
             var {
                 type_insert,
                 id_mission,
+                discord_id_message,
                 nome_missione,
                 player_min_missione,
                 data_missione,
@@ -182,6 +184,12 @@ exports.Insert_mission_db = (req, res) => {
 
             if (id_mission == undefined) {
                 id_mission = randomString(6, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+            }
+
+            if (discord_id_message == undefined) {
+                id_message = "";
+            } else {
+                id_message = discord_id_message;
             }
 
             if (Scadenza_missione == undefined || Scadenza_missione == null || Scadenza_missione == "") {
@@ -245,6 +253,7 @@ exports.Insert_mission_db = (req, res) => {
             template = {
                 "ID": id_mission,
                 "Status_missione": "enable",
+                "Discord_id_message": id_message,
                 "Data_creazione": Date_now,
                 "Data_scadenza": Scadenza_missione,
                 "Data_ora_missione": data_missione,
@@ -270,10 +279,11 @@ exports.Insert_mission_db = (req, res) => {
                 } else {
                     if (type_insert == 0) {
                         methodDB.insert_db(template);
+                        call_Discord_bot('init', id_mission);
                     } else {
                         methodDB.mission_update(id_mission, template);
+                        call_Discord_bot('edit', id_mission);
                     };
-                    call_Discord_bot('init', id_mission);
                 }
                 res.redirect('/dashboard-mission');
             } else {
