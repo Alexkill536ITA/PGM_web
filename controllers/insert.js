@@ -138,7 +138,7 @@ exports.Insert_db = (req, res) => {
                 }
 
                 if (classe_multi != null && classe_multi != undefined && classe_multi != "") {
-                    if (classe_multi == "Scegli Multi Classe") {
+                    if (classe_multi == "Scegli Multiclasse") {
                         classe_multi_net = "Non Assegnata";
                     } else if (classe_multi == 'Altro') {
                         if (classe_multi_altro != null && classe_multi_altro != undefined && classe_multi_altro != "") {
@@ -184,7 +184,7 @@ exports.Insert_db = (req, res) => {
                 }
 
                 if (sot_classe != null && sot_classe != undefined && sot_classe != "") {
-                    if (sot_classe == 'Scegli Sotto Classe') {
+                    if (sot_classe == 'Scegli Sottoclasse') {
                         sotto_classe_net = "Non Assegnata";
                     } else if (sot_classe == 'Altro') {
                         if (sot_classe_altro != null && sot_classe_altro != undefined && sot_classe_altro != "") {
@@ -200,7 +200,7 @@ exports.Insert_db = (req, res) => {
                 }
 
                 if (sot_classe_multi != null && sot_classe_multi != undefined && sot_classe_multi != "") {
-                    if (sot_classe_multi == 'Scegli Sotto Multi Classe') {
+                    if (sot_classe_multi == 'Scegli Sotto Multiclasse') {
                         sotto_classe_multi_net = "Non Assegnata";
                     } else if (sot_classe_multi == 'Altro') {
                         if (sot_classe_muti_altro != null && sot_classe_muti_altro != undefined && sot_classe_muti_altro != "") {
