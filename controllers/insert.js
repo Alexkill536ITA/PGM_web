@@ -341,6 +341,8 @@ exports.Insert_db = (req, res) => {
                     "Multi Classe": String(classe_multi_net),
                     "Multi Sotto Classe": String(sotto_classe_multi_net),
                     "Background": String(Background_net),
+                    "Casata": "Non Assegnata",
+                    "Punti_Fama": 0,
                     "Descrizione": descrizone,
                     "Forza": forza_load,
                     "Destrezza": destrezza_load,
