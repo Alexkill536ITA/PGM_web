@@ -150,7 +150,7 @@
                           <h3 class="u-text u-text-6">Data ora Missione</h3>
                           <div
                             class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xl u-text u-text-7">
-                            <input id="data_missione" name="data_missione" type="datetime-local" value="">
+                            <input id="data_missione" name="data_missione" type="datetime-local" min="{{mindate}}" max="{{maxdate}}" value="">
                           </div>
                         </div>
                       </div>
@@ -159,7 +159,7 @@
                         <div class="u-container-layout u-container-layout-5">
                           <h3 class="u-text u-text-8"> Data Scadenza</h3>
                           <div class="u-align-center-lg u-align-center-xl u-text u-text-9">
-                            <input id="Scadenza_missione" name="Scadenza_missione" type="datetime-local" value="">
+                            <input id="Scadenza_missione" name="Scadenza_missione" type="datetime-local" min="{{mindate}}" max="{{maxdate}}" value="">
                           </div>
                         </div>
                       </div>

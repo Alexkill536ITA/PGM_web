@@ -10,7 +10,10 @@ exports.Make_mission = (req, res) => {
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
             if (decoded.master = 1) {
-                res.render('insert_mission');
+                var data_min = new Date();
+                var data_max = new Date();
+                data_max.setDate(data_max.getDate() + 21);
+                res.render('insert_mission', { mindate: GetFormatDate(data_min), maxdate: GetFormatDate(data_max) });
             } else {
                 res.render('page401.hbs');
             }
@@ -359,6 +362,6 @@ function randomString(length, chars) {
 }
 
 function call_Discord_bot(option, id_mission) {
-    const hook = new Discord.WebhookClient('901616598819950663', 'oN38giB7PjkL58Eo2Sv8zzjH4AtmrmjaegQHxFQeLi_APSKHjNS-22T67lg2RgxAfCt8');
+    const hook = new Discord.WebhookClient(process.env.ID_WEBHOOK, process.env.TOKEN_WEBHOOK);
     hook.send('&mission ' + option + ' ' + id_mission);
 }
