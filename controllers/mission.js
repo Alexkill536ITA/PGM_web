@@ -254,7 +254,7 @@ exports.Insert_mission_db = (req, res) => {
             }
 
             if (Url_missione != "") {
-                if (validURL(url_avatar) == true) {
+                if (validURL(Url_missione) == true) {
                     var immage = Url_missione;
                 } else {
                     var immage = "https://cdn.discordapp.com/attachments/759699249947869184/912053846359023666/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png";
