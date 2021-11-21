@@ -112,7 +112,7 @@ exports.Edit_mission_db = (req, res) => {
                         }
 
                         if (result.URL_Image == "" || result.URL_Image == null || result.URL_Image == "Non Assegnata") {
-                            var avatar = "../images/stemma_gilda_f.png"
+                            var avatar = "https://cdn.discordapp.com/attachments/759699249947869184/912053846359023666/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png"
                         } else {
                             var avatar = result.URL_Image;
                         }
@@ -253,6 +253,16 @@ exports.Insert_mission_db = (req, res) => {
                 var esito = esito_missione;
             }
 
+            if (Url_missione != "") {
+                if (validURL(url_avatar) == true) {
+                    var immage = Url_missione;
+                } else {
+                    var immage = "https://cdn.discordapp.com/attachments/759699249947869184/912053846359023666/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png";
+                }
+            } else {
+                var immage = "https://cdn.discordapp.com/attachments/759699249947869184/912053846359023666/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png";
+            }
+
             template = {
                 "ID": id_mission,
                 "Status_missione": "enable",
@@ -265,7 +275,7 @@ exports.Insert_mission_db = (req, res) => {
                 "Descrizione": descrizone_missione,
                 "Descrizione_breve": descrizone_breve_missione,
                 "Grado": grado,
-                "URL_Image": Url_missione,
+                "URL_Image": immage,
                 "Esito_missione": esito,
                 "Master_id": decoded.user,
                 "Player_min": player_min_missione,
@@ -364,4 +374,14 @@ function randomString(length, chars) {
 function call_Discord_bot(option, id_mission) {
     const hook = new Discord.WebhookClient(process.env.ID_WEBHOOK, process.env.TOKEN_WEBHOOK);
     hook.send('&mission ' + option + ' ' + id_mission);
+}
+
+function validURL(str) {
+    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    return !!pattern.test(str);
 }
