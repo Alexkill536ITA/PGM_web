@@ -38,7 +38,7 @@ const label_temp_2 = `<input id="classe_altro"" class="u-text u-text-3" style="m
 
 const label_temp_3 = `<input id="sot_classe_altro" class="u-text u-text-3" style="margin-top: 10px;" type="text" name="sot_classe_altro" placeholder="Altra Sotto Classe">`
 
-const label_temp_4 = `<input id="Background_altro" class="u-text u-text-3" style="margin-top: 10px;" type="text" name="Background_altro" placeholder="Altro Background">`
+const label_temp_4 = `<input id="Background_altro" class="u-text u-text-3" style="margin-top: 10px;" type="text" name="Background_altro" placeholder="Altro Background" maxlength="124">`
 
 const label_temp_5 = `<input id="classe_multi_altro"" class="u-text u-text-3" style="margin-top: 10px;" type="text" name="classe_multi_altro" placeholder="Altra Multi Classe">`
 
