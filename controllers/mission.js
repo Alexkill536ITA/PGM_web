@@ -118,6 +118,7 @@ exports.Edit_mission_db = (req, res) => {
                         }
 
                         res.render('mission.hbs', {
+                            id_data_db: result._id,
                             id_missione: result['ID'],
                             Discord_id_message: result.Discord_id_message,
                             Status_enbele: Status_enbele,
@@ -311,6 +312,7 @@ exports.Insert_mission_db = (req, res) => {
 
 exports.Delete_mission_db = async (req, res) => {
     var id_scheda = req.body.id_scheda_delete;
+    console.log(id_scheda);
     var name_pg = req.body.nome_delete;
     var check_pg = req.body.check_delete;
     const token = req.cookies['jwt'];
