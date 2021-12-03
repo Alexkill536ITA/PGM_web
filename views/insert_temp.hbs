@@ -250,7 +250,8 @@
                             class="border_custom u-hidden-md u-hidden-sm u-hidden-xs u-image u-image-circle u-image-5"
                             style="background-image: url('/images/Altro.png');" alt="" data-image-width="400"
                             data-image-height="265"></div>
-                          <h3 id="root_sot_classe_pg" class="u-align-center-lg u-align-center-xl u-text u-text-10">Sottoclasse</h3>
+                          <h3 id="root_sot_classe_pg" class="u-align-center-lg u-align-center-xl u-text u-text-10">
+                            Sottoclasse</h3>
                           <select id="sot_classe_pg" class="u-text u-text-13" name="sot_classe" onchange="ceck_empy()">
                             <option>Scegli Sottoclasse</option>
                           </select>
@@ -328,7 +329,8 @@
                             class="border_custom u-hidden-md u-hidden-sm u-hidden-xs u-image u-image-circle u-image-5"
                             style="background-image: url('/images/Altro.png');" alt="" data-image-width="400"
                             data-image-height="265"></div>
-                          <h4 id="root_sot_classe_multi" class="u-align-center-lg u-align-center-xl u-text u-text-10">Sotto Multiclasse</h4>
+                          <h4 id="root_sot_classe_multi" class="u-align-center-lg u-align-center-xl u-text u-text-10">
+                            Sotto Multiclasse</h4>
                           <select id="sot_classe_multi" class="u-text u-text-13" name="sot_classe_multi"
                             onchange="ceck_empy()">
                             <option>Scegli Sotto Multiclasse</option>
@@ -425,7 +427,7 @@
                   </div>
                   <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-8">
                     <div class="u-container-layout u-valign-top u-container-layout-15">
-                      <img
+                      <img id="img_temp"
                         class="u-align-center u-border-2 u-border-grey-75 u-expanded-width u-image u-image-round u-radius-30 u-image-13"
                         src="/images/stemma_gilda_f.png" alt="" data-image-width="2000" data-image-height="1333">
                     </div>
@@ -437,7 +439,7 @@
               <div class="u-container-layout u-container-layout-16">
                 <h2 class="u-align-left u-text u-text-27">Avatar URL</h2>
                 <input id="avatar_pg" class="u-align-left u-text" style="width:100%;" type="text" name="url_avatar"
-                  placeholder="Inserire URL della Immagine Avatar">
+                  placeholder="Inserire URL della Immagine Avatar" onchange="avatar_Previwe()">
               </div>
             </div>
             <div class="u-container-style u-expanded-width u-group u-group-9 ">
@@ -464,6 +466,40 @@
   </footer>
 
   <script src="/js/controll_empty.js"></script>
+  <script class="u-script" type="text/javascript">
+    function avatar_Previwe() {
+      var imge_box = document.getElementById('img_temp');
+      var url_link = document.getElementById('avatar_pg');
+      if (url_link.value != "") {
+        checkIfImageExists(url_link.value, (exists) => {
+          if (exists) {
+            imge_box.setAttribute("src", url_link.value);
+          } else {
+            imge_box.setAttribute("src", "/images/stemma_gilda_f.png");
+          }
+        });
+      } else {
+        imge_box.setAttribute("src", "/images/stemma_gilda_f.png");
+      }
+    }
+
+    function checkIfImageExists(url, callback) {
+      const img = new Image();
+      img.src = url;
+
+      if (img.complete) {
+        callback(true);
+      } else {
+        img.onload = () => {
+          callback(true);
+        };
+
+        img.onerror = () => {
+          callback(false);
+        };
+      }
+    }
+  </script>
 </body>
 
 </html>
