@@ -7,6 +7,12 @@
   <meta name="keywords" content="Registrati!">
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tisifea">
+  <meta property="og:title" content="Tisifea">
+  <meta property="og:description"
+    content="Sito WEB per la creazione Schede PG e Missioni da usare con il BOT **Il Maggiordomo**">
+  <meta property="og:image" content="https://tisifea.duckdns.org/images/stemma_gilda_f.png">
   <title>Register</title>
   <link rel="icon" type="image/jpg" href="images/Logo_bot.jpg">
   <link rel="stylesheet" href="/css/nicepage.css" media="screen">
@@ -102,10 +108,12 @@
         <div class="u-container-layout u-valign-middle u-container-layout-1">
           <h1 class="u-align-center u-text u-text-1">Registrati!</h1>
           {{#if message}}
-            <h4 class="u-align-center u-text u-text-1 alert alert-danger mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message}}</h4>
+          <h4 class="u-align-center u-text u-text-1 alert alert-danger mt-4"
+            style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message}}</h4>
           {{/if}}
           {{#if message_warn}}
-            <h4 class="u-align-center u-text u-text-1 alert alert-warning mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">{{message_warn}}</h4>
+          <h4 class="u-align-center u-text u-text-1 alert alert-warning mt-4"
+            style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">{{message_warn}}</h4>
           {{/if}}
           <div class="u-align-center u-form u-form-1">
             <form action="/auth/register" method="POST"

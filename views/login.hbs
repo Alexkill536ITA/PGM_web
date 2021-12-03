@@ -7,6 +7,12 @@
   <meta name="keywords" content="Login!">
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tisifea">
+  <meta property="og:title" content="Tisifea">
+  <meta property="og:description"
+    content="Sito WEB per la creazione Schede PG e Missioni da usare con il BOT **Il Maggiordomo**">
+  <meta property="og:image" content="https://tisifea.duckdns.org/images/stemma_gilda_f.png">
   <title>Login</title>
   <link rel="icon" type="image/jpg" href="images/Logo_bot.jpg">
   <link rel="stylesheet" href="/css/nicepage.css" media="screen">
@@ -96,47 +102,47 @@
   </header>
 
   {{#if recovery_pas_enable}}
-    <section class="u-clearfix u-image u-section-1" id="sec-f024" data-image-width="2000" data-image-height="1333">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <div class="u-container-style u-group u-radius-30 u-shape-round u-white u-group-1">
-          <div class="u-container-layout u-valign-middle u-container-layout-1">
-            <h1 class="u-align-center u-text u-text-1">
-              <span style="font-weight: 700;">Resetta Password Utente {{recovery_pas_enable}}</span>
-            </h1>
-            <div class="u-align-center u-form u-form-1">
-              <form action="/auth/recovery_pas" method="POST"
-                class="u-clearfix u-form-custom-backend u-form-spacing-10 u-form-vertical u-inner-form"
-                style="padding: 0px;" source="custom" name="form" redirect="true">
-                <div class="u-form-group u-form-name">
-                  <label for="name-688c" class="u-label">Username</label>
-                  <input type="text" placeholder="Inserisci il tuo Username" id="name-688c" name="name_user_recover"
-                    class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white"
-                    autofocus="autofocus" required="required">
-                </div>
-                <div class="u-form-group">
-                  <label for="email-688c" class="u-label">Password</label>
-                  <input type="password" placeholder="Inserisci Password" id="email-688c" name="Password_recover"
-                    class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white"
-                    required="required">
-                </div>
-                <div class="u-form-group">
-                  <label for="email-688c" class="u-label">Ripetere Password</label>
-                  <input type="password" placeholder="Ripetere Password" name="Password_rep_recover"
-                    class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white"
-                    required="required">
-                </div>
-                <div class="u-align-center u-form-group u-form-submit">
-                  <a
-                    class="u-black u-border-2 u-border-black u-btn u-btn-round u-btn-submit u-button-style u-hover-white u-radius-50 u-btn-1">Continua<br>
-                  </a>
-                  <input type="submit" value="submit" class="u-form-control-hidden">
-                </div>
-              </form>
-            </div>
+  <section class="u-clearfix u-image u-section-1" id="sec-f024" data-image-width="2000" data-image-height="1333">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-container-style u-group u-radius-30 u-shape-round u-white u-group-1">
+        <div class="u-container-layout u-valign-middle u-container-layout-1">
+          <h1 class="u-align-center u-text u-text-1">
+            <span style="font-weight: 700;">Resetta Password Utente {{recovery_pas_enable}}</span>
+          </h1>
+          <div class="u-align-center u-form u-form-1">
+            <form action="/auth/recovery_pas" method="POST"
+              class="u-clearfix u-form-custom-backend u-form-spacing-10 u-form-vertical u-inner-form"
+              style="padding: 0px;" source="custom" name="form" redirect="true">
+              <div class="u-form-group u-form-name">
+                <label for="name-688c" class="u-label">Username</label>
+                <input type="text" placeholder="Inserisci il tuo Username" id="name-688c" name="name_user_recover"
+                  class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white"
+                  autofocus="autofocus" required="required">
+              </div>
+              <div class="u-form-group">
+                <label for="email-688c" class="u-label">Password</label>
+                <input type="password" placeholder="Inserisci Password" id="email-688c" name="Password_recover"
+                  class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white"
+                  required="required">
+              </div>
+              <div class="u-form-group">
+                <label for="email-688c" class="u-label">Ripetere Password</label>
+                <input type="password" placeholder="Ripetere Password" name="Password_rep_recover"
+                  class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white"
+                  required="required">
+              </div>
+              <div class="u-align-center u-form-group u-form-submit">
+                <a
+                  class="u-black u-border-2 u-border-black u-btn u-btn-round u-btn-submit u-button-style u-hover-white u-radius-50 u-btn-1">Continua<br>
+                </a>
+                <input type="submit" value="submit" class="u-form-control-hidden">
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   {{/if}}
 
   <section class="u-clearfix u-image u-section-1" id="sec-f024" data-image-width="2000" data-image-height="1333">
@@ -151,13 +157,19 @@
               class="u-clearfix u-form-custom-backend u-form-spacing-10 u-form-vertical u-inner-form"
               style="padding: 0px;" source="custom" name="form" redirect="true">
               {{#if message_warn}}
-                <h4 class="u-align-center u-text u-text-1 alert alert-warning mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">{{message_warn}}</h4>
+              <h4 class="u-align-center u-text u-text-1 alert alert-warning mt-4"
+                style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px;">{{message_warn}}
+              </h4>
               {{/if}}
               {{#if message_error}}
-                <h4 class="u-align-center u-text u-text-1 alert alert-danger mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message_error}}</h4>
+              <h4 class="u-align-center u-text u-text-1 alert alert-danger mt-4"
+                style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message_error}}
+              </h4>
               {{/if}}
               {{#if message_success}}
-                <h4 class="u-align-center u-text u-text-1 alert alert-success mt-4" style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message_success}}</h4>
+              <h4 class="u-align-center u-text u-text-1 alert alert-success mt-4"
+                style="margin: auto; width: 100%; padding: 10px; height:50px; margin-bottom: 20px">{{message_success}}
+              </h4>
               {{/if}}
               <div class="u-form-group u-form-name">
                 <label for="name-688c" class="u-label">Username</label>

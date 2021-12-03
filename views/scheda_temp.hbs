@@ -7,6 +7,12 @@
   <meta name="keywords" content="Scheda PG">
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tisifea">
+  <meta property="og:title" content="Tisifea">
+  <meta property="og:description"
+    content="Sito WEB per la creazione Schede PG e Missioni da usare con il BOT **Il Maggiordomo**">
+  <meta property="og:image" content="https://tisifea.duckdns.org/images/stemma_gilda_f.png">
   <title>Profilo</title>
   <link rel="icon" type="image/jpg" href="../images/Logo_bot.jpg">
   <link rel="stylesheet" href="/css/nicepage.css" media="screen">
@@ -107,7 +113,7 @@
                 {{/if}}
                 <li class="u-nav-item">
                   <form class="u-button-style u-nav-link" style="padding: 10px 0px;" method="POST" action="/logout">
-                    <button class="custom_logout" type="submit" >Logout</button>
+                    <button class="custom_logout" type="submit">Logout</button>
                   </form>
                 </li>
               </ul>
@@ -316,10 +322,10 @@
               </p>
             </div>
           </div>
-            <script>
-              const root_element = document.getElementById('sec-05f2');
-              function cancell_create(id_scheda, nome_pg) {
-                var tempplate = `<div id="alert_cancell">
+          <script>
+            const root_element = document.getElementById('sec-05f2');
+            function cancell_create(id_scheda, nome_pg) {
+              var tempplate = `<div id="alert_cancell">
                 <div id="alert_cancell_are">
                   <div class="wrap-contact150">
                     <span class="contact100-form-title">
@@ -356,14 +362,15 @@
                           </div>
                         </div>
                     </div>`;
-                  root_element.insertAdjacentHTML('afterend', tempplate);
-                }
-                function cancell_destroy() {
-                  var element = document.getElementById('alert_cancell');
-                  element.remove();
-                }
+              root_element.insertAdjacentHTML('afterend', tempplate);
+            }
+            function cancell_destroy() {
+              var element = document.getElementById('alert_cancell');
+              element.remove();
+            }
           </script>
-          <button class="custom_button_del" onclick="cancell_create('{{id_scheda}}','{{nome_pg}}')">ELIMINA SCHEDA <i class="fa fa-trash m-l-7" aria-hidden="true"></i></button>
+          <button class="custom_button_del" onclick="cancell_create('{{id_scheda}}','{{nome_pg}}')">ELIMINA SCHEDA <i
+              class="fa fa-trash m-l-7" aria-hidden="true"></i></button>
           <a href="/login" class="custom_button u-align-center">Torna Indietro </a>
         </div>
       </div>
