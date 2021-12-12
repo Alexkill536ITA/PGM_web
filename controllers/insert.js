@@ -352,6 +352,7 @@ exports.Insert_db = (req, res) => {
                     "Carisma": carisma_load,
                     "Competenze": {},
                     "Money": money,
+                    "Ispirazione": 0,
                     "Inventory": inventory
                 }
                 // }
