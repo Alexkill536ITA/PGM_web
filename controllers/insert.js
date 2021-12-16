@@ -351,7 +351,7 @@ exports.Insert_db = (req, res) => {
                     "Saggezza": saggezza_load,
                     "Carisma": carisma_load,
                     "Competenze": {},
-                    "Money": money,
+                    "Money": parseFloat(money),
                     "Ispirazione": 0,
                     "Inventory": inventory
                 }
