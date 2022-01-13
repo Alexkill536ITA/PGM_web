@@ -512,15 +512,15 @@
 
   .u-section-1 .u-btn-2 {
     margin-top: 35px;
-    padding-left: 81px;
-    padding-right: 81px;
+    padding-left: 65px;
+    padding-right: 65px;
   }
 
   .u-section-1 .u-btn-3 {
     margin-right: auto;
     margin-left: 0;
-    padding-right: 91px;
-    padding-left: 90px;
+    padding-right: 75px;
+    padding-left: 75px;
   }
 
   .u-section-1 .u-text-4 {
@@ -668,17 +668,17 @@
   }
 
   .u-section-1 .u-btn-2 {
-    margin-top: 93px;
+    margin-top: 85px;
     margin-left: 0;
-    padding-right: 117px;
-    padding-left: 116px;
+    padding-right: 85px;
+    padding-left: 88px;
   }
 
   .u-section-1 .u-btn-3 {
     margin-top: 11px;
     margin-right: 0;
-    padding-left: 126px;
-    padding-right: 126px;
+    padding-left: 95px;
+    padding-right: 96px;
   }
 
   .u-section-1 .u-text-4 {
@@ -686,7 +686,9 @@
   }
 
   .u-section-1 .u-text-5 {
-    margin-right: 71px;
+    margin-right: 0;
+    margin-top: 10px;
+    margin-bottom: 120px;
   }
 
   .u-section-1 .u-container-layout-4 {
