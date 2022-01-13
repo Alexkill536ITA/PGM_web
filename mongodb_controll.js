@@ -75,6 +75,11 @@ exports.find_Json = function (query) {
     return collection.findOne(query);
 }
 
+exports.find_All = async function () {
+    let cursor = await collection.find({}).toArray();
+    return cursor;
+}
+
 // MongoDB Insert
 exports.insert_db = function (Data_value) {
     collection.insertOne(Data_value);

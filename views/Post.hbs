@@ -4,44 +4,43 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
-  <meta name="keywords" content="Post 1 Headline">
-  <meta name="description" content="">
+  <meta name="keywords" content="{{Title}}">
+  <meta name="description" content="{{text}}">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
-  <meta content="Tisifea" property="og:title" />
-  <meta content="Sito WEB per la creazione Schede PG e Missioni da usare con il BOT Il Maggiordomo" property="og:description" />
+  <meta content="BlogPost" property="og:title" />
+  <meta content="Sito WEB per la creazione Schede PG e Missioni da usare con il BOT Il Maggiordomo"
+    property="og:description" />
   <meta content="https://tisifea.duckdns.org/" property="og:url" />
   <meta content="https://tisifea.duckdns.org/images/stemma_gilda_f.png" property="og:image" />
   <meta content="#43B581" data-react-helmet="true" name="theme-color" />
-  <title>Post</title>
-  <link rel="stylesheet" href="nicepage.css" media="screen">
-  <link rel="stylesheet" href="Post.css" media="screen">
-  <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+  <meta property="og:type" content="website">
+  <title>Post {{Title}}</title>
+  <link rel="icon" type="image/jpg" href="../images/Logo_bot.jpg">
+  <link rel="stylesheet" href="../css/nicepage.css" media="screen">
+  <link rel="stylesheet" href="../css/Post.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <script class="u-script" type="text/javascript" src="../js/jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="../jS/nicepage.js" defer=""></script>
   <meta name="generator" content="Nicepage 3.16.0, nicepage.com">
   <link id="u-theme-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-
-
-
-  <script type="application/ld+json">{
+  <script type="application/ld+json">
+  {
 		"@context": "http://schema.org",
 		"@type": "Organization",
 		"name": "",
-		"url": "index.html",
-		"logo": "images/default-image.jpg"
-}</script>
-  <meta property="og:title" content="Post">
-  <meta property="og:type" content="website">
-  <meta name="theme-color" content="#478ac9">
-  <link rel="canonical" href="index.html">
-  <meta property="og:url" content="index.html">
+		"url": "/",
+		"logo": "../images/stemma_gilda_f.png"
+  }
+  </script>
+  <link rel="canonical" href="/">
 </head>
 
 <body class="u-body">
   <header class="u-border-2 u-border-grey-75 u-clearfix u-header u-sticky u-white u-header" id="sec-8d3a">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="2000" data-image-height="1333">
-        <img src="images/default-image.jpg" class="u-logo-image u-logo-image-1" data-image-width="64">
+      <a href="/" class="u-image u-logo u-image-1" data-image-width="2000" data-image-height="1333">
+        <img src="../images/stemma_gilda_f.png" class="u-logo-image u-logo-image-1" data-image-width="64">
       </a>
       <nav class="u-align-right u-menu u-menu-dropdown u-offcanvas u-menu-1">
         <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
@@ -65,16 +64,31 @@
           <ul class="u-nav u-spacing-30 u-unstyled u-nav-1">
             <li class="u-nav-item"><a
                 class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
-                href="Home.html" style="padding: 10px 0px;">Home</a>
+                href="/" style="padding: 10px 0px;">Home</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90 active"
+                href="/blogpost" style="padding: 10px 0px;">BlogPost</a>
             </li>
             <li class="u-nav-item"><a
                 class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
-                href="BlogPost.html" style="padding: 10px 0px;">BlogPost</a>
+                href="/login" style="padding: 10px 0px;">Dashboard</a>
             </li>
+            {{#if master}}
             <li class="u-nav-item"><a
                 class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
-                href="Dashboard.html" style="padding: 10px 0px;">Dashboard</a>
+                href="/dashboard-mission" style="padding: 10px 0px;">Missions</a>
             </li>
+            {{/if}}
+            {{#if loged}}
+            <li class="u-nav-item">
+              <form method="POST" action="/logout">
+                <button
+                  class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
+                  type="submit" style="padding: 10px 0px;">Logout</button>
+              </form>
+            </li>
+            {{/if}}
           </ul>
         </div>
         <div class="u-custom-menu u-nav-container-collapse">
@@ -82,15 +96,26 @@
             <div class="u-sidenav-overflow">
               <div class="u-menu-close"></div>
               <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html"
-                    style="padding: 10px 0px;">Home</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/" style="padding: 10px 0px;">Home</a>
                 </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="BlogPost.html"
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/blogpost"
                     style="padding: 10px 0px;">BlogPost</a>
                 </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Dashboard.html"
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/login"
                     style="padding: 10px 0px;">Dashboard</a>
                 </li>
+                {{#if master}}
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/dashboard-mission"
+                    style="padding: 10px 0px;">Missions</a>
+                </li>
+                {{/if}}
+                {{#if loged}}
+                <li class="u-nav-item">
+                  <form class="u-button-style u-nav-link" style="padding: 10px 0px;" method="POST" action="/logout">
+                    <button class="custom_logout" type="submit">Logout</button>
+                  </form>
+                </li>
+                {{/if}}
               </ul>
             </div>
           </div>
@@ -99,63 +124,34 @@
       </nav>
     </div>
   </header>
+
   <section class="u-align-center u-clearfix u-image u-section-1" id="sec-f224" data-image-width="2000"
     data-image-height="1333">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-      <!--post_details-->
-      <!--post_details_options_json-->
-      <!--{"source":""}-->
-      <!--/post_details_options_json-->
-      <!--blog_post-->
       <div class="u-container-style u-expanded-width u-post-details u-radius-45 u-shape-round u-white u-post-details-1">
         <div class="u-container-layout u-valign-bottom u-container-layout-1">
-          <!--blog_post_header-->
           <h2 class="u-blog-control u-text u-text-1">
-            <a class="u-post-header-link" href="blog/post.html">
-              <!--blog_post_header_content-->Post 1 Headline
-              <!--/blog_post_header_content-->
-            </a>
+            {{Title}}
           </h2>
-          <!--/blog_post_header-->
-          <!--blog_post_image-->
-          <img alt="" class="u-blog-control u-expanded-width u-image u-image-default u-image-1" src="images/2.jpeg">
-          <!--/blog_post_image-->
-          <!--blog_post_metadata-->
+          <img alt="" class="u-blog-control u-expanded-width u-image u-image-default u-image-1" src="{{Img}}">
           <div class="u-blog-control u-metadata u-text-grey-30 u-metadata-1">
-            <!--blog_post_metadata_date-->
             <span class="u-meta-date u-meta-icon">
-              <!--blog_post_metadata_date_content-->Mon May 31 2021
-              <!--/blog_post_metadata_date_content-->
+              {{date}}
             </span>
-            <!--/blog_post_metadata_date-->
-            <!--blog_post_metadata_category-->
             <span class="u-meta-category u-meta-icon">
-              <!--blog_post_metadata_category_content-->Category
-              <!--/blog_post_metadata_category_content-->
+              {{Famiglia}}
             </span>
-            <!--/blog_post_metadata_category-->
-            <!--blog_post_metadata_comments-->
             <span class="u-meta-comments u-meta-icon">
-              <!--blog_post_metadata_comments_content-->Comments (0)
-              <!--/blog_post_metadata_comments_content-->
+              Tag: {{Tag}}
             </span>
-            <!--/blog_post_metadata_comments-->
           </div>
-          <!--/blog_post_metadata-->
-          <!--blog_post_content-->
           <div class="u-align-justify u-blog-control u-post-content u-text u-text-2">
-            <!--blog_post_content_content-->Testo corto di Prova. Lorem ipsum dolor sit amet.
-            <!--/blog_post_content_content-->
+            {{text}}
           </div>
-          <!--/blog_post_content-->
         </div>
       </div>
-      <!--/blog_post-->
-      <!--/post_details-->
     </div>
   </section>
-
-
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-7fbf">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
@@ -163,17 +159,6 @@
         Bjarka Energy®.</p>
     </div>
   </footer>
-  <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-      <span>HTML Template</span>
-    </a>
-    <p class="u-text">
-      <span>created with</span>
-    </p>
-    <a class="u-link" href="https://nicepage.com/" target="_blank">
-      <span>Offline Website Builder</span>
-    </a>.
-  </section>
 </body>
 
 </html>

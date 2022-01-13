@@ -62,8 +62,10 @@ app.use('/edit', require('./routes/edit'));
 app.use('/mission/make', require('./routes/dashboard-mission'));
 app.use('/mission/insert', require('./routes/dashboard-mission'));
 app.use('/mission/edit', require('./routes/dashboard-mission'));
+app.use('/post/:id', require('./routes/post'));
 app.use(require('./routes/dashboard-mission.js'))
 app.use(require('./routes/Blogpost.js'));
+app.use(require('./routes/Post.js'));
 app.use(require('./routes/Login.js'));
 app.use(require('./routes/Register.js'));
 app.use(require('./routes/dashboard.js'));
