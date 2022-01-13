@@ -858,12 +858,12 @@
   }
 
   .u-section-1 .u-text-29 {
-    margin-right: 0;
-    margin-left: 85px;
+    margin-left: 0;
+    margin-right: 85px;
   }
 
   .u-section-1 .u-text-30 {
-    margin-left: 0;
+    margin-left: 85px;
   }
 
   .u-section-1 .u-text-31 {
@@ -1190,7 +1190,7 @@
   }
 
   .u-section-1 .u-list-1 {
-    width: 320px;
+    width: 95%;
   }
 
   .u-section-1 .u-btn-1 {
