@@ -1,9 +1,7 @@
-const express = require('express');
 const jwt = require('jsonwebtoken');
-const router = express.Router();
 const methodDB = require("../mongodb_controll.js");
 
-router.get('/post/:id', async (req, res, next) => {
+exports.show = async (req, res, next) => {
     const token = req.cookies['jwt'];
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
@@ -15,7 +13,7 @@ router.get('/post/:id', async (req, res, next) => {
             if (req.params.id.length == 24) {
                 post = await get_Object(req.params.id);
             }
-            res.render('Post.hbs', { loged: loged, master: mastr, Title: post.Title, Img: post.Img, Tag: post.Tag, date: post['Date'], text: post['Text'], Famiglia: post.Famiglia });
+            res.render('post/post', { loged: loged, master: mastr, Title: post.Title, Img: post.Img, Tag: post.Tag, date: post['Date'], text: post['Text'], Famiglia: post.Famiglia });
         } else {
             var loged = false
             var mastr = false
@@ -23,10 +21,10 @@ router.get('/post/:id', async (req, res, next) => {
             if (req.params.id.length == 24) {
                 post = await get_Object(req.params.id);
             }
-            res.render('Post.hbs', { loged: loged, master: mastr, Title: post.Title, Img: post.Img, Tag: post.Tag, date: post['Date'], text: post['Text'], Famiglia: post.Famiglia });
+            res.render('post/post', { loged: loged, master: mastr, Title: post.Title, Img: post.Img, Tag: post.Tag, date: post['Date'], text: post['Text'], Famiglia: post.Famiglia });
         }
     });
-});
+};
 
 async function get_Object(id_obj) {
     var on_sevice_db = await methodDB.open_db();
@@ -39,4 +37,4 @@ async function get_Object(id_obj) {
     return cursor;
 }
 
-module.exports = router;
+module.exports = exports;

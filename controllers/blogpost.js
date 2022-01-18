@@ -1,10 +1,8 @@
-const express = require('express');
 const jwt = require('jsonwebtoken');
-const router = express.Router();
 const methodDB = require("../mongodb_controll.js");
 
 /* GET Blogpost Page */
-router.get('/blogpost', async function(req, res, next) {
+exports.show = async function(req, res, next) {
     const token = req.cookies['jwt'];
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
@@ -21,7 +19,7 @@ router.get('/blogpost', async function(req, res, next) {
                 post_family[i] = post[i]['Famiglia'];
                 post_id[i] = post[i]['_id'];
             }
-            res.render('blogpost', {loged:loged, master:mastr, post_title:post_title, post_family:post_family, post_id:post_id});
+            res.render('blogpost/blogpost', {loged:loged, master:mastr, post_title:post_title, post_family:post_family, post_id:post_id});
         } else {
             var loged = false
             var mastr = false
@@ -34,30 +32,10 @@ router.get('/blogpost', async function(req, res, next) {
                 post_family[i] = post[i]['Famiglia'];
                 post_id[i] = post[i]['_id'];
             }
-            res.render('blogpost', {loged:loged, master:mastr, post_title:post_title, post_family:post_family, post_id:post_id});
+            res.render('blogpost/blogpost', {loged:loged, master:mastr, post_title:post_title, post_family:post_family, post_id:post_id});
         }
     });
-
-    // var MongoClient = require('mongodb').MongoClient;
-    //         var url = process.env.DATABASE_MONGDB;
-
-    //         await MongoClient.connect(url,{ useUnifiedTopology: true }, function(err, db) {
-    //             if (!err) { 
-    //                 var dbo = db.db("Piccolo_Grande_Mondo");
-    //                 dbo.collection("Post_blog").find().toArray(function(err, result) {
-    //                     if (!err) {
-    //                         if(result) {
-                                
-    //                             db.close();
-    //                             res.render('blogpost.hbs', {post_recnet, post_tag_mondo, post_tag_storia, post_tag_classi, post_tag_razze, post_tag_homebrew, post_tag_help, post_tag_altro});
-    //                         }
-    //                     }
-    //                 });
-    //             } else {
-    //                 res.render('page500.hbs');
-    //             }
-    //         });
-});
+};
 
 async function get_Object() {
     var on_sevice_db = await methodDB.open_db();
@@ -70,4 +48,4 @@ async function get_Object() {
     return cursor;
 }
 
-module.exports = router;
+module.exports = exports;
