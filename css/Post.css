@@ -37,7 +37,9 @@
 }
 
 .u-section-1 .u-text-2 {
-  margin: 20px 0 0;
+  margin: 0px 0 0;
+  min-width: 1080px;
+  min-height: 250px;
 }
 
 @media (max-width: 1199px) {

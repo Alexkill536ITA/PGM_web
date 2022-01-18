@@ -2,6 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 const methodDB = require("../mongodb_controll.js");
+const Controller = require('../controllers/post');
 
 router.get('/post/:id', async (req, res, next) => {
     const token = req.cookies['jwt'];
@@ -38,5 +39,11 @@ async function get_Object(id_obj) {
     }
     return cursor;
 }
+
+router.post('/post/make', Controller.Make_post);
+// router.post('/post/edit/:id', Controller.Edit_open_post_db);
+// router.post('/post/edit/submit', Controller.Edit_post_db);
+router.post('/post/insert', Controller.Insert_post_db);
+// router.post('/post/delete/:id', Controller.Delete_post_db);
 
 module.exports = router;
