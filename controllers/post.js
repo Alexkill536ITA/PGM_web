@@ -179,3 +179,5 @@ async function get_Object(id_obj) {
     }
     return cursor;
 }
+
+module.exports = exports;

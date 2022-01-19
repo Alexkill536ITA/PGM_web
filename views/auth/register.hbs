@@ -39,66 +39,7 @@
 </head>
 
 <body class="u-body">
-  <header class="u-border-2 u-border-grey-75 u-clearfix u-header u-sticky u-white u-header" id="sec-8d3a">
-    <div class="u-clearfix u-sheet u-sheet-1">
-      <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="2000" data-image-height="1333">
-        <img src="/images/stemma_gilda_f.png" class="u-logo-image u-logo-image-1" data-image-width="64">
-      </a>
-      <nav class="u-align-right u-menu u-menu-dropdown u-offcanvas u-menu-1">
-        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
-          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-            href="#">
-            <svg>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
-            </svg>
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <defs>
-                <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
-                  <rect y="1" width="16" height="2"></rect>
-                  <rect y="7" width="16" height="2"></rect>
-                  <rect y="13" width="16" height="2"></rect>
-                </symbol>
-              </defs>
-            </svg>
-          </a>
-        </div>
-        <div class="u-custom-menu u-nav-container">
-          <ul class="u-nav u-spacing-30 u-unstyled u-nav-1">
-            <li class="u-nav-item"><a
-                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
-                href="/" style="padding: 10px 0px;">Home</a>
-            </li>
-            <li class="u-nav-item"><a
-                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
-                href="BlogPost.html" style="padding: 10px 0px;">BlogPost</a>
-            </li>
-            <li class="u-nav-item"><a
-                class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-grey-90"
-                href="/login" style="padding: 10px 0px;">Dashboard</a>
-            </li>
-          </ul>
-        </div>
-        <div class="u-custom-menu u-nav-container-collapse">
-          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-            <div class="u-sidenav-overflow">
-              <div class="u-menu-close"></div>
-              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/" style="padding: 10px 0px;">Home</a>
-                </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="BlogPost.html"
-                    style="padding: 10px 0px;">BlogPost</a>
-                </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/login"
-                    style="padding: 10px 0px;">Dashboard</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-        </div>
-      </nav>
-    </div>
-  </header>
+  {{> header }}
 
   <section class="u-align-center u-clearfix u-image u-section-1" id="sec-d9e9" data-image-width="2000"
     data-image-height="1333">
@@ -125,7 +66,7 @@
                   required="" autofocus="autofocus">
               </div>
               <div class="u-form-email u-form-group">
-                <label for="email-0bca" class="u-label">ID Utente Disocrd</label>
+                <label for="email-0bca" class="u-label">ID Utente Disocord</label>
                 <input type="text" placeholder="Inserire ID Discord" id="email-0bca" name="id_user"
                   class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white"
                   required="">
@@ -137,8 +78,8 @@
                   required="required">
               </div>
               <div class="u-form-group u-form-group-4">
-                <label for="text-127b" class="u-label">Ripeterte Password</label>
-                <input type="password" placeholder="Ripeterte Password" id="text-127b" name="Password_rep"
+                <label for="text-127b" class="u-label">Ripeti Password</label>
+                <input type="password" placeholder="Ripeti la Password" id="text-127b" name="Password_rep"
                   class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white"
                   required="required">
               </div>
@@ -149,7 +90,7 @@
               </div>
             </form>
           </div>
-          <a href="/login"
+          <a href="/auth/login"
             class="u-active-none u-border-2 u-border-palette-1-base u-btn u-btn-rectangle u-button-style u-hover-none u-none u-btn-2">Hai
             già un Profilo? Logga ora<br>
           </a>
@@ -158,12 +99,7 @@
     </div>
   </section>
 
-  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-7fbf">
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">Copyright 2020-2021 Alexkill536ITA - All Rights Reserved to
-        Bjarka Energy®.</p>
-    </div>
-  </footer>
+  {{> footer }}
 </body>
 
 </html>

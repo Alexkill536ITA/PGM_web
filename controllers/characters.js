@@ -1,45 +1,107 @@
 const { MongoClient } = require("mongodb");
-const mongo = require("mongodb");
+const mongodb = require("mongodb");
 const methodDB = require("../mongodb_controll.js");
 const jwt = require('jsonwebtoken');
-const { post } = require('../routes');
 
-exports.Crea_sheda = (req, res) => {
+/* GET Dashboard Characters Page */
+exports.show = (req, res) => {
     const token = req.cookies['jwt'];
+    var loged = false;
+    var mastr = false;
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
+            var MongoClient = require('mongodb').MongoClient;
+            var url = process.env.DATABASE_MONGDB;
+            loged = true;
             if (decoded.master == 1) {
                 mastr = true
-            } else {
-                mastr = false
             }
+
+            await MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+                if (!err) {
+                    var dbo = db.db("Piccolo_Grande_Mondo");
+                    var query = { Nome_Discord: decoded.user };
+
+                    dbo.collection("Schede_PG").find(query).toArray(function (err, result) {
+                        if (!err) {
+                            if (result) {
+                                if (result.length == 1) {
+                                    var id_scheda = result[0]._id;
+                                    var name_pg = result[0].Nome_PG;
+                                    var list_max = result.length;
+                                    if (result[0].Avatar == "" || result[0].Avatar == null || result[0].Avatar == "Non Assegnata") {
+                                        avatar = "/images/stemma_gilda_f.png"
+                                    } else {
+                                        avatar = result[0].Avatar;
+                                    }
+                                } else {
+                                    var id_scheda = [];
+                                    var name_pg = [];
+                                    var avatar = [];
+                                    var list_max = result.length;
+                                    for (let index = 0; index < list_max; index++) {
+                                        id_scheda[index] = result[index]._id;
+                                        name_pg[index] = result[index].Nome_PG;
+                                        if (result[index].Avatar == "" || result[index].Avatar == null || result[index].Avatar == "Non Assegnata") {
+                                            avatar[index] = "/images/stemma_gilda_f.png"
+                                        } else {
+                                            avatar[index] = result[index].Avatar;
+                                        }
+                                    }
+                                }
+                                db.close();
+                                res.render('characters/dashboard', { info: res.req.url, loged: loged, master: mastr, list_pg: list_max, id: id_scheda, name: name_pg, avatar_pg: avatar });
+                            }
+                        }
+                    });
+                } else {
+                    res.render('errorPages/page500');
+                }
+            });
+
+        } else {
+            res.redirect('/Login');
+        }
+    });
+};
+
+exports.crea_scheda = (req, res) => {
+    const token = req.cookies['jwt'];
+    var loged = false;
+    var mastr = false;
+    jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
+        if (!err) {
+            loged = true;
+            if (decoded.master == 1)
+                mastr = true
             var on_sevice_db = await methodDB.open_db();
             if (on_sevice_db != 1) {
-                id_scheda = mongo.ObjectID(decoded.id);
+                console.log(decoded.id);
+                id_scheda = mongodb.ObjectID(decoded.id);
                 var query = { _id: id_scheda, Id_discord: decoded.user };
                 methodDB.settab_db("Utenti_web");
                 var cursor = methodDB.find_Json(query);
                 cursor.then(async function (result) {
                     if (result == null) {
-                        res.render('dashboard', { message_error: 'Errore nel ricerca profilo' });
+                        res.render('characters/dashboard', { loged: loged, master: mastr, message_error: 'Errore nel ricerca profilo' });
                     } else if (result.master == 1) {
-                        res.render('insert_temp', { eanbele_count: 0, master: mastr });
+                        res.render('characters/insert', { loged: loged, master: mastr, eanbele_count: 0, master: mastr });
                     } else if (result.N_schede == 0) {
-                        res.render('insert_temp', { eanbele_count: 1, master: mastr });
+                        res.render('characters/insert', { loged: loged, master: mastr, eanbele_count: 1, master: mastr });
                     } else {
-                        res.render('dashboard', { message_warn: 'Non puoi avere più di una scheda' });
+                        res.render('characters/dashboard', { loged: loged, master: mastr, message_warn: 'Non puoi avere più di una scheda' });
                     }
                 });
             } else {
-                res.render('page500.hbs');
+                res.render('errorPages/page500');
             }
         } else {
             res.redirect('/login');
         }
     });
-}
+};
 
-exports.Insert_db = (req, res) => {
+exports.insert_db = (req, res) => {
     const token = req.cookies['jwt'];
     const {
         name,
@@ -66,10 +128,14 @@ exports.Insert_db = (req, res) => {
         carisma,
         url_avatar,
     } = req.body;
+    var loged = false;
+    var mastr = false;
 
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
-            const master_user = decoded.master
+            loged = true;
+            if (decoded.master == 1)
+                mastr = true
             if (name.length > 0 || razza != "Scegli Razza" || classe != "Scegli Classe" || background != "Scegli Background") {
                 var inventory = {
                     "pomata curativa": {
@@ -280,54 +346,6 @@ exports.Insert_db = (req, res) => {
                     money = 0;
                 }
 
-                /*
-                if (master_user == "0") {
-                    const id_user = decoded.user.toString();
-                    const nome_oggetto_obj = req.body.nome_oggetto;
-                    const quantita_obj = req.body.quantita;
-                    const note_obj = req.body.note;
-                    const index_obj = req.body.index_obj;
-     
-                    PG_temp = {
-                        "Nome_Discord": id_user,
-                        "Avatar": url_avatar_load,
-                        "Livello": 3,
-                        "Exp": 0,
-                        "Nome_PG": name,
-                        "Razza": razza_net,
-                        //"Sotto Razza": sotto_razza_net,
-                        "Classe": classe_net,
-                        "Sotto Classe": sotto_classe_net,
-                        "Background": Background_net,
-                        "Descrizione": descrizone,
-                        "Forza": forza_load,
-                        "Destrezza": destrezza_load,
-                        "Costituzione": costituzione_load,
-                        "Intelligenza": intelligenza_load,
-                        "Saggezza": saggezza_load,
-                        "Carisma": carisma_load,
-                        "Competenze": {},
-                        "Money": money,
-                        "Inventory": inventory
-                    }
-     
-                    if (index_obj == 1) {
-                        inventory[nome_oggetto_obj] = {
-                            "Nome": nome_oggetto_obj,
-                            "Quantita": quantita_obj,
-                            "Note": note_obj
-                        }
-                    } else if (index_obj > 1) {
-                        for (let index = 0; index < index_obj; index++) {
-                            inventory[nome_oggetto_obj[index]] = {
-                                "Nome": nome_oggetto_obj[index],
-                                "Quantita": quantita_obj[index],
-                                "Note": note_obj[index]
-                            }
-                        }
-                    }
-                } else { 
-                */
                 PG_temp = {
                     "Nome_Discord": decoded.user,
                     "Avatar": url_avatar_load,
@@ -355,31 +373,194 @@ exports.Insert_db = (req, res) => {
                     "Ispirazione": 0,
                     "Inventory": inventory
                 }
-                // }
 
                 var on_sevice_db = await methodDB.open_db();
                 methodDB.settab_db("Schede_PG");
                 if (on_sevice_db != 1) {
                     var erros = await methodDB.insert_db(PG_temp);
                     if (erros == 0) {
-                        if (master_user == "0") {
+                        if (mastr) {
                             methodDB.settab_db("Utenti_web");
                             methodDB.N_schede_update(decoded.user);
-                            res.redirect('/dashboard');
+                            res.redirect('/characters');
                         } else {
-                            res.redirect('/dashboard');
+                            res.redirect('/characters');
                         }
                     } else {
-                        res.redirect('/dashboard');
+                        res.redirect('/characters');
                     }
                 } else {
-                    res.render('page500.hbs');
+                    res.render('errorPages/page500');
                 }
             } else {
-                res.render('insert_temp', { message_warn: 'Riempire i calpi', master: mastr });
+                res.render('characters/insert', { message_warn: 'Riempire i calpi', master: mastr });
             }
         }
     });
+};
+
+exports.modifica_scheda = (req, res) => {
+    const token = req.cookies['jwt'];
+    var loged = false;
+    var mastr = false;
+    jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
+        if (!err) {
+            loged = true;
+            if (decoded.master == 1) {
+                mastr = true
+            }
+
+            const id_serch = mongodb.ObjectId(req.body.id_scheda_edit);
+            var on_sevice_db = await methodDB.open_db();
+            if (on_sevice_db != 1) {
+                methodDB.settab_db("Schede_PG");
+                var cursor = methodDB.serachbyid(id_serch);
+                cursor.then(function (result) {
+                    if (result != null) {
+                        var js_result = JSON.stringify(result);
+                        js_result = JSON.parse(js_result);
+                        var obj_N = JSON.stringify(js_result['Inventory']);
+                        obj_N = JSON.parse(obj_N);
+                        const obj_k = Object.keys(obj_N);
+                        var obj_nome = [];
+                        var obj_quan = [];
+                        var obj_note = [];
+                        for (var i in obj_k) {
+                            obj_nome[i] = '"' + obj_N[obj_k[i]]['Nome'] + '"';
+                            obj_quan[i] = '"' + obj_N[obj_k[i]]['Quantita'] + '"';
+                            obj_note[i] = '"' + obj_N[obj_k[i]]['Sincronia'] + '"';
+                        }
+                        methodDB.settab_db("Utenti_web");
+                        var id_scheda = mongodb.ObjectId(decoded.id);
+                        var query = { _id: id_scheda, Id_discord: decoded.user };
+                        var cursor = methodDB.find_Json(query);
+                        cursor.then(function (results) {
+                            if (results == null) {
+                                res.render('dashboard', { message_error: 'Errore nel ricerca profilo' });
+                            } else {
+                                if (isNaN(js_result['Money']) == true || js_result['Money'] == null) {
+                                    money_ck = -9999;
+                                } else {
+                                    money_ck = js_result['Money']
+                                }
+
+                                if (js_result['Avatar'] == "" || js_result['Avatar'] == null || js_result['Avatar'] == "Non Assegnata") {
+                                    avatar_ck = "/images/stemma_gilda_f.png"
+                                    avatar_ck_url = "Avatar Mancante o Non Disponibile"
+                                } else {
+                                    avatar_ck = js_result['Avatar']
+                                    avatar_ck_url = js_result['Avatar']
+                                }
+
+                                if (js_result['Multi Classe'] == "" || js_result['Multi Classe'] == null || js_result['Multi Classe'] == "Non Assegnata") {
+                                    var render_mult = false;
+                                } else {
+                                    var render_mult = true;
+                                }
+
+                                console.log(req.params);
+
+                                res.render('characters/scheda', {
+                                    loged: loged,
+                                    master: mastr,
+                                    id_scheda: js_result['_id'],
+                                    level_pg: js_result['Livello'],
+                                    nome_pg: js_result['Nome_PG'],
+                                    avatar_pg: avatar_ck,
+                                    avatar_pg_url: avatar_ck_url,
+                                    razza_pg: js_result['Razza'],
+                                    classe_pg: js_result['Classe'],
+                                    sotto_classe_pg: js_result['Sotto Classe'],
+                                    render_mult: render_mult,
+                                    classe_multi: js_result['Multi Classe'],
+                                    sot_classe_multi: js_result['Multi Sotto Classe'],
+                                    background_pg: js_result['Background'],
+                                    descrizone: js_result['Descrizione'],
+                                    forza_pg: js_result['Forza'],
+                                    destrezza_pg: js_result['Destrezza'],
+                                    costituzione_pg: js_result['Costituzione'],
+                                    intelligenza_pg: js_result['Intelligenza'],
+                                    saggezza_pg: js_result['Saggezza'],
+                                    carisma_pg: js_result['Carisma'],
+                                    monete_pg: money_ck.toString(),
+                                    object_nome: obj_nome,
+                                    object_quan: obj_quan,
+                                    object_note: obj_note,
+                                    img_class: check_class(js_result['Classe']),
+                                    img_class_sot: check_class(js_result['Sotto Classe']),
+                                    img_class_multi: check_class(js_result['Multi Classe']),
+                                    img_class_sot_multi: check_class(js_result['Multi Sotto Classe']),
+                                });
+                            }
+                        });
+                    } else {
+                        res.redirect('/characters');
+                    }
+                });
+            } else {
+                res.render('errorPages/page500');
+            }
+        } else {
+            res.redirect('/characters');
+        }
+    });
+};
+
+exports.cancella_scheda = async (req, res) => {
+    var id_scheda = req.body.id_scheda_delete;
+    var name_pg = req.body.nome_delete;
+    var check_pg = req.body.check_delete;
+    const token = req.cookies['jwt'];
+    jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
+        if (!err) {
+            if (name_pg == check_pg) {
+                var on_sevice_db = await methodDB.open_db();
+                if (on_sevice_db != 1) {
+                    methodDB.settab_db("Schede_PG");
+                    methodDB.delete_db(id_scheda);
+                    methodDB.settab_db("Utenti_web");
+                    methodDB.N_schede_dec_update(decoded.id);
+                    res.redirect('/characters');
+                } else {
+                    res.render('errorPages/page500');
+                }
+            } else {
+                res.redirect('/characters');
+            }
+        }
+    });
+};
+
+function check_class(classe) {
+    if (classe == "Barbaro") {
+        return "/images/Barbaro.png"
+    } else if (classe == "Bardo") {
+        return "/images/Bardo.png"
+    } else if (classe == "Chierico") {
+        return "/images/Chierico.png"
+    } else if (classe == "Druido") {
+        return "/images/Druido.png"
+    } else if (classe == "Guerriero") {
+        return "/images/Combatente.png"
+    } else if (classe == "Ladro") {
+        return "/images/Ladro.png"
+    } else if (classe == "Mago") {
+        return "/images/Mago.png"
+    } else if (classe == "Monaco") {
+        return "/images/Monaco.png"
+    } else if (classe == "Paladino") {
+        return "/images/Paladino.png"
+    } else if (classe == "Ranger") {
+        return "/images/Ranger.png"
+    } else if (classe == "Stregone") {
+        return "/images/Altro.png"
+    } else if (classe == "Warlock") {
+        return "/images/Warlock.png"
+    } else if (classe == "Artefice") {
+        return "/images/Altro.png"
+    } else {
+        return "/images/Altro.png"
+    }
 };
 
 function validURL(str) {
@@ -390,14 +571,4 @@ function validURL(str) {
         '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
         '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
     return !!pattern.test(str);
-}
-
-function not_null() {
-    if (condition) {
-
-        return
-    } else {
-
-        return
-    }
-}
+};

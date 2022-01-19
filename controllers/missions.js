@@ -3,19 +3,97 @@ const { MongoClient } = require("mongodb");
 const mongodb = require("mongodb");
 const methodDB = require("../mongodb_controll.js");
 const jwt = require('jsonwebtoken');
-const { post } = require('../routes');
+
+exports.show_missions = (req, res) => {
+    const token = req.cookies['jwt'];
+    jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
+        if (!err) {
+            var loged = true;
+            if (decoded.master == 1) {
+                var mastr = true;
+                var MongoClient = require('mongodb').MongoClient;
+                var url = process.env.DATABASE_MONGDB;
+
+                await MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+                    if (!err) {
+                        var dbo = db.db("Piccolo_Grande_Mondo");
+                        var query = { Master_id: decoded.user };
+
+                        dbo.collection("Registro_missioni").find(query).toArray(function (err, result) {
+                            if (!err) {
+                                if (result) {
+                                    if (result.length == 1) {
+                                        var id_mission = result[0]._id;
+                                        var name_mission = result[0].Nome;
+                                        var Descrizione_breve = result[0].Descrizione_breve + "%new%,";
+                                        var Data_scadenza = format_date(result[0].Data_scadenza);
+                                        var Player_min = result[0].Player_min;
+                                        var Player_list = result[0].Player_list.length;
+                                        var Player = "";
+                                        var URL_Image = result[0].URL_Image;
+                                        var list_max = result.length;
+                                        Player = String(Player_list) + "/" + String(Player_min);
+                                        if (URL_Image == "" || URL_Image == null || URL_Image == "Non Assegnata") {
+                                            avatar = "/images/stemma_gilda_f.png"
+                                        } else {
+                                            avatar = URL_Image;
+                                        }
+                                    } else {
+                                        var id_mission = [];
+                                        var name_mission = [];
+                                        var Descrizione_breve = [];
+                                        var Data_scadenza = [];
+                                        var Player_min = [];
+                                        var Player_list = [];
+                                        var Player = [];
+                                        var avatar = [];
+                                        var list_max = result.length;
+                                        for (let index = 0; index < list_max; index++) {
+                                            id_mission[index] = result[index]._id;
+                                            name_mission[index] = result[index].Nome;
+                                            Descrizione_breve[index] = result[index].Descrizione_breve + "%new%,";
+                                            Data_scadenza[index] = format_date(result[index].Data_scadenza);
+                                            Player_min[index] = result[index].Player_min;
+                                            Player_list[index] = result[index].Player_list.length;
+                                            Player[index] = String(Player_list[index]) + "/" + String(Player_min[index]);
+                                            if (result[index].URL_Image == "" || result[index].URL_Image == null || result[index].URL_Image == "Non Assegnata") {
+                                                avatar[index] = "/images/stemma_gilda_f.png"
+                                            } else {
+                                                avatar[index] = result[index].URL_Image;
+                                            }
+                                        }
+                                    }
+                                    db.close();
+                                    res.render('missions/dashboard', { loged: loged, master: mastr, list_mission: list_max, id_missione: id_mission, nome_missione: name_mission, avatar_mission: avatar, body_missione: Descrizione_breve, exspire_mission: Data_scadenza, player_missione: Player });
+                                }
+                            }
+                        });
+                    } else {
+                        res.render('errorPages/page500');
+                    }
+                });
+            } else {
+                res.render('errorPages/page401');
+            }
+        } else {
+            res.redirect('/Login');
+        }
+    });
+};
 
 exports.Make_mission = (req, res) => {
     const token = req.cookies['jwt'];
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
-            if (decoded.master = 1) {
+            var loged = true;
+            if (decoded.master == 1) {
+                var mastr = true;
                 var data_min = new Date();
                 var data_max = new Date();
                 data_max.setDate(data_max.getDate() + 21);
-                res.render('insert_mission', { mindate: GetFormatDate(data_min), maxdate: GetFormatDate(data_max) });
+                res.render('missions/insert', { loged: loged, master: mastr, mindate: GetFormatDate(data_min), maxdate: GetFormatDate(data_max) });
             } else {
-                res.render('page401.hbs');
+                res.render('errorPages/page401');
             }
         } else {
             res.redirect('/login');
@@ -27,6 +105,10 @@ exports.Edit_mission_db = (req, res) => {
     const token = req.cookies['jwt'];
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
+            var loged = true;
+            if (decoded.master == 1) {
+                var mastr = true;
+            }
             const id_serch = mongodb.ObjectId(req.body.id_missione_edit);
             var on_sevice_db = await methodDB.open_db();
             if (on_sevice_db != 1) {
@@ -117,9 +199,10 @@ exports.Edit_mission_db = (req, res) => {
                             var avatar = result.URL_Image;
                         }
 
-                        res.render('mission.hbs', {
-                            id_data_db: result._id,
-                            id_missione: result['ID'],
+                        res.render('missions/mission', {
+                            loged: loged, master: mastr,
+                            id_missione: result._id,
+                            // id_missione: result['ID'],
                             Discord_id_message: result.Discord_id_message,
                             Status_enbele: Status_enbele,
                             Status_execute: Status_execute,
@@ -144,14 +227,14 @@ exports.Edit_mission_db = (req, res) => {
                         });
 
                     } else {
-                        res.redirect('/dashboard');
+                        res.redirect('/missions');
                     }
                 });
             } else {
-                res.render('page500.hbs');
+                res.render('errorPages/page500');
             }
         } else {
-            res.redirect('/dashboard');
+            res.redirect('/missions');
         }
     });
 }
@@ -299,20 +382,19 @@ exports.Insert_mission_db = (req, res) => {
                         call_Discord_bot('edit', id_mission);
                     };
                 }
-                res.redirect('/dashboard-mission');
+                res.redirect('/missions');
             } else {
-                res.render('page500.hbs');
+                res.render('errorPages/page500');
             }
 
         } else {
-            res.render('page401.hbs');
+            res.render('errorPages/page401');
         }
     });
 }
 
 exports.Delete_mission_db = async (req, res) => {
     var id_scheda = req.body.id_scheda_delete;
-    console.log(id_scheda);
     var name_pg = req.body.nome_delete;
     var check_pg = req.body.check_delete;
     const token = req.cookies['jwt'];
@@ -322,16 +404,37 @@ exports.Delete_mission_db = async (req, res) => {
                 var on_sevice_db = await methodDB.open_db();
                 if (on_sevice_db != 1) {
                     methodDB.settab_db("Registro_missioni");
+                    console.log(id_scheda);
                     methodDB.delete_db(id_scheda);
-                    res.redirect('/dashboard-mission');
+                    res.redirect('/missions');
                 } else {
-                    res.render('page500.hbs');
+                    res.render('errorPages/page500');
                 }
             } else {
-                res.redirect('/dashboard-mission');
+                res.redirect('/missions');
             }
         }
     });
+};
+
+exports.logout = async (req, res) => {
+    res.clearCookie('jwt');
+    res.redirect('/');
+};
+
+function format_date(date_int) {
+    var today = new Date(date_int);
+    var year = today.getFullYear();
+    var month = today.getMonth();
+    var day = today.getDate();
+    month = String(parseInt(month)+1);
+    if (day < 10) {
+        day = "0" + day;
+    }
+    if (month < 10) {
+        month = "0" + month;
+    }
+    return day + "/" + month + "/" + year
 }
 
 function GetFormatDate(String_date) {
