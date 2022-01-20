@@ -43,11 +43,11 @@ router.post(prefix + '/delete', missionController.Delete_mission_db);
 /* Posts */
 prefix = '/post';
 router.get(prefix + '/:id', postsController.show);
-router.post(prefix + '/make', Controller.Make_post);
-// router.post(prefix + '/edit/:id', Controller.Edit_open_post_db);
-// router.post(prefix + '/edit/submit', Controller.Edit_post_db);
-router.post(prefix + '/insert', Controller.Insert_post_db);
-// router.post(prefix + '/delete/:id', Controller.Delete_post_db);
+router.post(prefix + '/make', postsController.Make_post);
+// router.post(prefix + '/edit/:id', postsController.Edit_open_post_db);
+// router.post(prefix + '/edit/submit', postsController.Edit_post_db);
+router.post(prefix + '/insert', postsController.Insert_post_db);
+// router.post(prefix + '/delete/:id', postsController.Delete_post_db);
 
 router.post('/logout', (req, res) => {
     res.clearCookie('jwt');

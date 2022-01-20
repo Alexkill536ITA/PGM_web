@@ -76,7 +76,6 @@ exports.crea_scheda = (req, res) => {
                 mastr = true
             var on_sevice_db = await methodDB.open_db();
             if (on_sevice_db != 1) {
-                console.log(decoded.id);
                 id_scheda = mongodb.ObjectID(decoded.id);
                 var query = { _id: id_scheda, Id_discord: decoded.user };
                 methodDB.settab_db("Utenti_web");
@@ -457,8 +456,6 @@ exports.modifica_scheda = (req, res) => {
                                 } else {
                                     var render_mult = true;
                                 }
-
-                                console.log(req.params);
 
                                 res.render('characters/scheda', {
                                     loged: loged,
