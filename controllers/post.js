@@ -14,7 +14,7 @@ exports.show = async (req, res, next) => {
             if (req.params.id.length == 24) {
                 post = await get_Object(req.params.id);
             }
-            res.render('post/post', { loged: loged, master: mastr, Title: post.Title, Img: post.Img, Tag: post.Tag, date: post['Date'], text: post['Text'], Famiglia: post.Famiglia });
+            res.render('blogpost/post', { loged: loged, master: mastr, Title: post.Title, Img: post.Img, Tag: post.Tag, date: post['Date'], text: post['Text'], Famiglia: post.Famiglia });
         } else {
             var loged = false
             var mastr = false
@@ -22,7 +22,7 @@ exports.show = async (req, res, next) => {
             if (req.params.id.length == 24) {
                 post = await get_Object(req.params.id);
             }
-            res.render('post/post', { loged: loged, master: mastr, Title: post.Title, Img: post.Img, Tag: post.Tag, date: post['Date'], text: post['Text'], Famiglia: post.Famiglia });
+            res.render('blogpost/post', { loged: loged, master: mastr, Title: post.Title, Img: post.Img, Tag: post.Tag, date: post['Date'], text: post['Text'], Famiglia: post.Famiglia });
         }
     });
 };
@@ -32,12 +32,12 @@ exports.Make_post = (req, res) => {
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
         if (!err) {
             if (decoded.master == 1) {
-                res.render('insert_post');
+                res.render('blogpost/insert_post');
             } else {
-                res.render('page401.hbs');
+                res.render('errorPages/page401');
             }
         } else {
-            res.redirect('/login');
+            res.redirect('auth/login');
         }
     });
 };
@@ -55,14 +55,14 @@ exports.Edit_open_post_db = (req, res) => {
                     if (result != null) {
 
                     } else {
-                        res.redirect('/blgpost');
+                        res.redirect('/blogpost');
                     }
                 });
             } else {
-                res.render('page500.hbs');
+                res.render('errorPages/page500');
             }
         } else {
-            res.redirect('/blgpost');
+            res.redirect('/blogpost');
         }
     });
 }
@@ -100,12 +100,12 @@ exports.Edit_post_db = (req, res) => {
                 } else {
                     methodDB.insert_db(template);
                 }
-                res.redirect('/blgpost');
+                res.redirect('/blogpost');
             } else {
-                res.render('page500.hbs');
+                res.render('errorPages/page500');
             }
         } else {
-            res.render('page401.hbs');
+            res.render('errorPages/page401');
         }
     });
 }
@@ -138,12 +138,12 @@ exports.Insert_post_db = (req, res) => {
             if (on_sevice_db != 1) {
                 methodDB.settab_db("Post_blog");
                 methodDB.insert_db(template);
-                res.redirect('/blgpost');
+                res.redirect('/blogpost');
             } else {
-                res.render('page500.hbs');
+                res.render('errorPages/page500');
             }
         } else {
-            res.render('page401.hbs');
+            res.render('errorPages/page401');
         }
     });
 }
@@ -158,12 +158,12 @@ exports.Delete_mission_db = async (req, res) => {
                 if (on_sevice_db != 1) {
                     methodDB.settab_db("Post_blog");
                     methodDB.delete_db(id_scheda);
-                    res.redirect('/blgpost');
+                    res.redirect('/blogpost');
                 } else {
-                    res.render('page500.hbs');
+                    res.render('errorPages/page500');
                 }
             } else {
-                res.redirect('/blgpost');
+                res.redirect('/blogpost');
             }
         }
     });
