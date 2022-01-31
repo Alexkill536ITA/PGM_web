@@ -201,8 +201,8 @@ exports.Edit_mission_db = (req, res) => {
 
                         res.render('missions/mission', {
                             loged: loged, master: mastr,
-                            id_missione: result._id,
-                            // id_missione: result['ID'],
+                            id_missione: result['ID'],
+                            id_mongodb: result['_id'],
                             Discord_id_message: result.Discord_id_message,
                             Status_enbele: Status_enbele,
                             Status_execute: Status_execute,
