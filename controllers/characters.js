@@ -350,7 +350,7 @@ exports.insert_db = (req, res) => {
                     "Avatar": url_avatar_load,
                     "Livello": 3,
                     "Exp": 0,
-                    "Nome_PG": name,
+                    "Nome_PG": name.trim(),
                     "Razza": String(razza_net),
                     //"Sotto Razza": sotto_razza_net,
                     "Classe": String(classe_net),
