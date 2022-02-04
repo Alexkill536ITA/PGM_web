@@ -55,3 +55,53 @@
     padding-right: 10px;
   }
 }
+
+.button{
+  background-color: black;
+  color: white;
+  border-width: 2px;
+  border-radius: 50px !important;
+  letter-spacing: 1px;
+  border-style: solid;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: none;
+  width: 100%;
+  border-color: #000000 !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
+  transition-duration: 0.1s;
+}
+
+.button:hover{
+  background-color: white;
+  color: black;
+}
+
+.button_cancel{
+  background-color: rgb(255, 0, 0);
+  color: rgb(255, 255, 255);
+  border-width: 2px;
+  border-radius: 50px !important;
+  letter-spacing: 1px;
+  border-style: solid;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: none;
+  width: 100%;
+  border-color: #000000 !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
+  transition-duration: 0.1s;
+}
+
+.button_cancel:hover{
+  background-color: rgb(180, 0, 0);
+  color: rgb(255, 255, 255);
+}

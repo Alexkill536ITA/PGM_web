@@ -53,7 +53,7 @@ exports.Edit_open_post_db = (req, res) => {
                 var cursor = methodDB.serachbyid(id_serch);
                 cursor.then(async function (result) {
                     if (result != null) {
-
+                        
                     } else {
                         res.redirect('/blogpost');
                     }
