@@ -2,6 +2,7 @@ const express = require('express');
 const authController = require('../controllers/auth');
 const blogpostController = require('../controllers/blogpost');
 const characterController = require('../controllers/characters');
+const contactsController = require('../controllers/contacts');
 const missionController = require('../controllers/missions');
 const postsController = require('../controllers/post');
 const controller = require('../controllers/home');
@@ -31,6 +32,11 @@ router.post(prefix + '/make', characterController.crea_scheda);
 router.post(prefix + '/insert', characterController.insert_db);
 router.post(prefix + '/edit', characterController.modifica_scheda);
 router.post(prefix + '/delete', characterController.cancella_scheda);
+
+/* Characters */
+prefix = '/contacts';
+router.get(prefix, contactsController.index);
+router.post(prefix, contactsController.send);
 
 /* Missions */
 prefix = '/missions';
