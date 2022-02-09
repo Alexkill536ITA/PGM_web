@@ -111,7 +111,7 @@ exports.N_schede_update = function (id_discord) {
 
 exports.N_schede_dec_update = function (id_discord) {
     id = mongo.ObjectID(id_discord);
-    collection.updateOne({ '_id': id }, { $inc: { N_schede: -1 } });
+    collection.updateOne({ $and: [{ '_id': id }, { N_schede: { $gt: 0 }}] }, { $inc: { N_schede: -1 } });
     return 0;
 }
 
