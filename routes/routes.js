@@ -34,9 +34,9 @@ router.post(prefix + '/edit', characterController.modifica_scheda);
 router.post(prefix + '/delete', characterController.cancella_scheda);
 
 /* Characters */
-prefix = '/contacts';
+prefix = '/contact';
 router.get(prefix, contactsController.index);
-router.post(prefix, contactsController.send);
+router.post(prefix + '/send', contactsController.send);
 
 /* Missions */
 prefix = '/missions';

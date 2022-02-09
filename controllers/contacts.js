@@ -9,8 +9,7 @@ exports.index = (req, res) => {
             var loged = true;
             if (decoded.master == 1)
                 var mastr = true;
-
-            res.render('contacts', { loged: loged, master: mastr });
+            res.render('contact/contact.hbs', { loged: loged, master: mastr });
         } else {
             res.redirect('/Login');
         }
