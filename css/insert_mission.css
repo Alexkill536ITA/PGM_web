@@ -1309,6 +1309,7 @@
 }
 .custom_button_yello:hover {
 	background-color: rgb(200, 200, 0) !important;
+  color: white !important;
 }
 .custom_button_yello:active {
 	position:relative;
