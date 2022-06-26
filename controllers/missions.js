@@ -119,16 +119,19 @@ exports.Edit_mission_db = (req, res) => {
 
                         var Status_enbele = false;
                         var Status_execute = false;
+                        var Status_allert = false;
                         var Status_disable = false;
                         var Enable_result = false;
                         if (result.Status_missione == "enable") {
                             Status_enbele = true;
+                            Status_allert = true;
                         } else if (result.Status_missione == "execute") {
                             Status_execute = true;
-                            Enable_result = true;
+                            Status_allert = true;
+                            // Enable_result = true;
                         } else {
                             Status_disable = true;
-                            Enable_result = true;
+                            // Enable_result = true;
                         }
 
                         var Select_level_temp = ["", "", "", "", "", "", "", "", ""]
@@ -206,6 +209,7 @@ exports.Edit_mission_db = (req, res) => {
                             Discord_id_message: result.Discord_id_message,
                             Status_enbele: Status_enbele,
                             Status_execute: Status_execute,
+                            Status_allert: Status_allert,
                             Status_disable: Status_disable,
                             Enable_result: Enable_result,
                             Nome: result.Nome,
@@ -372,7 +376,11 @@ exports.Insert_mission_db = (req, res) => {
                 if (type_close == 1) {
                     template['Status_missione'] = "disable";
                     methodDB.mission_update(id_mission, template);
-                    call_Discord_bot('response', id_mission);
+                    call_Discord_bot('close', id_mission);
+                } else if (type_close == 2) {
+                    call_Discord_bot('allert', id_mission);
+                    res.redirect('/missions');
+                    return;
                 } else {
                     if (type_insert == 0) {
                         methodDB.insert_db(template);
