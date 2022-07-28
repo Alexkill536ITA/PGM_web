@@ -67,7 +67,7 @@ exports.register = async (req, res) => {
                         return res.render('auth/register', { message: 'Esiste già un\'Utente con questo ID Discord' });
                     } else if (result_2 != null) {
                         return res.render('auth/register', { message: 'Esiste già un\'Utente con questo Username' });
-                    } else if (id_user.length <= 0 || id_user.length > 18 || isNaN(parseInt(id_user)) == true) {
+                    } else if (id_user.length <= 0 || id_user.length > 19 || isNaN(parseInt(id_user)) == true) {
                         return res.render('auth/register', { message: 'ID Discord inserito non valido' });
                     } else if (Password !== Password_rep) {
                         return res.render('auth/register', { message_warn: 'Password non coincidono' });
