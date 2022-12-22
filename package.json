@@ -17,7 +17,7 @@
     "express-session": "^1.17.1",
     "greenlock-express": "^4.0.3",
     "hbs": "^4.1.2",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "method-override": "^3.0.0",
     "mongodb": "^3.6.9",
     "passport": "^0.6.0",
