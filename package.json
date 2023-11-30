@@ -12,7 +12,7 @@
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
-    "express-handlebars": "^5.3.2",
+    "express-handlebars": "^7.0.0",
     "express-layout": "^0.1.0",
     "express-session": "^1.17.1",
     "greenlock-express": "^4.0.3",
